@@ -25,6 +25,7 @@ public class OrderManagerTest {
 	public void testGetTotalPrice() {
 
 		assertEquals("Zero price (default)", new Float(0), orderManager.getTotalPrice());
+
 		
 	}
 
