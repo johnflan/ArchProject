@@ -1,35 +1,47 @@
 package ie.ul.csis.cs4135.pcshop;
 
 import ie.ul.csis.cs4135.pcshop.componentDecorator.DecoratorInterface;
-import java.util.Map;
+import java.util.List;
+import java.util.Observable;
+import java.util.Observer;
+
 import ie.ul.csis.cs4135.pcshop.factory.ComponentInterface;
 
-public class OrderManager {
+/*
+ */
+public class OrderManager implements Observer{
 
-  private Map order;
+	private List order;
+	
+	public DecoratorInterface decorator;
+	
+	public Float subTotalPrice;
+	
+	public void OrderManager(Enum region) {
+	}
+	
+	private void setTaxRegion(Enum region) {
+	}
+	
+	public void changeTaxRegion(Enum region) {
+	}
+	
+	public ComponentInterface addComputer(Enum type) {
+	return null;
+	}
+	
+	public Float getTotalPrice() {
+	return null;
+	}
+	
+	public void removeProduct(ComponentInterface product) {
+	}
+	
 
-  public DecoratorInterface decorator;
-
-  public Float subTotalPrice = 0.0f;
-
-  public void OrderManager(Enum region) {
-  }
-
-  private void setTaxRegion(Enum region) {
-  }
-
-  public void changeTaxRegion(Enum region) {
-  }
-
-  public ComponentInterface addComputer(Enum type) {
-  return null;
-  }
-
-  public Float getTotalPrice() {
-  return subTotalPrice;
-  }
-
-  public void notifyObservers() {
-  }
+	@Override
+	public void update(Observable arg0, Object arg1) {
+		// TODO Auto-generated method stub
+		
+	}
 
 }

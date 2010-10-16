@@ -23,12 +23,6 @@ public class CpuDecorator implements CpuInterface {
 	}
 
 	@Override
-	public void notifyUpdate() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
 	public int getNumCores() {
 		// TODO Auto-generated method stub
 		return 0;

@@ -1,6 +1,10 @@
-package ie.ul.csis.cs4135.pcshop.factory;
+package ie.ul.csis.cs4135.pcshop.factory.Computer;
+
+import ie.ul.csis.cs4135.pcshop.factory.ComponentInterface;
 
 class ComputerFactory {
+
+    public ComputerAssembler myComputerAssembler;
 
   public ComponentInterface createComputer(Enum type) {
   return null;

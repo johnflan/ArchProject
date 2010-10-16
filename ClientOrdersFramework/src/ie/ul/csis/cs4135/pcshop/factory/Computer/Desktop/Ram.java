@@ -1,8 +1,8 @@
-package ie.ul.csis.cs4135.pcshop.factory.computerComponents;
+package ie.ul.csis.cs4135.pcshop.factory.Computer.Desktop;
 
-import ie.ul.csis.cs4135.pcshop.factory.ComponentComposite;
+import ie.ul.csis.cs4135.pcshop.computerComponentInterfaces.RamInterface;
 
-public class ComputerComposite extends ComponentComposite {
+public class Ram implements RamInterface {
 
 	@Override
 	public Float getPrice() {
@@ -23,8 +23,14 @@ public class ComputerComposite extends ComponentComposite {
 	}
 
 	@Override
-	public void notifyUpdate() {
+	public String getRamType() {
 		// TODO Auto-generated method stub
-		
+		return null;
+	}
+
+	@Override
+	public int getRamSize() {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 }

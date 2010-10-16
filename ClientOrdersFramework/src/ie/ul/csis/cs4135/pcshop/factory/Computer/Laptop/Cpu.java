@@ -1,4 +1,4 @@
-package ie.ul.csis.cs4135.pcshop.factory.computerComponents;
+package ie.ul.csis.cs4135.pcshop.factory.Computer.Laptop;
 
 import ie.ul.csis.cs4135.pcshop.computerComponentInterfaces.CpuInterface;
 
@@ -20,12 +20,6 @@ public class Cpu implements CpuInterface {
 	public String getProductName() {
 		// TODO Auto-generated method stub
 		return null;
-	}
-
-	@Override
-	public void notifyUpdate() {
-		// TODO Auto-generated method stub
-		
 	}
 
 	@Override

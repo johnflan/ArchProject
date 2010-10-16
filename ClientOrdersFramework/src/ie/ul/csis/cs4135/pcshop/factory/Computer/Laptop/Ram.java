@@ -1,8 +1,8 @@
-package ie.ul.csis.cs4135.pcshop.componentDecorator.computerDecorators;
+package ie.ul.csis.cs4135.pcshop.factory.Computer.Laptop;
 
 import ie.ul.csis.cs4135.pcshop.computerComponentInterfaces.RamInterface;
 
-public class RamDecorator implements RamInterface {
+public class Ram implements RamInterface {
 
 	@Override
 	public Float getPrice() {

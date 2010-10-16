@@ -1,8 +1,8 @@
-package ie.ul.csis.cs4135.pcshop.factory.computerComponents;
+package ie.ul.csis.cs4135.pcshop.factory.Computer.Desktop;
 
-import ie.ul.csis.cs4135.pcshop.computerComponentInterfaces.RamInterface;
+import ie.ul.csis.cs4135.pcshop.computerComponentInterfaces.MonitorInterface;
 
-public class Ram implements RamInterface {
+public class Monitor implements MonitorInterface {
 
 	@Override
 	public Float getPrice() {
@@ -23,19 +23,13 @@ public class Ram implements RamInterface {
 	}
 
 	@Override
-	public void notifyUpdate() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public String getRamType() {
+	public String getScreenType() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public int getRamSize() {
+	public int getScreenSize() {
 		// TODO Auto-generated method stub
 		return 0;
 	}

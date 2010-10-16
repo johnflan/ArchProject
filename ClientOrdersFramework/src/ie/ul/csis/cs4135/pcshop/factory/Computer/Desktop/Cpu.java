@@ -1,8 +1,8 @@
-package ie.ul.csis.cs4135.pcshop.factory.computerComponents;
+package ie.ul.csis.cs4135.pcshop.factory.Computer.Desktop;
 
-import ie.ul.csis.cs4135.pcshop.computerComponentInterfaces.KeyboardInterface;
+import ie.ul.csis.cs4135.pcshop.computerComponentInterfaces.CpuInterface;
 
-public class Keyboard implements KeyboardInterface {
+public class Cpu implements CpuInterface {
 
 	@Override
 	public Float getPrice() {
@@ -23,8 +23,14 @@ public class Keyboard implements KeyboardInterface {
 	}
 
 	@Override
-	public void notifyUpdate() {
+	public int getNumCores() {
 		// TODO Auto-generated method stub
-		
+		return 0;
+	}
+
+	@Override
+	public Float getCoreSpeed() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

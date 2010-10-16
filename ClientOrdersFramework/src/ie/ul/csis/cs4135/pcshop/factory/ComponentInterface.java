@@ -8,6 +8,4 @@ public interface ComponentInterface {
 
   public String getProductName();
 
-  public void notifyUpdate();
-
 }
