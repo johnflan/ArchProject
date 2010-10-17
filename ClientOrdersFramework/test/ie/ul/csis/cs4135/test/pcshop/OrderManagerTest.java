@@ -48,7 +48,6 @@ public class OrderManagerTest {
 		assertNotNull("Returning a null product", orderManager.addProduct(ProductsEnum.COMPUTER_DESKTOP_GAMING));
 		
 		//make sure price is greater than 0
-		System.out.println(orderManager.getTotalPrice());
 		assertFalse("Price should be greater than 0.0 - but is " + orderManager.getTotalPrice() , orderManager.getTotalPrice().equals(new Float(0f)));
 		
 		//remove the product and ensure the list is empty
@@ -65,7 +64,6 @@ public class OrderManagerTest {
 		assertTrue("Should return an empty list", orderManager.getOrder().size() == 0);
 
 		//the price should now be 0.0
-		System.out.println(orderManager.getTotalPrice());
 		assertTrue("Price should be 0.0 - " + orderManager.getTotalPrice(), orderManager.getTotalPrice().equals(new Float(0.0)));
 	}
 	

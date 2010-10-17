@@ -11,7 +11,7 @@ public class UltraMobileLaptopBuilder extends ComputerBuilder {
 	}
 
 	@Override
-	public void buildChassais() {
+	public void buildChassis() {
 		// TODO Auto-generated method stub
 		
 	}

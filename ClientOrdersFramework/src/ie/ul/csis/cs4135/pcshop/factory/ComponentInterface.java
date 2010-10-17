@@ -7,5 +7,7 @@ public interface ComponentInterface {
 	public String getBrandName();
 	
 	public String getProductName();
+	
+	public String toString();
 
 }

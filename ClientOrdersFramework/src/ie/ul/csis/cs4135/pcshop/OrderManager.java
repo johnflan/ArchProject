@@ -16,10 +16,9 @@ import ie.ul.csis.cs4135.pcshop.taxRegion.TaxStateFactory;
 
 public class OrderManager implements Observer{
 
-	private List<ComponentInterface> order = new ArrayList();
+	private List<ComponentInterface> order = new ArrayList<ComponentInterface>();
 	private DecoratorInterface decorator;
 	private Float subTotalPrice;
-	private TaxRegionEnum taxRegion;
 	private AbstractTaxState taxCalculator;
 	private AbstractProductFactory productFactory;
 	

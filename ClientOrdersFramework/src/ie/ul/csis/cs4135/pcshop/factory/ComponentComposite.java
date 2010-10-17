@@ -160,6 +160,12 @@ public abstract class ComponentComposite extends Observable implements Component
 
 		return productName;
 	}
+	
+	
+	public String toString(){
+		
+		return productName + " " + brandName + ", price: " + price; 
+	}
 
   
 
