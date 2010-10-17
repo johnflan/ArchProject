@@ -1,11 +1,26 @@
 package ie.ul.csis.cs4135.pcshop.factory.Computer;
 
+import com.sun.istack.internal.Builder;
+
+import ie.ul.csis.cs4135.pcshop.factory.ComponentInterface;
+
 public class ComputerAssembler {
 
-    public ComputerBuilder myComputerBuilder;
-    public ComputerFactory myComputerFactory;
+    private ComputerBuilder computerBuilder;
 
-  public void construct() {
-  }
+    
+    ComputerAssembler(ComputerBuilder builder){
+    	
+    	computerBuilder = builder;
+    }
+
+	public ComponentInterface construct() {
+		
+		computerBuilder.buildMotherboard();
+		computerBuilder.buildChassais();
+		computerBuilder.buildComputer();
+		
+		return computerBuilder.getComputer();
+	}
 
 }
