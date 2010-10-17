@@ -29,7 +29,7 @@ public class Cpu implements CpuInterface {
 		this.productName = productName;
 		this.price = price;
 		
-		this.cpuType = cpuType;
+		this.setCpuType(cpuType);
 		this.cpuSpeed = cpuSpeed;
 		this.cpuNumCores = cpuNumCores;
 		
@@ -58,5 +58,13 @@ public class Cpu implements CpuInterface {
 	@Override
 	public Float getCoreSpeed() {
 		return cpuSpeed;
+	}
+
+	public void setCpuType(String cpuType) {
+		this.cpuType = cpuType;
+	}
+
+	public String getCpuType() {
+		return cpuType;
 	}
 }

@@ -54,13 +54,13 @@ public class OrderManagerTest {
 		//remove the product and ensure the list is empty
 		List<ComponentInterface> order = orderManager.getOrder();
 		
-		Iterator<ComponentInterface> productItr = order.iterator();
-		while(productItr.hasNext())
-			orderManager.removeProduct(productItr.next());
+//		Iterator<ComponentInterface> productItr = order.iterator();
+//		while(productItr.hasNext())
+//			orderManager.removeProduct(productItr.next());
 
 		
-//		for (ComponentInterface product : order)
-//			orderManager.removeProduct(product);
+		for (ComponentInterface product : order)
+			orderManager.removeProduct(product);
 		
 		assertTrue("Should return an empty list", orderManager.getOrder().size() == 0);
 

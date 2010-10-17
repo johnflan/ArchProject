@@ -46,9 +46,17 @@ public class OrderManager implements Observer{
 		return newProduct;
 	}
 	
+	
+	/**
+    * Returns a copy of the order list, not a reference to the private one.
+    *
+    * @return List<ComponentInterface>
+    */
+	
 	public List<ComponentInterface> getOrder(){
 		
-		return order;
+		List<ComponentInterface> returnList = new ArrayList<ComponentInterface>(order);
+		return returnList;
 
 	}
 	
