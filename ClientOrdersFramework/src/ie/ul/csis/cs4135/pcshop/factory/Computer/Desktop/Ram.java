@@ -23,31 +23,26 @@ public class Ram implements RamInterface {
 
 	@Override
 	public Float getPrice() {
-		// TODO Auto-generated method stub
-		return null;
+		return price;
 	}
 
 	@Override
 	public String getBrandName() {
-		// TODO Auto-generated method stub
-		return null;
+		return brandName;
 	}
 
 	@Override
 	public String getProductName() {
-		// TODO Auto-generated method stub
-		return null;
+		return productName;
 	}
 
 	@Override
 	public String getRamType() {
-		// TODO Auto-generated method stub
-		return null;
+		return ramType;
 	}
 
 	@Override
 	public int getRamSize() {
-		// TODO Auto-generated method stub
-		return 0;
+		return ramSize;
 	}
 }

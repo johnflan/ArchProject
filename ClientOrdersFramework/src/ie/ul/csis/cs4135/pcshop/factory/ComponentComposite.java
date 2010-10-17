@@ -1,22 +1,45 @@
 package ie.ul.csis.cs4135.pcshop.factory;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 import java.util.Observable;
-import java.util.Observer;
 import java.util.List;
+import java.util.Set;
 
 public abstract class ComponentComposite extends Observable implements ComponentInterface  {
 
-	private List<ComponentInterface> components = new ArrayList();
-	private List<ComponentComposite> composites = new ArrayList();
-
-	public void addComponent(ComponentInterface component) {
+	private Map<String, ComponentInterface> components = new HashMap<String, ComponentInterface>();
+	private Map<String, ComponentComposite> composites = new HashMap<String, ComponentComposite>();
+	
+	protected Float price;
+	protected String brandName;
+	protected String productName;
+	
+	
+	/**
+    * @param brandName The Brand name of the composite (if any).
+    * @param productName The Product name of the composite (if any).
+    * @param price The Price of the composite (if Any).
+    */
+	
+	public ComponentComposite(String brandName, String productName, Float price){
+		this.price = price;
+		this.brandName = brandName;
+		this.productName = productName;
 		
-	  if (component != null){
-		  
-		  components.add(component);
+	}
+	
+	public ComponentComposite(){
+
+		price = 0.0f;
+	}
+
+	public void addComponent(String componentName, ComponentInterface component) {
+		
+		  components.put(componentName, component);
 		  notifyObservers();
-	  }
 		  
 	}
 	
@@ -28,17 +51,36 @@ public abstract class ComponentComposite extends Observable implements Component
     * @return returns true on success.
     */
 	
-	public boolean removeComponent(ComponentInterface component) {
-	  
-		components.remove(component);
+	public boolean removeComponent(String componentName) {
+		  
+		components.remove(componentName);
 		notifyObservers();
 		return false;
 	}
 	
+	/**
+    * Returns a list of component names 
+    *
+    * @return a List<String> of components.
+    */
 	
-	public void addComposite(ComponentComposite composite) {
+	public List<String> getComponentNames() {
+		  
+		List<String> nameList = new ArrayList<String>();
 		
-		composites.add(composite);
+		Set<String> names = components.keySet();
+		Iterator<String> nameItr = names.iterator();
+		
+		while(nameItr.hasNext())
+			nameList.add(nameItr.next());
+
+		return nameList;
+	}
+	
+	
+	public void addComposite(String compositeName, ComponentComposite composite) {
+		
+		composites.put(compositeName, composite);
 		notifyObservers();
 
 	}
@@ -51,11 +93,30 @@ public abstract class ComponentComposite extends Observable implements Component
     * @return returns true on success.
     */
 	
-	public boolean removeComposite(ComponentComposite composite) {
+	public boolean removeComposite(String compositeName) {
 	  
-		composites.remove(composite);
+		composites.remove(compositeName);
 		notifyObservers();
 		return false;
+	}
+	
+	/**
+    * Returns a list of composite names 
+    *
+    * @return a List<String> of composites.
+    */
+	
+	public List<String> getCompositeNames() {
+		  
+		List<String> nameList = new ArrayList<String>();
+		
+		Set<String> names = composites.keySet();
+		Iterator<String> nameItr = names.iterator();
+		
+		while(nameItr.hasNext())
+			nameList.add(nameItr.next());
+
+		return nameList;
 	}
 	
 	
@@ -68,24 +129,36 @@ public abstract class ComponentComposite extends Observable implements Component
 	public List<ComponentInterface> getChildren() {
 		
 		List<ComponentInterface> mergedList = new ArrayList<ComponentInterface>();
-		mergedList.addAll(components);
-		mergedList.addAll(composites);
+		mergedList.addAll(components.values());
+		mergedList.addAll(composites.values());
+
+		
 		return mergedList;
 	}
 	
 	public Float getPrice(){
 		
-		Float price = 0.0f;
+		Float leafPrices = 0.0f;
 		
-		for (ComponentInterface component : components)
-			price += component.getPrice();
+		for (ComponentInterface component : components.values())
+			leafPrices += component.getPrice();
 		
-		for (ComponentComposite composite : composites)
-			price += composite.getPrice();
+		for (ComponentComposite composite : composites.values())
+			leafPrices += composite.getPrice();
 		
-		return price;
+		return price + leafPrices;
 		
 		
+	}
+	
+	public String getBrandName() {
+		return brandName;
+	}
+
+
+	public String getProductName() {
+
+		return productName;
 	}
 
   

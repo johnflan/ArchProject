@@ -3,6 +3,7 @@ package ie.ul.csis.cs4135.test.pcshop;
 import static org.junit.Assert.*;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import ie.ul.csis.cs4135.pcshop.OrderManager;
@@ -41,13 +42,31 @@ public class OrderManagerTest {
 	@Test
 	public void testAddProduct() throws Exception {
 		
+		//add a product to the order
+		assertNotNull("Returning a null product", orderManager.addProduct(ProductsEnum.COMPUTER_DESKTOP_GAMING));
+		assertNotNull("Returning a null product", orderManager.addProduct(ProductsEnum.COMPUTER_DESKTOP_GAMING));
 		assertNotNull("Returning a null product", orderManager.addProduct(ProductsEnum.COMPUTER_DESKTOP_GAMING));
 		
+		//make sure price is greater than 0
 		System.out.println(orderManager.getTotalPrice());
+		assertFalse("Price should be greater than 0.0 - but is " + orderManager.getTotalPrice() , orderManager.getTotalPrice().equals(new Float(0f)));
 		
-		//assertNotSame("Price should be greater than 0", new Float(0f), orderManager.getTotalPrice());
+		//remove the product and ensure the list is empty
+		List<ComponentInterface> order = orderManager.getOrder();
+		
+		Iterator<ComponentInterface> productItr = order.iterator();
+		while(productItr.hasNext())
+			orderManager.removeProduct(productItr.next());
 
+		
+//		for (ComponentInterface product : order)
+//			orderManager.removeProduct(product);
+		
+		assertTrue("Should return an empty list", orderManager.getOrder().size() == 0);
 
+		//the price should now be 0.0
+		System.out.println(orderManager.getTotalPrice());
+		assertTrue("Price should be 0.0 - " + orderManager.getTotalPrice(), orderManager.getTotalPrice().equals(new Float(0.0)));
 	}
 	
 	@Test

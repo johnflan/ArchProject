@@ -17,7 +17,7 @@ public class ComputerAssembler {
 	public ComponentInterface construct() {
 		
 		computerBuilder.buildMotherboard();
-		computerBuilder.buildChassais();
+		computerBuilder.buildChassis();
 		computerBuilder.buildComputer();
 		
 		return computerBuilder.getComputer();

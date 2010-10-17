@@ -12,32 +12,31 @@ public class GamingCompBuilder extends ComputerBuilder {
 		
 		motherboard = new ComputerComposite("Asus", "Npower", 78.99F);
 
-		motherboard.addComponent(new Ram("Kingston", "HyperX", 48.60f, "DDR2", 512));
-		//cpu
+		motherboard.addComponent("ram", new Ram("Kingston", "HyperX", 48.60f, "DDR2", 512));
+		motherboard.addComponent("cpu", new Cpu("Intel", "Core2Duo", 63.44f, "E6800", 2.6f, 4));
 
 	}
 
 	@Override
-	public void buildChassais() {
-		chassais = new ComputerComposite("Cooltek", "Extreme", 64.80F);
-		chassais.addComposite(motherboard);
+	public void buildChassis() {
+		chassis = new ComputerComposite("Cooltek", "Extreme", 64.80F);
+		chassis.addComposite("motherboard", motherboard);
 		
 		//power
 		//harddrive
 		//cdrom
-		//motherboard
 		
 	}
 
 	@Override
 	public void buildComputer() {
-		computer = new ComputerComposite();
-		chassais.addComposite(chassais);
+		computer = new ComputerComposite("Dell", "Optiflex", 0.0f);
+		computer.addComposite("chassis", chassis);
 
+		computer.addComponent("monitor", new Monitor("Sony", "Visionmaster", 164.00f, "lcd", 22));
 		//monitor
 		//keyboard
 		//mouse
-		//chassais
 		//operatingsystem
 		
 	}

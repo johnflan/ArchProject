@@ -53,11 +53,16 @@ public class OrderManager implements Observer{
 	}
 	
 	public Float getTotalPrice() {
-
+		
+		//FIXME: test
+		recalculatePrice();
+		
 		return taxCalculator.calculateTax(subTotalPrice) + subTotalPrice;
 	}
 	
 	public void removeProduct(ComponentInterface product) {
+		
+		order.remove(product);
 	}
 	
 
