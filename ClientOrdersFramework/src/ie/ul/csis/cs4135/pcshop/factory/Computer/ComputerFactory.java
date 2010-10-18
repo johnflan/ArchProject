@@ -1,5 +1,7 @@
 package ie.ul.csis.cs4135.pcshop.factory.Computer;
 
+import java.util.Observer;
+
 import ie.ul.csis.cs4135.pcshop.ProductsEnum;
 import ie.ul.csis.cs4135.pcshop.factory.AbstractProductFactory;
 import ie.ul.csis.cs4135.pcshop.factory.ComponentInterface;
@@ -9,6 +11,11 @@ import ie.ul.csis.cs4135.pcshop.factory.Computer.Laptop.GamingLaptopBuilder;
 
 public class ComputerFactory extends AbstractProductFactory{
 	
+	public ComputerFactory(Observer observer) {
+		super(observer);
+
+	}
+
 	private ComputerAssembler computerAssembler;
 
 	@Override
@@ -31,20 +38,20 @@ public class ComputerFactory extends AbstractProductFactory{
 	}
 	
 	private ComponentInterface createGamingDesktopComputer() {
-				
-		computerAssembler = new ComputerAssembler( new GamingCompBuilder() );
+
+		computerAssembler = new ComputerAssembler( new GamingCompBuilder( super.orderManagerObserver ) );
 		return computerAssembler.construct();
 		
 	}
 	
 	private ComponentInterface createOfficeDesktopComputer() {
 		
-		computerAssembler = new ComputerAssembler( new OfficeCompBuilder() );
+		computerAssembler = new ComputerAssembler( new OfficeCompBuilder( super.orderManagerObserver ) );
 		return computerAssembler.construct();
 	}
 	
 	private ComponentInterface createGamingLaptopComputer() {
-		computerAssembler = new ComputerAssembler( new GamingLaptopBuilder() );
+		computerAssembler = new ComputerAssembler( new GamingLaptopBuilder( super.orderManagerObserver ) );
 		return computerAssembler.construct();
 	}
 
