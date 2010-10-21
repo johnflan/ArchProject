@@ -1,12 +1,12 @@
 package ie.ul.csis.cs4135.pcshop.componentDecorator.computerDecorators;
 
 import ie.ul.csis.cs4135.pcshop.computerComponentInterfaces.CpuInterface;
+import ie.ul.csis.cs4135.pcshop.factory.ComponentInterface;
 
 public class CpuDecorator implements CpuInterface {
 
 	@Override
 	public Float getPrice() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
@@ -30,6 +30,12 @@ public class CpuDecorator implements CpuInterface {
 
 	@Override
 	public Float getCoreSpeed() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ComponentInterface getBaseItem() {
 		// TODO Auto-generated method stub
 		return null;
 	}

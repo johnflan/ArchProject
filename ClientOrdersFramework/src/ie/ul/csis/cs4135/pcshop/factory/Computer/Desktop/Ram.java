@@ -1,6 +1,7 @@
 package ie.ul.csis.cs4135.pcshop.factory.Computer.Desktop;
 
 import ie.ul.csis.cs4135.pcshop.computerComponentInterfaces.RamInterface;
+import ie.ul.csis.cs4135.pcshop.factory.ComponentInterface;
 
 public class Ram implements RamInterface {
 	
@@ -17,8 +18,7 @@ public class Ram implements RamInterface {
 		this.productName = productName;
 		this.price = price;
 		this.ramType = ramType;
-		this.ramSize = ramSize;
-		
+		this.ramSize = ramSize;		
 	}
 
 	@Override
@@ -44,5 +44,10 @@ public class Ram implements RamInterface {
 	@Override
 	public int getRamSize() {
 		return ramSize;
+	}
+
+	@Override
+	public ComponentInterface getBaseItem() {
+		return this;
 	}
 }
