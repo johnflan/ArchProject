@@ -5,8 +5,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import ie.ul.csis.cs4135.pcshop.componentDecorator.computerDecorators.CpuDecorator;
 import ie.ul.csis.cs4135.pcshop.componentDecorator.computerDecorators.MonitorDecorator;
 import ie.ul.csis.cs4135.pcshop.componentDecorator.computerDecorators.RamDecorator;
+import ie.ul.csis.cs4135.pcshop.computerComponentInterfaces.CpuInterface;
 import ie.ul.csis.cs4135.pcshop.computerComponentInterfaces.MonitorInterface;
 import ie.ul.csis.cs4135.pcshop.computerComponentInterfaces.RamInterface;
 import ie.ul.csis.cs4135.pcshop.factory.ComponentComposite;
@@ -41,6 +43,16 @@ public class ComputerModificator implements DecoratorInterface {
 		ComponentInterface decoratedRam = new RamDecorator(ram, brandName, productName, price, ramType, ramSize);
 		parent.removeComponent("ram");
 		parent.addComponent("ram", decoratedRam);
+		
+	}
+	
+	public void addCpu(String brandName, String productName, Float price, String cpuType, Float cpuSpeed, int cpuNumCores) {
+		//find parent of component to be decorated
+		ComponentComposite parent = getParentOfDecoratableComponent("cpu", orderItem);
+		CpuInterface cpu = (CpuInterface) parent.getComponentByString("cpu");
+		ComponentInterface decoratedCpu = new CpuDecorator(cpu, brandName, productName, price, cpuType, cpuSpeed, cpuNumCores);
+		parent.removeComponent("cpu");
+		parent.addComponent("cpu", decoratedCpu);
 		
 	}
 	

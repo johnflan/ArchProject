@@ -28,6 +28,7 @@ public class DecoratorTest{
 	ComputerComposite mobo;
 	ComponentInterface RAM;
 	ComponentInterface monitor;
+	ComponentInterface cpu;
 	
 	
 	@Before
@@ -38,7 +39,7 @@ public class DecoratorTest{
 		mobo     = new ComputerComposite("brandName", "productName", 10.0F);
 		RAM      = new Ram("brandName", "productName", 1.0F, "DDR2", 1024);
 		monitor  = new Monitor("brandName", "productName", 0.1F, "monitorType", 22);
- 		
+ 		cpu      = new Cpu("brandName", "productName", 4.0F, "cpuType", 2400.0F, 4);
 		
 		chassis.addComposite("mobo", mobo);
 		computer.addComposite("chassis", chassis);
@@ -84,4 +85,16 @@ public class DecoratorTest{
 		assertEquals("Remove decorators", new Float(1110.1F), computer.getPrice());
 	}
 	
+	@Test
+	public void testCpuDecorator(){
+		//add cpu to test it
+		mobo.addComponent("cpu", cpu);
+		assertEquals("Computer with cpu", new Float(1114.0F), computer.getPrice());
+		
+		decorator.addCpu("brandName", "productName", 4F, "cpuType", 1000F, 2);
+		assertEquals("Computer with decorated cpu", new Float(1118.0F), computer.getPrice());
+		decorator.addCpu("brandName", "productName", 4F, "cpuType", 1000F, 2);
+		assertEquals("Computer with twice decorated cpu", new Float(1122.0F), computer.getPrice());
+		decorator.stripComponentItemOfDecorators("cpu",computer);
+	}
 }
