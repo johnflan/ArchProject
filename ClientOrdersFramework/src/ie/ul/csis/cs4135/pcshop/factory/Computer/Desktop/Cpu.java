@@ -1,6 +1,7 @@
 package ie.ul.csis.cs4135.pcshop.factory.Computer.Desktop;
 
 import ie.ul.csis.cs4135.pcshop.computerComponentInterfaces.CpuInterface;
+import ie.ul.csis.cs4135.pcshop.factory.ComponentInterface;
 
 public class Cpu implements CpuInterface {
 	
@@ -66,5 +67,10 @@ public class Cpu implements CpuInterface {
 
 	public String getCpuType() {
 		return cpuType;
+	}
+
+	@Override
+	public ComponentInterface getBaseItem() {
+		return this;
 	}
 }
