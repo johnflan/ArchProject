@@ -8,6 +8,8 @@ public interface ComponentInterface {
 	
 	public String getProductName();
 	
+	public ComponentInterface getBaseItem();
+	
 	public String toString();
 
 }

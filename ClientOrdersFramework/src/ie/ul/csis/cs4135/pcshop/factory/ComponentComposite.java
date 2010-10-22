@@ -39,8 +39,6 @@ public abstract class ComponentComposite extends Observable implements Component
 	public void addComponent(String componentName, ComponentInterface component) {
 		
 		  components.put(componentName, component);
-		  
-		  setChanged();
 		  notifyObservers();
 		  
 	}
@@ -55,17 +53,9 @@ public abstract class ComponentComposite extends Observable implements Component
 	
 	public boolean removeComponent(String componentName) {
 		  
-		if (components.containsValue(componentName)){
-			
-			components.remove(componentName);
-			
-			  setChanged();
-			  notifyObservers();
-			return true;
-			
-		} else
-			return false;
-		
+		components.remove(componentName);
+		notifyObservers();
+		return false;
 	}
 	
 	/**
@@ -91,7 +81,6 @@ public abstract class ComponentComposite extends Observable implements Component
 	public void addComposite(String compositeName, ComponentComposite composite) {
 		
 		composites.put(compositeName, composite);
-		setChanged();
 		notifyObservers();
 
 	}
@@ -107,8 +96,6 @@ public abstract class ComponentComposite extends Observable implements Component
 	public boolean removeComposite(String compositeName) {
 	  
 		composites.remove(compositeName);
-		
-		setChanged();
 		notifyObservers();
 		return false;
 	}
@@ -177,9 +164,36 @@ public abstract class ComponentComposite extends Observable implements Component
 	
 	public String toString(){
 		
-		return brandName + " " + productName + ", price: " + price; 
+		return productName + " " + brandName + ", price: " + price; 
 	}
 
-  
+	public ComponentInterface getComponentByString(String childType){
+		return components.get(childType);	
+	}
+	
+	public ComponentInterface getCompositeByString(String childType){
+		return composites.get(childType);	
+	}
+	
+	public  Map<String,ComponentInterface> getComponentMap(){
+		return components;	
+	}
+	
+	public Map<String,ComponentComposite> getCompositeMap(){
+		return composites;	
+	}
+	
+	public List<ComponentComposite> getCompositeChildren() {
+		
+		List<ComponentComposite> list = new ArrayList<ComponentComposite>();
+		list.addAll(composites.values());
+		return list;
+	}
 
+	public List<ComponentInterface> getComponentChildren() {
+	
+		List<ComponentInterface> list = new ArrayList<ComponentInterface>();
+		list.addAll(components.values());
+		return list;
+}
 }

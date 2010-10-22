@@ -1,6 +1,8 @@
 package ie.ul.csis.cs4135.pcshop;
 
+import ie.ul.csis.cs4135.pcshop.componentDecorator.ComputerModificator;
 import ie.ul.csis.cs4135.pcshop.componentDecorator.DecoratorInterface;
+import ie.ul.csis.cs4135.pcshop.computerComponentInterfaces.ComputerComponentInterface;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,8 +30,8 @@ public class OrderManager implements Observer{
 	public OrderManager(TaxRegionEnum region) throws Exception {
 		setTaxRegion(region);
 		subTotalPrice = 0.0F;
-		productFactory = new ComputerFactory(this);
-		
+		productFactory = new ComputerFactory();
+
 	}
 	
 	public void changeTaxRegion(TaxRegionEnum region) throws Exception {
@@ -62,12 +64,15 @@ public class OrderManager implements Observer{
 	
 	public Float getTotalPrice() {
 		
+		//FIXME: test
+		recalculatePrice();
+		
 		return taxCalculator.calculateTax(subTotalPrice) + subTotalPrice;
 	}
 	
 	public void removeProduct(ComponentInterface product) {
+		
 		order.remove(product);
-		recalculatePrice();
 	}
 	
 
@@ -123,6 +128,12 @@ public class OrderManager implements Observer{
 			subTotalPrice += product.getPrice();
 		
 		
+	}
+	
+	private ComputerModificator modifyComputerProduct(ComponentInterface rootOfProductTree) throws Exception{
+		//create decorator with this reference
+		ComputerModificator decorator = new ComputerModificator(rootOfProductTree);
+		return decorator;
 	}
 
 }

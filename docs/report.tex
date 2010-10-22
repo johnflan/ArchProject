@@ -1,0 +1,54 @@
+\documentclass[pdftex,11pt,a4paper]{article}
+\usepackage{anysize}
+\marginsize{2.5cm}{2.5cm}{1.5cm}{1.5cm}
+\usepackage[pdftex]{graphicx}
+\usepackage{wrapfig}
+\usepackage{url}
+\linespread{1.2}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{1ex plus 0.8ex minus 0.2ex}
+
+\usepackage{fancyhdr}
+
+\pagestyle{fancy}
+\lhead{\footnotesize {NAME OF PROJECT NEEDED} }
+\rhead{\footnotesize {ANOTHER FOOTER GOES HERE} }
+
+\renewcommand\headheight{24pt}
+\renewcommand\footrulewidth{0.4pt}
+
+\clearpage
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+
+\author{John \textsc{Flanagan} 0702009 \& Marcin \textsc{Wrzeszcz} 0726753 }
+\title{TITLE GOES HERE}
+\date{\today}
+
+\begin{document}
+
+\input{./title.tex}
+
+\begin{center}
+/{Blank marking scheme/}
+\end{center}
+
+
+\pagebreak
+
+\tableofcontents
+
+\pagebreak
+
+\section{SECTION}
+\pagebreak
+\section{SECTION2}
+\newpage
+\section{SECTION3}
+\subsection{SUBSECTION1}
+
+\subsubsection{SUBSUBSECTION1}
+\def\refname{}
+\bibliography{references}
+\bibliographystyle{plain}
+
+\end{document}
