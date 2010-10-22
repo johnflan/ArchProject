@@ -11,6 +11,7 @@ import ie.ul.csis.cs4135.pcshop.factory.AbstractProductFactory;
 import ie.ul.csis.cs4135.pcshop.factory.ComponentInterface;
 import ie.ul.csis.cs4135.pcshop.factory.Computer.ComputerFactory;
 import ie.ul.csis.cs4135.pcshop.taxRegion.AbstractTaxState;
+import ie.ul.csis.cs4135.pcshop.taxRegion.CurrencyConverterService;
 import ie.ul.csis.cs4135.pcshop.taxRegion.TaxRegionEnum;
 import ie.ul.csis.cs4135.pcshop.taxRegion.TaxStateFactory;
 
@@ -21,10 +22,10 @@ public class OrderManager implements Observer{
 	private Float subTotalPrice;
 	private AbstractTaxState taxCalculator;
 	private AbstractProductFactory productFactory;
-	
+	private Thread currencyConverter;
+	private Float secondCurrency = new Float(0.0f);
 	
 	public OrderManager(TaxRegionEnum region) throws Exception {
-		
 		setTaxRegion(region);
 		subTotalPrice = 0.0F;
 		productFactory = new ComputerFactory(this);
@@ -72,7 +73,10 @@ public class OrderManager implements Observer{
 
 	@Override
 	public void update(Observable arg0, Object arg1) {
+		
+		
 		recalculatePrice();
+		currencyConverter.stop();
 		
 	}
 	
@@ -80,6 +84,35 @@ public class OrderManager implements Observer{
 		
 		taxCalculator = TaxStateFactory.getCalculator(region);
 		
+	}
+	
+	public Float getPriceInOther(TaxRegionEnum toRegion){
+		
+		String toCurrency;
+		
+		switch(toRegion){
+		
+			case IRELAND:
+				toCurrency = "eur";
+				break;
+				
+			case UNITED_KINGDOM:
+				toCurrency = "gbp";
+				break;
+				
+			default:
+				return null;
+		}
+
+		currencyConverter = new Thread(
+				new CurrencyConverterService(
+						taxCalculator.getCurrencyCode(), 
+						toCurrency, 
+						taxCalculator.calculateTax(subTotalPrice) + subTotalPrice, this, secondCurrency));
+		
+		currencyConverter.start();
+		
+		return null;
 	}
 	
 	private void recalculatePrice(){

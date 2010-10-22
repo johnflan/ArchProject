@@ -3,6 +3,10 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="src" path="test"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
+	<classpathentry kind="lib" path="libraries/org.restlet.jar"/>
+	<classpathentry kind="lib" path="libraries/org.json_2.0"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="libraries/org.restlet.ext.xml.jar"/>
+	<classpathentry kind="lib" path="libraries/org.restlet.ext.json.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
