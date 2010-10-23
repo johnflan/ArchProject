@@ -30,7 +30,7 @@ public class OrderManager implements Observer{
 	public OrderManager(TaxRegionEnum region) throws Exception {
 		setTaxRegion(region);
 		subTotalPrice = 0.0F;
-		productFactory = new ComputerFactory();
+		productFactory = new ComputerFactory(this);
 
 	}
 	

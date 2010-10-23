@@ -1,6 +1,7 @@
 package ie.ul.csis.cs4135.pcshop.factory.Computer.Laptop;
 
 import ie.ul.csis.cs4135.pcshop.computerComponentInterfaces.RamInterface;
+import ie.ul.csis.cs4135.pcshop.factory.ComponentInterface;
 
 public class Ram implements RamInterface {
 
@@ -32,5 +33,11 @@ public class Ram implements RamInterface {
 	public int getRamSize() {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+
+	@Override
+	public ComponentInterface getBaseItem() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

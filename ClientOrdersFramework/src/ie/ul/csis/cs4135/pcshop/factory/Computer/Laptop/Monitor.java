@@ -1,6 +1,7 @@
 package ie.ul.csis.cs4135.pcshop.factory.Computer.Laptop;
 
 import ie.ul.csis.cs4135.pcshop.computerComponentInterfaces.MonitorInterface;
+import ie.ul.csis.cs4135.pcshop.factory.ComponentInterface;
 
 public class Monitor implements MonitorInterface {
 
@@ -32,5 +33,11 @@ public class Monitor implements MonitorInterface {
 	public int getScreenSize() {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+
+	@Override
+	public ComponentInterface getBaseItem() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

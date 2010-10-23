@@ -1,6 +1,7 @@
 package ie.ul.csis.cs4135.pcshop.factory.Computer.Laptop;
 
 import ie.ul.csis.cs4135.pcshop.computerComponentInterfaces.CpuInterface;
+import ie.ul.csis.cs4135.pcshop.factory.ComponentInterface;
 
 public class Cpu implements CpuInterface {
 
@@ -30,6 +31,12 @@ public class Cpu implements CpuInterface {
 
 	@Override
 	public Float getCoreSpeed() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ComponentInterface getBaseItem() {
 		// TODO Auto-generated method stub
 		return null;
 	}
