@@ -12,7 +12,7 @@ public class RESTServer {
         // Add a new HTTP server listening on port 8182.
         component.getServers().add(Protocol.HTTP, 8182);
 
-        component.getDefaultHost().attach("/pcshop", new PCShopApplication());
+        component.getDefaultHost().attach("/pcshop",new PCShopApplication());
 
         // Start the component.
         component.start();

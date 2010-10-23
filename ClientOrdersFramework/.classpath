@@ -9,5 +9,8 @@
 	<classpathentry kind="lib" path="libraries/org.restlet.ext.xml.jar"/>
 	<classpathentry kind="lib" path="libraries/org.restlet.ext.json.jar"/>
 	<classpathentry kind="lib" path="libraries/org.restlet.ext.xstream.jar"/>
+	<classpathentry kind="lib" path="libraries/org.json_2.0/org.json.jar"/>
+	<classpathentry kind="lib" path="libraries/com.thoughtworks.xstream.jar"/>
+	<classpathentry kind="lib" path="libraries/org.codehaus.jettison.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
