@@ -50,4 +50,10 @@ public class Ram implements RamInterface {
 	public ComponentInterface getBaseItem() {
 		return this;
 	}
+
+	@Override
+	public ComponentInterface getBaseItem() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

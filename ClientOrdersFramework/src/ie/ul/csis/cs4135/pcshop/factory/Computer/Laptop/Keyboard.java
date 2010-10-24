@@ -40,4 +40,16 @@ public class Keyboard implements KeyboardInterface {
 	public ComponentInterface getBaseItem() {
 		return this;
 	}
+
+	@Override
+	public ComponentInterface getBaseItem() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String getCharSet() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
