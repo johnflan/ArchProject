@@ -2,7 +2,6 @@ package ie.ul.csis.cs4135.pcshop;
 
 import ie.ul.csis.cs4135.pcshop.componentDecorator.ComputerModificator;
 import ie.ul.csis.cs4135.pcshop.componentDecorator.DecoratorInterface;
-import ie.ul.csis.cs4135.pcshop.computerComponentInterfaces.ComputerComponentInterface;
 
 import java.util.ArrayList;
 import java.util.List;

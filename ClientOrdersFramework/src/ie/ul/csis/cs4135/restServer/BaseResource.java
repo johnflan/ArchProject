@@ -13,13 +13,12 @@ import ie.ul.csis.cs4135.pcshop.OrderManager;
 
 public class BaseResource extends ServerResource {
 	  
-	    /** 
-	     * Returns the map of items managed by this application. 
-	     *  
-	     * @return the map of items managed by this application. 
-	     */  
-	    protected ConcurrentMap<String, OrderManager> getItems() {  
-	        return ((PCShopApplication) getApplication()).getItems();  
-	    }  
 
+
+	    protected OrderManager getOrderManager(String ipaddress){
+	    	
+	    	return ((PCShopApplication) getApplication()).getOrderManager(ipaddress);
+	    	
+	    }
+	    
 }

@@ -1,6 +1,7 @@
 package ie.ul.csis.cs4135.restServer;
 
 import ie.ul.csis.cs4135.pcshop.OrderManager;
+import ie.ul.csis.cs4135.pcshop.taxRegion.TaxRegionEnum;
 import ie.ul.csis.cs4135.restServer.pcShopResource.ProductsResource;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
@@ -11,7 +12,8 @@ import org.restlet.routing.Router;
 public class PCShopApplication extends Application {
 	
     /** The list of items is persisted in memory. */  
-    private final ConcurrentMap<String, OrderManager> items = new ConcurrentHashMap<String, OrderManager>();  
+    private final ConcurrentMap<String, OrderManager> orderManager = new ConcurrentHashMap<String, OrderManager>();  
+
   
     /** 
      * Creates a root Restlet that will receive all incoming calls. 
@@ -30,14 +32,26 @@ public class PCShopApplication extends Application {
   
         return router;  
     }  
-  
-    /** 
-     * Returns the list of registered items. 
-     *  
-     * @return the list of registered items. 
-     */  
-    public ConcurrentMap<String, OrderManager> getItems() {  
-        return items;  
-    }  
+
+    
+    
+    public OrderManager getOrderManager(String ipaddress){
+    	
+    	if (orderManager.containsKey(ipaddress))
+    		return orderManager.get(ipaddress);
+    	
+    	OrderManager tempOrderManager;
+    	
+		try {
+			tempOrderManager = new OrderManager(TaxRegionEnum.IRELAND);
+			orderManager.put(ipaddress, tempOrderManager);
+		} catch (Exception e) {
+			tempOrderManager = null;
+			e.printStackTrace();
+		}
+    	
+    	return tempOrderManager;
+    	
+    }
 
 }
