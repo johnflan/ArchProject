@@ -2,6 +2,7 @@ package ie.ul.csis.cs4135.restServer;
 
 import ie.ul.csis.cs4135.pcshop.OrderManager;
 import ie.ul.csis.cs4135.pcshop.taxRegion.TaxRegionEnum;
+import ie.ul.csis.cs4135.restServer.pcShopResource.OrderResource;
 import ie.ul.csis.cs4135.restServer.pcShopResource.ProductsResource;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
@@ -26,9 +27,8 @@ public class PCShopApplication extends Application {
   
         // Defines a route for the resource "list of items"  
         router.attach("/products", ProductsResource.class); 
+        router.attach("/order", OrderResource.class);
         
-        // Defines a route for the resource "item"  
-        // router.attach("/items/{itemName}", ItemResource.class);  
   
         return router;  
     }  
