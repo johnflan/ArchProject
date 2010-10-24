@@ -8,9 +8,9 @@ import ie.ul.csis.cs4135.pcshop.factory.Computer.Desktop.Cpu;
 import ie.ul.csis.cs4135.pcshop.factory.Computer.Desktop.Monitor;
 import ie.ul.csis.cs4135.pcshop.factory.Computer.Desktop.Ram;
 
-public class GamingLaptopBuilder extends ComputerBuilder {
+public class OfficeLaptopBuilder extends ComputerBuilder {
 
-	public GamingLaptopBuilder(Observer observer) {
+	public OfficeLaptopBuilder(Observer observer) {
 		super(observer);
 		// TODO Auto-generated constructor stub
 	}
@@ -18,7 +18,7 @@ public class GamingLaptopBuilder extends ComputerBuilder {
 	@Override
 	public void buildMotherboard() {
 		
-		motherboard = new ComputerComposite("HP", "DV6000", 158.99F);
+		motherboard = new ComputerComposite("HP", "DV6000", 58.99F);
 		motherboard.addObserver(orderManagerObserver);
 		motherboard.addComponent("ram", new Ram("Corsair", "XMS3", 50.0f, "DDR3", 1024));
 		motherboard.addComponent("cpu", new Cpu("Intel", "i3", 73.21f, "E6800", 1.6f, 4));
