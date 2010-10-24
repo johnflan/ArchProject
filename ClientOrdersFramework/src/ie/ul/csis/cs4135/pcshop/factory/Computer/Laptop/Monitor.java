@@ -5,34 +5,60 @@ import ie.ul.csis.cs4135.pcshop.factory.ComponentInterface;
 
 public class Monitor implements MonitorInterface {
 
+	private Float price;
+	private String brandName;
+	private String productName;
+	
+	private String monitorType;
+	private int monitorSize;
+	
+	/**
+    * Default constructor
+    *
+    * @param brandName 
+    * @param productName
+    * @param price
+    * @param monitorType
+    * @param monitorSize
+    */
+	
+	public Monitor(String brandName, String productName, Float price, String monitorType, int monitorSize){
+		this.brandName = brandName;
+		this.productName = productName;
+		this.price = price;
+		
+		this.monitorSize = monitorSize;
+		this.monitorType = monitorType;	
+	}
+
 	@Override
 	public Float getPrice() {
-		// TODO Auto-generated method stub
-		return null;
+		return price;
 	}
 
 	@Override
 	public String getBrandName() {
-		// TODO Auto-generated method stub
-		return null;
+		return brandName;
 	}
 
 	@Override
 	public String getProductName() {
-		// TODO Auto-generated method stub
-		return null;
+		return productName;
 	}
 
 	@Override
 	public String getScreenType() {
-		// TODO Auto-generated method stub
-		return null;
+		return monitorType;
 	}
 
 	@Override
 	public int getScreenSize() {
-		// TODO Auto-generated method stub
-		return 0;
+		return monitorSize;
+	}
+
+	@Override
+	public ComponentInterface getBaseItem() {
+		return this;
 	}
 
 	@Override

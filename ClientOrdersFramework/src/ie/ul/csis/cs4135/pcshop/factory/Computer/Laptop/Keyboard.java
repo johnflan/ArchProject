@@ -5,22 +5,40 @@ import ie.ul.csis.cs4135.pcshop.factory.ComponentInterface;
 
 public class Keyboard implements KeyboardInterface {
 
+	private Float price;
+	private String brandName;
+	private String productName;
+	private String charSet;
+	
+	public Keyboard(Float price, String brandName, String productName, String charSet){
+		this.price = price;
+		this.brandName = brandName;
+		this.productName = productName;
+		this.charSet = charSet;
+	}
+	
 	@Override
-	public Float getPrice() {
-		// TODO Auto-generated method stub
-		return null;
+	public Float getPrice() {		
+		return price;
 	}
 
 	@Override
 	public String getBrandName() {
-		// TODO Auto-generated method stub
-		return null;
+		return brandName;
 	}
 
 	@Override
 	public String getProductName() {
-		// TODO Auto-generated method stub
-		return null;
+		return productName;
+	}
+	
+	public String getCharSet() {
+		return charSet;
+	}
+
+	@Override
+	public ComponentInterface getBaseItem() {
+		return this;
 	}
 
 	@Override
