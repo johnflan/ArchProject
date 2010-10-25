@@ -53,6 +53,8 @@ public class OrderResource extends BaseResource {
 	
 	private String productToJson(OrderManager orderMgr){
 		
+		setHeaders();
+		
 		List<ComponentInterface> order = orderMgr.getOrder();
 		Iterator<ComponentInterface> orderIterator = order.iterator();
 		ComponentInterface product;

@@ -8,6 +8,7 @@ import ie.ul.csis.cs4135.pcshop.OrderManager;
 import ie.ul.csis.cs4135.pcshop.ProductsEnum;
 import ie.ul.csis.cs4135.restServer.BaseResource;
 import org.json.JSONObject;
+import org.restlet.data.Form;
 import org.restlet.data.MediaType;
 import org.restlet.data.Status;
 import org.restlet.ext.json.JsonRepresentation;
@@ -32,6 +33,8 @@ public class ProductsResource extends BaseResource {
 	
 	@Get("json")
 	public String toJson(){
+		
+		setHeaders();
 		
 		List<String> products = new ArrayList<String>();
 
@@ -73,6 +76,8 @@ public class ProductsResource extends BaseResource {
 		try {
 			  if (entity.getMediaType().equals(MediaType.APPLICATION_JSON, true)) {
 				  
+				  setHeaders();
+				  
 				  OrderManager orderManager = getOrderManager(this.getClientInfo().getAddress());
 				  
 				  System.out.println("Ordermanager price: " + orderManager.getTotalPrice());
@@ -94,7 +99,7 @@ public class ProductsResource extends BaseResource {
 				  
 				  				  
 				  //json.getJsonObject();
-				  
+
 				  getResponse().setStatus(Status.SUCCESS_OK);
 				   
 			  } else {
