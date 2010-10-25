@@ -44,8 +44,11 @@ public class OrderManagerTest {
 		
 		//add a product to the order
 		assertNotNull("Returning a null product", orderManager.addProduct(ProductsEnum.COMPUTER_DESKTOP_GAMING));
-		assertNotNull("Returning a null product", orderManager.addProduct(ProductsEnum.COMPUTER_DESKTOP_GAMING));
-		assertNotNull("Returning a null product", orderManager.addProduct(ProductsEnum.COMPUTER_DESKTOP_GAMING));
+		assertNotNull("Returning a null product", orderManager.addProduct(ProductsEnum.COMPUTER_DESKTOP_HOME));
+		assertNotNull("Returning a null product", orderManager.addProduct(ProductsEnum.COMPUTER_DESKTOP_OFFICE));
+		assertNotNull("Returning a null product", orderManager.addProduct(ProductsEnum.COMPUTER_LAPTOP_GAMING));
+		assertNotNull("Returning a null product", orderManager.addProduct(ProductsEnum.COMPUTER_LAPTOP_OFFICE));
+		assertNotNull("Returning a null product", orderManager.addProduct(ProductsEnum.COMPUTER_LAPTOP_ULTRAMOBILE));
 		
 		//make sure price is greater than 0
 		assertFalse("Price should be greater than 0.0 - but is " + orderManager.getTotalPrice() , orderManager.getTotalPrice().equals(new Float(0f)));
