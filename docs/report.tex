@@ -26,7 +26,6 @@
 
 \begin{document}
 
-\input{./title.tex}
 
 \begin{center}
 /{Blank marking scheme/}
@@ -36,17 +35,82 @@
 \pagebreak
 
 \tableofcontents
+\pagebreak
+
+\section{Table of Contents}
+\pagebreak
+
+\section{Brief outline of Business Scenario}
+\pagebreak
+
+\section{Creational Design Pattern Discussion}
+\pagebreak
+
+\section{Brief outline of Business Scenario}
+\subsection{Factory Pattern}
+\subsection{Abstract Factory Pattern}
+\subsection{Builder Pattern}
+\pagebreak
+
+\section{Design Diagram}
+\subsection{Structural}
+\subsection{Runtime}
+\pagebreak
+
+\section{Evidence of Testing}
+\pagebreak
+
+\section
+\subsection{Problems Encountered and Solution}
+\subsection{Computer Factory}
+During the design phase team decided that ComputerFactory class is going to contain following classes: createLowComputer(), createMidComputer(), createHighComputer() and similar for creating laptop products. However every time new produc would be added or old product would be changed it would require so major code rewrites in client implementation. That is why it was decided to implement class createComputer(Enum type) that would be responsible for creating a new instance of any computer (it contains : createLowComputer(), createMidComputer() and so on methods). Now client doesn't have to call each method separately instead it calls the same function with different parameter. This solution created a level of abstraction between client and factories and made code more reusable.
+
+\subsection{Scalability and Reusability}
+There are several cases in the UML diagram produced by the team of interfaces that look redundant (ComponentInterface, DecoratorInterface). They are either empty or are realised only by another interface. However this was done on purpose to employ idea of reusability and scalability. Decorator interface might serve as interface to any produc it is not tied to computer products only. So if in future a company decides to increase range of products that they distribute it would be easier for team to realise DecoratorInterface, rather then refractor the code to support new range of products. 
+
+\subsection{Code Selection}
+Team found out that usage of strings as parameter for selecting products would be problematic and could create hard to read and hard to maintain code. Adding or removing product would be time consuming. The solution that team came up with was found to solve all problems - the usage of enumerations. Enumerations were used instead of strings for any method that was taking an parameter that was used as a way of selecting specific code, for example calculateTax (Enum region) would execute only code responsible for calculating tax in particular region. This proved to be a very effective and robust way to deal with selection of code; furthermore switch case could be utilised with great readability improvement:
+
+\textsl{switch(computerType){
+case COMPUTER_GAMING: code_block_1; break;	
+case COMPUTER_OFFICE: code_block_2; break;
+case COMPUTER_LAPTOP: code_block_3; break;
+}
+
+Instead of:
+	
+if (computerType == "gamingComputer") {
+		code_block_1;
+}else if(computerType == "homeComputer") {
+		code_block_2;
+}else if(computerType == "laptop") {
+		code_block_3;
+}else{
+	else_code_block;
+}
+\pagebreak
+
+\section{Criticism and Improvements}
+\subsection{Observer}
+ComputerComposite is using observer whenever a change in composite occur i.e. new object is added,  removed or decorated. Every time this happens notifyObserver() is invoked. Team's implementation of the observer does not describe the nature of change that occured but only points to object that just changed.An improvement could be employed here, method notifyObserver() could return a reference to leaf back to observer. By using this improvement an observer could update its data via methods call on leaf object. For example when user issues removal of RAM, the RAM leaf object would be dereferenced from its composite parent. Then the reference would be used by orderManager ( RAM.getPrice() ) to update the totalPrice value.
+Currently orderManager is notified that the state of "computerProduct" has been altered, so it request getPrice() on root element of "computerProduct" and then it will execute this method on every node in tree to get totalPrice.
+If there is a lot of changes to "computerProduct" then system would have to issue the getPrice() on it. This leads to costly and frequent reqursive calculation of total price. With improved implementation of the observer the orderManager object needs to add/subtrack price value of received leaf from the total price.
+
+\subsection{Composite Pattern: safe vs transparent}
+Composite contains two lists, one for storing references to all composite children and second list for storing all leaves. If parent of composite class executes getChildern(), composite class have to create a new list that contains "composites" and "leaves".
+If getChildern() call was to be executed repetevly then it might be a better idea to create a third list that contains other two lists. The overhead would be minimal as third list contais of references to already existing objects.
+This is safe approach to design of the composite pattern as leves do not have access to the same methods as parent. It was found that it would be easier to use transparent approach while designing composite. Transparent approach treats composite and leaf as the same object but leaf does not perform composite methods instead it contais stubs for those methods.
+
+\subsection{UML workbench}
+Because of the UML workbench used by team that does not support the generation of class diagrams from the code the synchronisation og the UML model with the code would be too time consuming for the purpose of this project. Therfore at the stage in the project we were happy that we met the design pattern requirements. We used workbench to automaticaly generate the clasess and we chose not to keep model and the code in synch.
+
+\subsection{Decorator}
+
+Team discovered that implementation of the decorator patter could be achieved via two approaches. Wrapping the whole computer object with a decorator for example additional RAM, or particular composite object were to be wrapped with decorator i.e. RAM was wrapped with extra RAM. Even though the first approach was quickly decided to be easier approach it was found that it would decrease computer object flexibility after it was wrapped with additional decorators. Team decided that implementing decorators for each composite component would make code considerably more maintainable. Also accessing information about particular composite object through the computer object would be much easier to implement as there will not be any super class above computer that computer would have to know of.
+
 
 \pagebreak
 
-\section{SECTION}
-\pagebreak
-\section{SECTION2}
-\newpage
-\section{SECTION3}
-\subsection{SUBSECTION1}
-
-\subsubsection{SUBSUBSECTION1}
 \def\refname{}
 \bibliography{references}
 \bibliographystyle{plain}
