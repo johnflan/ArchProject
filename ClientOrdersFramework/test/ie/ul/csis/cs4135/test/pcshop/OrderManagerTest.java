@@ -72,34 +72,39 @@ public class OrderManagerTest {
 		//ULTRAMOBILE_LAPTOP test
 		assertEquals("Price should be zero and is:", new Float(0.0F), orderManager.getTotalPrice());
 		ComponentInterface laptop = orderManager.addProduct(ProductsEnum.COMPUTER_LAPTOP_ULTRAMOBILE);
-		assertEquals("Price should be 491.24 and is:", new Float(159.72F), orderManager.getTotalPrice());
+		assertEquals("Price should be and is:", new Float(159.72F), orderManager.getTotalPrice());
 		orderManager.removeProduct(laptop);
 		
 		//OFFICE_LAPTOP test
 		assertEquals("Price should be zero and is:", new Float(0.0F), orderManager.getTotalPrice());
 		laptop = orderManager.addProduct(ProductsEnum.COMPUTER_LAPTOP_OFFICE);
-		assertEquals("Price should be 367.235 and is:", new Float(367.235F), orderManager.getTotalPrice());
+		assertEquals("Price should be and is:", new Float(367.235F), orderManager.getTotalPrice());
 		orderManager.removeProduct(laptop);
 		
 		//GAMING_LAPTOP test
 		assertEquals("Price should be zero and is:", new Float(0.0F), orderManager.getTotalPrice());
 		laptop = orderManager.addProduct(ProductsEnum.COMPUTER_LAPTOP_GAMING);
-		assertEquals("Price should be 488.235 and is:", new Float(488.235F), orderManager.getTotalPrice());
+		assertEquals("Price should be and is:", new Float(488.235F), orderManager.getTotalPrice());
 		orderManager.removeProduct(laptop);
 	}
-	
 	@Test
-	public void testRemovingProduct() {
-
-
+	public void addComputerProducts() throws Exception{
+		//Home test
+		assertEquals("Price should be zero and is:", new Float(0.0F), orderManager.getTotalPrice());
+		ComponentInterface comp = orderManager.addProduct(ProductsEnum.COMPUTER_DESKTOP_HOME);
+		assertEquals("Price should be and is:", new Float(273F), orderManager.getTotalPrice());
+		orderManager.removeProduct(comp);
+		
+		//Office test
+		assertEquals("Price should be zero and is:", new Float(0.0F), orderManager.getTotalPrice());
+		comp = orderManager.addProduct(ProductsEnum.COMPUTER_DESKTOP_OFFICE);
+		assertEquals("Price should be and is:", new Float(553.44F), orderManager.getTotalPrice());
+		orderManager.removeProduct(comp);
+		
+		//Game test
+		assertEquals("Price should be zero and is:", new Float(0.0F), orderManager.getTotalPrice());
+		comp = orderManager.addProduct(ProductsEnum.COMPUTER_DESKTOP_GAMING);
+		assertEquals("Price should be and is: ", new Float(845.79F), orderManager.getTotalPrice());
+		orderManager.removeProduct(comp);
 	}
-	
-	
-	@Test
-	public void testTax() {
-
-
-	}
-	
-
 }

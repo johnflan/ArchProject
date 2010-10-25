@@ -17,16 +17,16 @@ public class HomeCompBuilder extends ComputerBuilder {
 	@Override
 	public void buildMotherboard() {
 		
-		motherboard = new ComputerComposite("Gigabyte", "X58A-UD9", 35.99F);
+		motherboard = new ComputerComposite("Gigabyte", "X58A-UD9", 35.85F);
 		motherboard.addObserver(orderManagerObserver);
-		motherboard.addComponent("ram", new Ram("Dell", "PowerEdge", 48.60f, "DDR", 2048));
-		motherboard.addComponent("cpu", new Cpu("Intel", "i5", 130.44f, "E6800", 2.6f, 4));
+		motherboard.addComponent("ram", new Ram("Dell", "PowerEdge", 48.15f, "DDR", 2048));
+		motherboard.addComponent("cpu", new Cpu("Intel", "i5", 70.50f, "E6800", 2.6f, 4));
 
 	}
 
 	@Override
 	public void buildChassis() {
-		chassis = new ComputerComposite("Antec", "900", 64.80F);
+		chassis = new ComputerComposite("Antec", "900", 34.50F);
 		chassis.addObserver(orderManagerObserver);
 		chassis.addComposite("motherboard", motherboard);
 		

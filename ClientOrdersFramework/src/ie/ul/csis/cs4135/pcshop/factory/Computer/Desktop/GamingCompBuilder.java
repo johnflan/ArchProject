@@ -17,10 +17,10 @@ public class GamingCompBuilder extends ComputerBuilder {
 	@Override
 	public void buildMotherboard() {
 		
-		motherboard = new ComputerComposite("Asus", "Npower", 78.99F);
+		motherboard = new ComputerComposite("Asus", "Npower", 150F);
 		motherboard.addObserver(orderManagerObserver);
-		motherboard.addComponent("ram", new Ram("Kingston", "HyperX", 48.60f, "DDR2", 512));
-		motherboard.addComponent("cpu", new Cpu("Intel", "Core2Duo", 63.44f, "E6800", 2.6f, 4));
+		motherboard.addComponent("ram", new Ram("Kingston", "HyperX", 100f, "DDR2", 2048));
+		motherboard.addComponent("cpu", new Cpu("Intel", "Core2Duo", 220f, "E6800", 2.6f, 4));
 
 	}
 
@@ -42,7 +42,7 @@ public class GamingCompBuilder extends ComputerBuilder {
 		computer.addObserver(orderManagerObserver);
 		computer.addComposite("chassis", chassis);
 
-		computer.addComponent("monitor", new Monitor("Sony", "Visionmaster", 164.00f, "lcd", 22));
+		computer.addComponent("monitor", new Monitor("Sony", "Visionmaster", 164.20f, "lcd", 22));
 		//monitor
 		//keyboard
 		//mouse
