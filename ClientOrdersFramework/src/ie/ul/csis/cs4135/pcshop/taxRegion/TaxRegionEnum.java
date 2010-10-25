@@ -5,5 +5,6 @@ public enum TaxRegionEnum {
 	UNITED_KINGDOM,
 	FRANCE,
 	GERMANY,
-	SPAIN
+	SPAIN,
+	USA
 }

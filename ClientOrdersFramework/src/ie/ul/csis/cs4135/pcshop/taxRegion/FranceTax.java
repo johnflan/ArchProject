@@ -1,8 +1,8 @@
 package ie.ul.csis.cs4135.pcshop.taxRegion;
 
-class UkTax extends AbstractTaxState{
+public class FranceTax extends AbstractTaxState {
 
-	Float taxRate = 0.17f;
+	Float taxRate = 0.196f;
 
 	@Override
 	public Float calculateTax(Float subTotal) {
@@ -13,7 +13,7 @@ class UkTax extends AbstractTaxState{
 	@Override
 	public String getCurrencyCode() {
 
-		return "gbp";
+		return "eur";
 	}
-	
+
 }

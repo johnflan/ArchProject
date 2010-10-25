@@ -11,6 +11,18 @@ public class TaxStateFactory {
 			case UNITED_KINGDOM:
 				return new UkTax();
 				
+			case FRANCE:
+				return new FranceTax();
+				
+			case GERMANY:
+				return new GermanyTax();
+				
+			case SPAIN:
+				return new FranceTax();
+				
+			case USA:
+				return new UsaTax();
+				
 			default:
 				throw new Exception("Unknown TaxStateEnum");
 		}
