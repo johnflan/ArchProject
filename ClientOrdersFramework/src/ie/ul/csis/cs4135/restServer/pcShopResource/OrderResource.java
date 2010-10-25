@@ -43,6 +43,7 @@ public class OrderResource extends BaseResource {
 		//Iterate over the order and populate the list
 		//json += "\t\"order\" : " +  ",\n";
 		
+		if (!orderManager.getOrder().isEmpty())
 		json += "\t\"order\" : " +productToJson(orderManager);
 
 		
@@ -80,6 +81,9 @@ public class OrderResource extends BaseResource {
 			else
 				json += orderJson + "\t\t}\n";
 		}
+		
+		if (json.isEmpty())
+			return "";
 		
 		return json + "]";
 	}
