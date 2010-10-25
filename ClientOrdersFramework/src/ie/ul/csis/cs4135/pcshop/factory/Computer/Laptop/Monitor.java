@@ -61,9 +61,4 @@ public class Monitor implements MonitorInterface {
 		return this;
 	}
 
-	@Override
-	public ComponentInterface getBaseItem() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 }

@@ -7,7 +7,7 @@ import java.net.URL;
 import java.util.Observable;
 import java.util.Observer;
 
-public class CurrencyConverterService extends Observable implements Runnable {
+public class CurrencyConverterService {
 	
 	String fromCurrency;
 	String toCurrency;
@@ -16,54 +16,36 @@ public class CurrencyConverterService extends Observable implements Runnable {
 	
 	Float orderManagerFloat;
 	
-	public CurrencyConverterService(String fromCurrency, String toCurrency, Float fromRate,  Observer observer, Float orderManagerFloat){
+	public CurrencyConverterService(String fromCurrency, String toCurrency, Float fromRate, Float orderManagerFloat){
 		
 		this.fromCurrency = fromCurrency;
 		this.toCurrency = toCurrency;
 		this.fromRate = fromRate;
-		this.addObserver(observer);
-		this.orderManagerFloat = orderManagerFloat;
+		this.orderManagerFloat = orderManagerFloat;	
 		
 	}
-	                     
-
-	public void run(){
-    	
-    	while (true){
-    		
-	    	try {
-	    		
-				URL convert = new URL("http://www.exchangerate-api.com/" + fromCurrency + "/" + toCurrency + "/" + fromRate + "?k=UTfY5-jdWtU-Si6jt");
-				BufferedReader in = new BufferedReader(new InputStreamReader(convert.openStream()));
-				String answer = in.readLine();
-				in.close();
-				
-				Float newRate = Float.parseFloat(answer);
-				
-				if (!toRate.equals(newRate)){
-					
-					toRate = newRate;
-					//hasChanged();
-					//notifyObservers();
 	
-				}
-				
-				System.out.println(answer);
-				
-				Thread.sleep(1000);
-				
-			}	catch (MalformedURLException mue) {
-				System.exit(1);
-			}	catch (IOException ioe) {
-				System.exit(1);
-			}	catch (InterruptedException interrE){
-				System.exit(1);
-			}
-
-    	}    
+	public Float getForeginRate(){
 		
-    }
-    
-    
+		try {
+    		
+			URL convert = new URL("http://www.exchangerate-api.com/" + fromCurrency + "/" + toCurrency + "/" + fromRate + "?k=UTfY5-jdWtU-Si6jt");
+			BufferedReader in = new BufferedReader(new InputStreamReader(convert.openStream()));
+			String answer = in.readLine();
+			in.close();
+			
+			Float newRate = Float.parseFloat(answer);
+			
+			
+			return newRate;
+
+	
+		}	catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+		
+		
+	}
     
 }

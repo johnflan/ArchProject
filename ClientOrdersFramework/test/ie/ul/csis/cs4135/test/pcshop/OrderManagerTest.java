@@ -3,9 +3,7 @@ package ie.ul.csis.cs4135.test.pcshop;
 import static org.junit.Assert.*;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
-
 import ie.ul.csis.cs4135.pcshop.OrderManager;
 import ie.ul.csis.cs4135.pcshop.ProductsEnum;
 import ie.ul.csis.cs4135.pcshop.factory.ComponentInterface;
@@ -26,9 +24,6 @@ public class OrderManagerTest {
 		
 	}
 
-	@After
-	public void tearDown() throws Exception {
-	}
 
 	@Test
 	public void testDefaultOrderManager() {
@@ -90,6 +85,7 @@ public class OrderManagerTest {
 		assertEquals("Price should be and is:", new Float(488.235F), orderManager.getTotalPrice());
 		orderManager.removeProduct(laptop);
 	}
+	
 	@Test
 	public void addComputerProducts() throws Exception{
 		//Home test
@@ -109,5 +105,12 @@ public class OrderManagerTest {
 		comp = orderManager.addProduct(ProductsEnum.COMPUTER_DESKTOP_GAMING);
 		assertEquals("Price should be and is: ", new Float(845.79F), orderManager.getTotalPrice());
 		orderManager.removeProduct(comp);
+	}
+	
+	@Test
+	public void testDecorateProduct(){
+		
+		
+	}
 	}
 }

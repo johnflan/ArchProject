@@ -19,11 +19,9 @@ import ie.ul.csis.cs4135.pcshop.taxRegion.TaxStateFactory;
 public class OrderManager implements Observer{
 
 	private List<ComponentInterface> order = new ArrayList<ComponentInterface>();
-	private DecoratorInterface decorator;
 	private Float subTotalPrice;
 	private AbstractTaxState taxCalculator;
 	private AbstractProductFactory productFactory;
-	private Thread currencyConverter;
 	private Float secondCurrency = new Float(0.0f);
 	
 	public OrderManager(TaxRegionEnum region) throws Exception {
@@ -89,7 +87,6 @@ public class OrderManager implements Observer{
 		
 		
 		recalculatePrice();
-		currencyConverter.stop();
 		
 	}
 	
@@ -117,15 +114,14 @@ public class OrderManager implements Observer{
 				return null;
 		}
 
-		currencyConverter = new Thread(
-				new CurrencyConverterService(
-						taxCalculator.getCurrencyCode(), 
-						toCurrency, 
-						taxCalculator.calculateTax(subTotalPrice) + subTotalPrice, this, secondCurrency));
 		
-		currencyConverter.start();
+
+		CurrencyConverterService currencyConverter =  new CurrencyConverterService(
+								taxCalculator.getCurrencyCode(), toCurrency, 
+								taxCalculator.calculateTax(subTotalPrice) + subTotalPrice,
+								secondCurrency);
 		
-		return null;
+		return currencyConverter.getForeginRate();
 	}
 	
 	private void recalculatePrice(){
@@ -134,14 +130,32 @@ public class OrderManager implements Observer{
 		
 		for (ComponentInterface product : order)
 			subTotalPrice += product.getPrice();
-		
-		
+
 	}
 	
-	private ComputerModificator modifyComputerProduct(ComponentInterface rootOfProductTree) throws Exception{
+	public ComputerModificator modifyComputerProduct(ComponentInterface rootOfProductTree) throws Exception{
 		//create decorator with this reference
 		ComputerModificator decorator = new ComputerModificator(rootOfProductTree);
 		return decorator;
+	}
+	
+	public Float getProductPrice(ProductsEnum productType){
+		
+
+			
+			ComponentInterface newProduct;
+			try{
+				newProduct = productFactory.createProduct(productType);
+				return newProduct.getPrice();
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+				return 0.0f;
+			}
+			
+
+
+			
 	}
 
 }
