@@ -109,7 +109,7 @@ public class OrderManagerTest {
 	}
 	
 	@Test
-	public void testProductFlow() throws Exception{
+	public void testComputerModificatorFlow() throws Exception{
 		
 		//add a product to the order, get its price
 		// decorte the product and confirm the price has changed

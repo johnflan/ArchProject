@@ -1,2 +1,7 @@
 *.zargo~
 *.class
+*.
+*.log
+*.aux
+*.pdf
+*.toc

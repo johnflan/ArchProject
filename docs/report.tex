@@ -11,8 +11,8 @@
 \usepackage{fancyhdr}
 
 \pagestyle{fancy}
-\lhead{\footnotesize {NAME OF PROJECT NEEDED} }
-\rhead{\footnotesize {ANOTHER FOOTER GOES HERE} }
+\lhead{\footnotesize {Systems Architecture Project} }
+\rhead{\footnotesize {Client orders framework} }
 
 \renewcommand\headheight{24pt}
 \renewcommand\footrulewidth{0.4pt}
@@ -26,42 +26,61 @@
 
 \begin{document}
 
-
 \begin{center}
-/{Blank marking scheme/}
+	Blank marking scheme
 \end{center}
-
 
 \pagebreak
 
 \tableofcontents
 \pagebreak
 
-\section{Table of Contents}
-\pagebreak
+\section{Business Scenario}
+Our team have been tasked by a large computer manufacturer with the design and implementation of a software framework. They are attempting to automate their processes as well as hoping to sell products to customers online. The driver for their decision to automate  its processes has been predominately the current economic crisis, with them aiming to minimise administration staff with the introduction of this software. 
 
-\section{Brief outline of Business Scenario}
+Like many of the large computer manufacturing corporations they have base products which the home or business user may customise to meet their requirements. The components that these products comprise of must be easily interchangeable. 
+
+In the organisations drive to increase online sales, it is expected that this framework not only support integration with web services but also a number of unique business requirements. For example the framework should support support multiple regions taxes and currencies, composition rules for components and the simple addition of new base configurations and products.
+
+While these requirements above may seem initially quite demanding, they are quite typical of the real world business demands for these types of framework.
+
 \pagebreak
 
 \section{Creational Design Pattern Discussion}
+In the scope of the framework we have two separate areas where creational design patterns were utilised, the creation of states for managing tax and regions and in the creation of products. Of these the creation of products is the most interesting so we will concentrate on this primarily.
+
+Our design goals for the generation of products was to keep the system as generic as possible, enabling developers to easily swap the ‘computer’ package with that of one which creates cars. With this requirement much consideration was given to its design and hierarchy. After research and discussion we decided to use the abstract factory pattern in conjunction with the builder pattern. This enabled us to build many different types of factories and for each factory control the assembly of each type of product.
+
+Below is an overview of our creational structure, in the factory package only the most generic structures were defined the ‘AbstractFactory’ and the ‘Product’ interface. Under these a package is created for each broad category of product, in this example these are the computer and printer packages.
+
+\begin{center}
+	\includegraphics[scale=0.75]{images/creational_diagram.pdf}
+\end{center}
+
 \pagebreak
 
 \section{Brief outline of Business Scenario}
 \subsection{Factory Pattern}
+asdf
 \subsection{Abstract Factory Pattern}
+asfd
 \subsection{Builder Pattern}
+asdf
 \pagebreak
 
 \section{Design Diagram}
 \subsection{Structural}
+asdf
 \subsection{Runtime}
+asdf
 \pagebreak
 
 \section{Evidence of Testing}
+asdfasdf
 \pagebreak
 
-\section
-\subsection{Problems Encountered and Solution}
+\section{new}
+\subsection{Problems encountered and their solutions}
 \subsection{Computer Factory}
 During the design phase team decided that ComputerFactory class is going to contain following classes: createLowComputer(), createMidComputer(), createHighComputer() and similar for creating laptop products. However every time new produc would be added or old product would be changed it would require so major code rewrites in client implementation. That is why it was decided to implement class createComputer(Enum type) that would be responsible for creating a new instance of any computer (it contains : createLowComputer(), createMidComputer() and so on methods). Now client doesn't have to call each method separately instead it calls the same function with different parameter. This solution created a level of abstraction between client and factories and made code more reusable.
 
@@ -71,7 +90,8 @@ There are several cases in the UML diagram produced by the team of interfaces th
 \subsection{Code Selection}
 Team found out that usage of strings as parameter for selecting products would be problematic and could create hard to read and hard to maintain code. Adding or removing product would be time consuming. The solution that team came up with was found to solve all problems - the usage of enumerations. Enumerations were used instead of strings for any method that was taking an parameter that was used as a way of selecting specific code, for example calculateTax (Enum region) would execute only code responsible for calculating tax in particular region. This proved to be a very effective and robust way to deal with selection of code; furthermore switch case could be utilised with great readability improvement:
 
-\textsl{switch(computerType){
+\begin{verbatim}
+switch(computerType){
 case COMPUTER_GAMING: code_block_1; break;	
 case COMPUTER_OFFICE: code_block_2; break;
 case COMPUTER_LAPTOP: code_block_3; break;
@@ -88,6 +108,7 @@ if (computerType == "gamingComputer") {
 }else{
 	else_code_block;
 }
+\end{verbatim}
 \pagebreak
 
 \section{Criticism and Improvements}
@@ -108,6 +129,12 @@ Because of the UML workbench used by team that does not support the generation o
 
 Team discovered that implementation of the decorator patter could be achieved via two approaches. Wrapping the whole computer object with a decorator for example additional RAM, or particular composite object were to be wrapped with decorator i.e. RAM was wrapped with extra RAM. Even though the first approach was quickly decided to be easier approach it was found that it would decrease computer object flexibility after it was wrapped with additional decorators. Team decided that implementing decorators for each composite component would make code considerably more maintainable. Also accessing information about particular composite object through the computer object would be much easier to implement as there will not be any super class above computer that computer would have to know of.
 
+
+\section{Framework Consumers}
+
+\subsection{RESTful Webservice}
+
+\subsection{Java Swing UI}
 
 \pagebreak
 
