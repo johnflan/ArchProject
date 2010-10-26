@@ -128,7 +128,7 @@ public class OrderManager implements Observer{
 		
 	}
 	
-	private void setTaxRegion(TaxRegionEnum region) throws Exception {
+	public void setTaxRegion(TaxRegionEnum region) throws Exception {
 		
 		taxCalculator = TaxStateFactory.getCalculator(region);
 		
