@@ -68,7 +68,7 @@
 \tableofcontents
 \pagebreak
 
-\section{Business Scenario}
+\section{Business scenario}
 Our team have been tasked by a large computer manufacturer with the design and implementation of a software framework. They are attempting to automate their processes as well as hoping to sell products to customers online. The driver for their decision to automate  its processes has been predominately the current economic crisis, with them aiming to minimise administration staff with the introduction of this software. 
 
 Like many of the large computer manufacturing corporations they have base products which the home or business user may customise to meet their requirements. The components that these products comprise of must be easily interchangeable. 
@@ -78,8 +78,16 @@ In the organisations drive to increase online sales, it is expected that this fr
 While these requirements above may seem initially quite demanding, they are quite typical of the real world business demands for these types of framework.
 
 \pagebreak
+\section{Incorporated design patterns}
+\subsection{Abstract factory}
+\subsection{Factory method}
+\subsection{State pattern}
+\subsection{Builder pattern}
+\subsection{Composite pattern}
+\subsection{Observer pattern}
 
-\section{Creational Design Pattern Discussion}
+\pagebreak
+\section{Creational design patterns}
 In the scope of the framework we have two separate areas where creational design patterns are utilised, the creation of states for managing store locale and the creation of products. Of these the creation of products is the most interesting so we will concentrate on this primarily.
 
 Our design for the generation of products aimed to keep the system as generic as possible, enabling developers to easily swap the ‘computer’ package with that of one which creates cars for example. With this requirement much consideration was given to its design and hierarchy. After much research and discussion we decided to use the abstract factory pattern in conjunction with the builder pattern. This enabled us to build factories for different products and for each factory control the assembly of each type of product.
@@ -92,7 +100,7 @@ Below is an simplification of our creational structure, in the outermost factory
 
 This structure offered us the great flexibility in the creation of different product types, while maintaining ‘rules’ for the generation of each product type thanks to the inclusion of the builder pattern.
 
-\subsection{Abstract Factory}
+\subsection{Abstract factory}
 
 To construct an implementation of the AbstractProductFactory you must pass the super type a reference to an observer, this enables us to register the \emph{OrderManager} as a observer of all products created. Which we in-turn use to notify the \emph{OrderManager} when a product is modified.
 
@@ -113,28 +121,17 @@ Although this implementation is not designed with performance in mind, as any ti
 
 \pagebreak
 
-\section{Brief outline of Business Scenario}
-\subsection{Factory Pattern}
-asdf
-\subsection{Abstract Factory Pattern}
-asfd
-\subsection{Builder Pattern}
-asdf
-\pagebreak
+\section{Unit testing}
 
-\section{Design Diagram}
-\subsection{Structural}
-asdf
-\subsection{Runtime}
-asdf
-\pagebreak
-
-\section{Testing}
 To create a reliable framework it is important to have good test coverage of the code, to ensure correctness firstly and secondly to help stop regressions being introduced to the framework. We chose to follow the Test-Driven Development paradigm, as it was a good indicator or development progress and also helped ensure a level of quality. This was largely a successful endeavour although on occasion it was easy to just continue working on the class without any test coverage and absolutely helped to drive the progress of development.
 
-Our unit tests were created using the \emph{JUnit} testing framework, the most common for the \emph{Java} platform. We found this to be quite easy to get up and running and the writing of tests was quite trivial.
+Our unit tests were created using the \emph{JUnit} testing framework\cite{website:junit}, the most common for the \emph{Java} platform. We found this to be quite easy to get up and running and the writing of tests was quite trivial.
 
 \lstinputlisting{code/unittest.java}
+
+In the above code sample, we have included an example of the type of test we are running against the framework. This particular test, performs a series of basic actions including adding a product and decorating a number of components. At the end we test that the price has increased, this test could be enhanced by calculating the extra price and ensuring the new price is equal to the old price plus the added components price.
+
+Each of our tests contain a number of assertions, with any of which failing the overall test will fail. Outside of these individual tests we also use the \emph{setup()} method (not ilustrated here) to create a new instance of the \emph{OrderManager} for each test to ensure the preconditions are met.
 \pagebreak
 
 \section{new}
@@ -189,15 +186,25 @@ Because of the UML workbench used by team that does not support the generation o
 
 Team discovered that implementation of the decorator patter could be achieved via two approaches. Wrapping the whole computer object with a decorator for example additional RAM, or particular composite object were to be wrapped with decorator i.e. RAM was wrapped with extra RAM. Even though the first approach was quickly decided to be easier approach it was found that it would decrease computer object flexibility after it was wrapped with additional decorators. Team decided that implementing decorators for each composite component would make code considerably more maintainable. Also accessing information about particular composite object through the computer object would be much easier to implement as there will not be any super class above computer that computer would have to know of.
 
+\pagebreak
 
-\section{Framework Consumers}
-
-\subsection{RESTful Webservice}
-
-\subsection{Java Swing UI}
+\section{UML Diagrams}
 
 \pagebreak
 
+\section{Deployment considerations}
+Due to the inherently generic nature of the framework it is possible to be deployed on a number of infrastructures. As proof of concept we built both a traditional GUI application and a Representational State Transfer (RESTful)\cite{REST} implementation to utilise the framework. Representing the traditional and more modern sides of client/server architecture.
+
+\subsection{Desktop application}
+
+\subsection{Webservice}
+\subsubsection{Deployment diagram}
+\subsubsection{Vendor offerings}
+\subsubsection{Rationale for selections}
+
+
+
+\pagebreak
 
 
 \def\refname{}
