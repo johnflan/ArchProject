@@ -77,9 +77,14 @@ public class SimpleGUI2 extends javax.swing.JPanel {
     	monitorValueLabel.setText(
     			curProduct.getComponentByStringRecursively("monitor").getPrice().toString()
     			);
+    	calculateProductCost();
     }
 
-    public void decorateComponent(String componentType){
+    private void calculateProductCost() {
+		totalCostValueLabel.setText(currentProduct.getPrice().toString());
+	}
+
+	public void decorateComponent(String componentType){
     	try {
     		ComponentComposite head = (ComponentComposite) currentProduct;
     		ComputerModificator decorator = orderManager.modifyComputerProduct(currentProduct);
@@ -209,11 +214,11 @@ public class SimpleGUI2 extends javax.swing.JPanel {
         computerCorpLabel.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         computerCorpLabel.setText("Computer Corp");
 
-        customerDetailLabel.setText("CustomerDetails");
+//        customerDetailLabel.setText("CustomerDetails");
 
-        customerDetailsTextbox.setColumns(20);
-        customerDetailsTextbox.setRows(5);
-        jScrollPane1.setViewportView(customerDetailsTextbox);
+//        customerDetailsTextbox.setColumns(20);
+//        customerDetailsTextbox.setRows(5);
+//        jScrollPane1.setViewportView(customerDetailsTextbox);
 
         orderMgrLabel.setText("Order Manager");
 
@@ -447,7 +452,7 @@ public class SimpleGUI2 extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(upperSeparator, javax.swing.GroupLayout.DEFAULT_SIZE, 621, Short.MAX_VALUE)
+                        .addComponent(upperSeparator, javax.swing.GroupLayout.DEFAULT_SIZE, 350, 350)
                         .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -459,18 +464,20 @@ public class SimpleGUI2 extends javax.swing.JPanel {
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(185, 185, 185)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
+                                   .addGroup(layout.createSequentialGroup()
                                         .addComponent(customerDetailLabel)
                                         .addGap(238, 238, 238))
-                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 326, Short.MAX_VALUE))
-                                .addGap(12, 12, 12))
+                                    //.addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 326, Short.MAX_VALUE)
+                                    )
+                                .addGap(12, 12, 12)
+                                )
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(18, 18, 18)
                                 .addComponent(productTypeCombobox, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addContainerGap())))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(backBtn)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 465, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 0,180)
                         .addComponent(addProductBtn)
                         .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
@@ -599,7 +606,7 @@ public class SimpleGUI2 extends javax.swing.JPanel {
                                         .addComponent(totalCostValueLabel)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 101, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 350, 350)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                         .addGap(12, 12, 12))))
         );
@@ -613,7 +620,8 @@ public class SimpleGUI2 extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(orderMgrLabel)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    //.addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    )
                 .addGap(22, 22, 22)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(selectProductLabel)
@@ -820,7 +828,6 @@ public class SimpleGUI2 extends javax.swing.JPanel {
     private void addProductBtnActionPerformed(java.awt.event.ActionEvent evt) {
     	
         parent.addProductToOrderList(currentProduct, (JFrame) this.getParent().getParent().getParent());
-        System.out.println(test++);
     }
 
     private void productTypeComboboxActionPerformed(java.awt.event.ActionEvent evt) {

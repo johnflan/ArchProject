@@ -150,6 +150,7 @@ public class OrderManagerTest {
 			OrderManager localOrderManager = new OrderManager(TaxRegionEnum.IRELAND);
 		
 			localOrderManager.addProduct(ProductsEnum.COMPUTER_DESKTOP_GAMING);
+			localOrderManager.addProduct(ProductsEnum.COMPUTER_DESKTOP_GAMING);
 			List<ComponentInterface> localProduct = localOrderManager.getOrder();
 			
 			orderManager.addExternalProduct(localProduct.get(0));
@@ -166,8 +167,9 @@ public class OrderManagerTest {
 			
 			assertTrue(newPrice > price);
 			
+			orderManager.addExternalProduct(localProduct.get(1));
 			
-			
+			assertTrue(orderManager.getSubTotalPrice() > newPrice);
 			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

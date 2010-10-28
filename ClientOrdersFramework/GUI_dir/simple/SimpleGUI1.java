@@ -19,6 +19,7 @@ import ie.ul.csis.cs4135.pcshop.taxRegion.TaxStateFactory;
 
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.*;
@@ -29,7 +30,7 @@ public class SimpleGUI1 extends javax.swing.JPanel {
 	private DefaultTableModel model; 
 	private OrderManager orderManager;
 	private ProductsEnum[] allProducts;
-	private TaxRegionEnum[] allRegions;
+	private Object[] allRegions;
 	public SimpleGUI1 referenceToSelf;
 	public boolean useOnlineAPIcalls;
 	
@@ -41,7 +42,16 @@ public class SimpleGUI1 extends javax.swing.JPanel {
     	
     	//populate Enum lists
     	allProducts = ProductsEnum.values();
-    	allRegions  = TaxRegionEnum.values();
+
+    	TaxRegionEnum[] localRegions  = TaxRegionEnum.values();
+    	List<TaxRegionEnum> temp1= new ArrayList<TaxRegionEnum>();
+    	
+    	// also try populating it with a null object
+    	temp1.add(0, null);
+    	for (TaxRegionEnum enumEle : localRegions)
+    		temp1.add(enumEle);
+    	
+    	allRegions = temp1.toArray();
     	
     	orderManager = new OrderManager(TaxRegionEnum.IRELAND);
 //    	orderManager.addProduct(ProductsEnum.COMPUTER_DESKTOP_GAMING);
@@ -75,25 +85,29 @@ public class SimpleGUI1 extends javax.swing.JPanel {
 	    	String finalText = "", curCode, amount;
 	    	
 	    	TaxRegionEnum region = (TaxRegionEnum) vatRegionCombobox.getSelectedItem();
-	    	taxState = factory.getCalculator(region);
-	    	curCode = taxState.getCurrencyCode();
 	    	
-	    	if(useOnlineAPIcalls){
+	    	if(region != null){	
+	    		
+	    		taxState = factory.getCalculator(region);
+		    	curCode = taxState.getCurrencyCode();
+	    		
+	    		if(useOnlineAPIcalls){
 			    	amount = orderManager.getPriceInOtherCurrency(region).toString();
 			    	finalText = curCode + " " + amount;  	
-		    //offline substitute for currency converting
-	    	}else{
-	    		Float ukRate= 1.2F, usaRate = 0.5F;
-	    		Float price = orderManager.getTotalPrice();
-	    		
-	    		switch (region) {
-				case UNITED_KINGDOM:	price = price * ukRate;		break;
-				case USA:				price = price * usaRate;	break;
-				default:				price = price;				break;
-				}
-
-				finalText = curCode + " " + (price.toString());
-	    	}	    	
+			    //offline substitute for currency converting
+		    	}else{
+		    		Float ukRate= 1.2F, usaRate = 0.5F;
+		    		Float price = orderManager.getTotalPrice();
+		    		
+		    		switch (region) {
+					case UNITED_KINGDOM:	price = price * ukRate;		break;
+					case USA:				price = price * usaRate;	break;
+					default:				price = price;				break;
+					}
+	
+					finalText = curCode + " " + (price.toString());
+		    	}
+	    	}
 	    	currencyPriceValueLable.setText(finalText);	    	
     	}catch (Exception e) {
     		e.printStackTrace();
@@ -134,6 +148,7 @@ public class SimpleGUI1 extends javax.swing.JPanel {
     	orderManager.addExternalProduct(product);
     	closeAddProductWindow( panelRef);
     	updateProductTabel();
+    	updateTotals();
     }
     
     private void closeAddProductWindow(JFrame panelRef) {
@@ -176,14 +191,14 @@ public class SimpleGUI1 extends javax.swing.JPanel {
 			public void run() {
 				JFrame frame2 = new JFrame("ListDemo 2");
 				frame2.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
-			
 				//Create and set up the content pane.
 				JComponent newContentPane;
 				try {
 						newContentPane = new SimpleGUI2(referenceToSelf);
 						newContentPane.setOpaque(true); //content panes must be opaque
 						frame2.setContentPane(newContentPane);
-			
+						Dimension x = new Dimension(400, 550);
+						frame2.setPreferredSize(x);
 						//Display the window.
 						frame2.pack();
 						frame2.setVisible(true);
@@ -287,7 +302,7 @@ public class SimpleGUI1 extends javax.swing.JPanel {
         totalValueLable.setText("_");
         
         currencyPriceLable.setText("Curency Converter:");
-        currencyPriceValueLable.setText("E 2040.99");
+        currencyPriceValueLable.setText("");
         curencyConverterLabel.setText("Currency Converter");
         
         addProductButton.setText("Add a Product");
@@ -413,7 +428,7 @@ public class SimpleGUI1 extends javax.swing.JPanel {
     }
 
     private void submitOrderButtonActionPerformed(java.awt.event.ActionEvent evt) {
-
+    	updateTotals();
     }
 
     private void vatRegionComboboxActionPerformed(java.awt.event.ActionEvent evt) {
