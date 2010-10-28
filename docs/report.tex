@@ -198,10 +198,38 @@ Due to the inherently generic nature of the framework it is possible to be deplo
 \subsection{Desktop application}
 
 \subsection{Webservice}
-\subsubsection{Deployment diagram}
-\subsubsection{Vendor offerings}
-\subsubsection{Rationale for selections}
 
+Web-services are a popular mechanism for exposing a software's functionally over HTTP with a high degree of system and language interoperability. These services can be broadly categorised into RPC and Resource based.
+
+RPC (remote procedure call) is a tried and tested mechanism, and is conceptually an extension to a regular or local procedure call. But due to this constraint of exposing a specific function, these mechanisms tended to be quite system and language dependant. In 2000 Roy Fielding presented his doctoral dissertation where he described "Representational State Transfer"\cite{REST} which described a mechanism modeled around the standard HTTP (GET, POST, UPDATE, DELETE) operations and were resource orientated (giving each entity a unique URI) as opposed to the RPC stored state paradigm. RESTful services have be steadily gaining momentum, and due to this popularity and language/system abstraction, we chose to create a RESTful web-service as a proof of concept for the framework.
+
+\subsubsection{Vendor offerings}
+Because of the simplicity of the REST concept, which is based on HTTP which has only four operations as mentioned earlier. There are frameworks for creating RESTful applications for almost every conceivable language, from Clojure\cite{website:compojure-rest} to Javascript\cite{website:persevere}. It is common for developers to use a REST framework that runs within a Application Server such as Tomcat\cite{website:tomcat} or JBoss\cite{website:jboss}. But due to the lightweight nature of the paradigm we were keen on not running the service on a heavy weight application server.
+
+A number of light weight REST frameworks for Java exist, below are a list of the more popular offerings.
+
+\begin{enumerate}
+	\item[JAX-RS] A Java JCP spec for RESTful webservices utilising Java Annotations. A number of implementations of the specification exist Apache CXF, Jersey, RESTEasy and Restlet.
+	\item[Zipwire-REST] A framework based on the ActiveResource pattern which enables Java object to be manipulated through REST, is a lightweight manner.
+	\item[SerfJ]
+\end{enumerate}
+
+\subsubsection{Restlet}
+Restlet was chosen for this development as it seemed to be the most modern of the feature complete and lightweight frameworks. Restlet also conforms to the JAX-RS JCP specification\cite{website:jax-rs_jcp} making the knowledge gained from this endeavour more valuable.
+
+This library is available under a number of different licences including CDDL ver 1.0, LGPL ver 2.1, LGPL ver 3.0 and EPL ver 1.0. Some larger companies may have difficulty with these licences due to the lack of freedom licences like BSD or Apache offer.
+
+The popularity of this framework is evident in the number of maintained ports for platforms such as Google Web Toolkit, Google App Engine and Android as well as versions for both Java EE and Java SE.
+
+\subsubsection{Development issues}
+
+\subsubsubsection{JSON or XML}
+
+\subsubsubsection{Object serialization}
+
+\subsubsubsection{Web browser security model}
+
+\subsubsection{Deployment diagram}
 
 
 \pagebreak
