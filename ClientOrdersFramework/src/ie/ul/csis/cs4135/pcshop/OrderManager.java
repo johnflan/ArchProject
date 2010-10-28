@@ -247,8 +247,8 @@ public class OrderManager implements Observer{
 			
 		}
 		
-		update(null, null);
 		order.add(product);
+		update(null, null);
 	}
 
 }
