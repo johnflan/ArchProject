@@ -133,13 +133,40 @@ In the above code sample, we have included an example of the type of test we are
 
 Each of our tests contain a number of assertions, with any of which failing the overall test will fail. Outside of these individual tests we also use the \emph{setup()} method (not ilustrated here) to create a new instance of the \emph{OrderManager} for each test to ensure the preconditions are met.
 \pagebreak
+\section{Critique}
 
-\section{new}
-\subsection{Problems encountered and their solutions}
-\subsection{Computer Factory}
+\section{Criticism and Improvements}
+\subsection{Observer}
+ComputerComposite is using observer whenever a change in composite occur i.e. new object is added,  removed or decorated. Every time this happens notifyObserver() is invoked. Team's implementation of the observer does not describe the nature of change that occured but only points to object that just changed.An improvement could be employed here, method notifyObserver() could return a reference to leaf back to observer. By using this improvement an observer could update its data via methods call on leaf object. For example when user issues removal of RAM, the RAM leaf object would be dereferenced from its composite parent. Then the reference would be used by orderManager ( RAM.getPrice() ) to update the totalPrice value.
+Currently orderManager is notified that the state of "computerProduct" has been altered, so it request getPrice() on root element of "computerProduct" and then it will execute this method on every node in tree to get totalPrice.
+If there is a lot of changes to "computerProduct" then system would have to issue the getPrice() on it. This leads to costly and frequent reqursive calculation of total price. With improved implementation of the observer the orderManager object needs to add/subtrack price value of received leaf from the total price.
+
+\subsection{Composite Pattern: safe vs transparent}
+Composite contains two lists, one for storing references to all composite children and second list for storing all leaves. If parent of composite class executes getChildern(), composite class have to create a new list that contains "composites" and "leaves".
+If getChildern() call was to be executed repetevly then it might be a better idea to create a third list that contains other two lists. The overhead would be minimal as third list contais of references to already existing objects.
+This is safe approach to design of the composite pattern as leves do not have access to the same methods as parent. It was found that it would be easier to use transparent approach while designing composite. Transparent approach treats composite and leaf as the same object but leaf does not perform composite methods instead it contais stubs for those methods.
+
+\subsection{UML workbench}
+Because of the UML workbench used by team that does not support the generation of class diagrams from the code the synchronisation og the UML model with the code would be too time consuming for the purpose of this project. Therfore at the stage in the project we were happy that we met the design pattern requirements. We used workbench to automaticaly generate the clasess and we chose not to keep model and the code in synch.
+
+\subsection{Decorator}
+
+Team discovered that implementation of the decorator patter could be achieved via two approaches. Wrapping the whole computer object with a decorator for example additional RAM, or particular composite object were to be wrapped with decorator i.e. RAM was wrapped with extra RAM. Even though the first approach was quickly decided to be easier approach it was found that it would decrease computer object flexibility after it was wrapped with additional decorators. Team decided that implementing decorators for each composite component would make code considerably more maintainable. Also accessing information about particular composite object through the computer object would be much easier to implement as there will not be any super class above computer that computer would have to know of.
+
+\pagebreak
+
+\section{Runtime Infrastructure/Technology Pipeline}
+\subsection{Runtime/Colaboration Diagram}
+This section contais a partial colaboration diagram of designed framework plus an abstrac client that uses framework. Due to system complexity and 
+
+ZE DIAGRAM GOES ERE! 
+
+\subsection{Architectural Use Cases}
+
+\subsubsection{Computer Factory}
 During the design phase team decided that ComputerFactory class is going to contain following classes: createLowComputer(), createMidComputer(), createHighComputer() and similar for creating laptop products. However every time new produc would be added or old product would be changed it would require so major code rewrites in client implementation. That is why it was decided to implement class createComputer(Enum type) that would be responsible for creating a new instance of any computer (it contains : createLowComputer(), createMidComputer() and so on methods). Now client doesn't have to call each method separately instead it calls the same function with different parameter. This solution created a level of abstraction between client and factories and made code more reusable.
 
-\subsection{Scalability and Reusability}
+\subsubsection{Scalability and Reusability}
 There are several cases in the UML diagram produced by the team of interfaces that look redundant (ComponentInterface, DecoratorInterface). They are either empty or are realised only by another interface. However this was done on purpose to employ idea of reusability and scalability. Decorator interface might serve as interface to any produc it is not tied to computer products only. So if in future a company decides to increase range of products that they distribute it would be easier for team to realise DecoratorInterface, rather then refractor the code to support new range of products. 
 
 \subsection{Code Selection}
@@ -166,25 +193,9 @@ if (computerType == "gamingComputer") {
 }
 \end{lstlisting}
 
-\pagebreak
+\subsection{Choice of Vendor Offerings}
 
-\section{Criticism and Improvements}
-\subsection{Observer}
-ComputerComposite is using observer whenever a change in composite occur i.e. new object is added,  removed or decorated. Every time this happens notifyObserver() is invoked. Team's implementation of the observer does not describe the nature of change that occured but only points to object that just changed.An improvement could be employed here, method notifyObserver() could return a reference to leaf back to observer. By using this improvement an observer could update its data via methods call on leaf object. For example when user issues removal of RAM, the RAM leaf object would be dereferenced from its composite parent. Then the reference would be used by orderManager ( RAM.getPrice() ) to update the totalPrice value.
-Currently orderManager is notified that the state of "computerProduct" has been altered, so it request getPrice() on root element of "computerProduct" and then it will execute this method on every node in tree to get totalPrice.
-If there is a lot of changes to "computerProduct" then system would have to issue the getPrice() on it. This leads to costly and frequent reqursive calculation of total price. With improved implementation of the observer the orderManager object needs to add/subtrack price value of received leaf from the total price.
-
-\subsection{Composite Pattern: safe vs transparent}
-Composite contains two lists, one for storing references to all composite children and second list for storing all leaves. If parent of composite class executes getChildern(), composite class have to create a new list that contains "composites" and "leaves".
-If getChildern() call was to be executed repetevly then it might be a better idea to create a third list that contains other two lists. The overhead would be minimal as third list contais of references to already existing objects.
-This is safe approach to design of the composite pattern as leves do not have access to the same methods as parent. It was found that it would be easier to use transparent approach while designing composite. Transparent approach treats composite and leaf as the same object but leaf does not perform composite methods instead it contais stubs for those methods.
-
-\subsection{UML workbench}
-Because of the UML workbench used by team that does not support the generation of class diagrams from the code the synchronisation og the UML model with the code would be too time consuming for the purpose of this project. Therfore at the stage in the project we were happy that we met the design pattern requirements. We used workbench to automaticaly generate the clasess and we chose not to keep model and the code in synch.
-
-\subsection{Decorator}
-
-Team discovered that implementation of the decorator patter could be achieved via two approaches. Wrapping the whole computer object with a decorator for example additional RAM, or particular composite object were to be wrapped with decorator i.e. RAM was wrapped with extra RAM. Even though the first approach was quickly decided to be easier approach it was found that it would decrease computer object flexibility after it was wrapped with additional decorators. Team decided that implementing decorators for each composite component would make code considerably more maintainable. Also accessing information about particular composite object through the computer object would be much easier to implement as there will not be any super class above computer that computer would have to know of.
++ discussion
 
 \pagebreak
 
@@ -196,6 +207,17 @@ Team discovered that implementation of the decorator patter could be achieved vi
 Due to the inherently generic nature of the framework it is possible to be deployed on a number of infrastructures. As proof of concept we built both a traditional GUI application and a Representational State Transfer (RESTful)\cite{REST} implementation to utilise the framework. Representing the traditional and more modern sides of client/server architecture.
 
 \subsection{Desktop application}
+
+Graphical User Interface (GUI) was developed by the team as POC. GUI client was tied to framework's exposed (pulbic) methods. This was an alternative to web-services as GUI has direct access to framework and does not need any layers between client and framework. Even thought GUI is static application running on top of framework, it could be used to create a Desktop Application that would connect to framework's web services in future, if company requests it.
+
+\subsubsection{Vendor offerings}
+Java's swing library was first and most obvious candidate as tool for building GUI. It is very well documented and powerful library. Second option was to use  Python GTK library. PyGTK applications like Java are multiplatform and they're able to run, unmodified, on Linux, Windows, MacOS X and other platforms.
+Besides its ease of use and rapid prototyping, its first class accesibility support or the capability to deal with complex multilingual or bidirectional text for fully localized applications. However team discovered that it can be quite time consuming to design GUI and then tie it to Java framework.
+NetBeans GUI builder was found to suit team needs, as it has powerful features combined with intuative interface. Then the dummy user Interface was connected to the underlaying framework
+
+\subsubsection{Development issues}
+Initialy team was looking for Eclipse GUI builder plugin, but due to difficulties with instalation of Visual Editor, team turned to NetBeans GUI builder. This posed some difficulties. User interface was designed in NetBeans and then code was copied into Eclipse enviroment. Whenever team decided to change or adjust the GUI it involved manual code changes. This turned out to be quite time consumming. All team members agreed that in future only tools within team's IDE of choice would be use, as they save time in long time by solving problems of `translating' code between different IDEs.
+Because Java swing builds threaded applications team run into a problem of accessing resources of one window from another (one thread of another). As design of GUI involved 'Control Window and 'Add Product Window', when user presses Add product from 'Control Window' it will pop-up 'Add Product Window' where user can select a product that can be added to list of products. This is why 'Add Product Window' needs to have a reference to its parent so that can add a product to parent's orderManager list.
 
 \subsection{Webservice}
 
