@@ -63,4 +63,8 @@ public class CpuDecorator implements CpuInterface {
 	public ComponentInterface getBaseItem() {
 		return cpu.getBaseItem();
 	}
+	@Override
+	public String getCpuType() {
+		return cpuType;
+	}
 }

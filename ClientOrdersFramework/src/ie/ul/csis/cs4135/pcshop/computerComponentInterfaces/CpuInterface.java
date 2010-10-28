@@ -5,5 +5,7 @@ public interface CpuInterface extends ComputerComponentInterface {
 	public int getNumCores();
 
 	public Float getCoreSpeed();
+	
+	public String getCpuType();
 
 }

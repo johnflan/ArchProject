@@ -4,11 +4,13 @@ import ie.ul.csis.cs4135.pcshop.componentDecorator.ComputerModificator;
 import ie.ul.csis.cs4135.pcshop.componentDecorator.DecoratorInterface;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
 
 import ie.ul.csis.cs4135.pcshop.factory.AbstractProductFactory;
+import ie.ul.csis.cs4135.pcshop.factory.ComponentComposite;
 import ie.ul.csis.cs4135.pcshop.factory.ComponentInterface;
 import ie.ul.csis.cs4135.pcshop.factory.Computer.ComputerFactory;
 import ie.ul.csis.cs4135.pcshop.taxRegion.AbstractTaxState;
@@ -52,9 +54,8 @@ public class OrderManager implements Observer{
 	public ComponentInterface addProduct(ProductsEnum productType) throws Exception {
 		
 		ComponentInterface newProduct = productFactory.createProduct(productType);
-		
 		order.add( newProduct );
-
+		update(null, null);
 		return newProduct;
 	}
 	
@@ -92,7 +93,7 @@ public class OrderManager implements Observer{
 	
 	public Float getSubTotalPrice() {
 		
-		recalculatePrice();
+		//recalculatePrice();
 		return subTotalPrice;
 	}
 	
@@ -117,7 +118,7 @@ public class OrderManager implements Observer{
 	
 	public void removeProduct(ComponentInterface product) {
 		order.remove(product);
-		recalculatePrice();
+		update(null, null);
 	}
 	
 
@@ -214,6 +215,40 @@ public class OrderManager implements Observer{
 				return 0.0f;
 			}
 	
+	}
+	
+	public void addExternalProduct(ComponentInterface product){
+		
+		if(product == null)
+			return;
+		
+		List<ComponentComposite> composites = ((ComponentComposite) product).getCompositeChildren();
+		boolean hasComposite = true;
+		
+		while(hasComposite){
+			
+			if (composites == null)
+				break;
+			
+			Iterator<ComponentComposite> compositeItr = composites.iterator();
+			List<ComponentComposite> tmpComposites = new ArrayList<ComponentComposite>();
+			
+			while (compositeItr.hasNext()){
+				ComponentComposite currentComposite = compositeItr.next();
+				currentComposite.deleteObservers();
+				currentComposite.addObserver(this);
+				tmpComposites.addAll(currentComposite.getCompositeChildren());
+			}
+			
+			composites = tmpComposites;
+			
+			if (composites.size() == 0)
+				hasComposite = false;
+			
+		}
+		
+		update(null, null);
+		order.add(product);
 	}
 
 }

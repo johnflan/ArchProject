@@ -64,7 +64,7 @@ public class Cpu implements CpuInterface {
 	public void setCpuType(String cpuType) {
 		this.cpuType = cpuType;
 	}
-
+	
 	public String getCpuType() {
 		return cpuType;
 	}
