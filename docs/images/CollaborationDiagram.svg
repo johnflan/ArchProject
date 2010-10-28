@@ -1,0 +1,442 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg height="728" version="1.1" width="1332" xmlns="http://www.w3.org/2000/svg">
+<rect fill="#00ff" height="50" stroke="#00ff" stroke-width="1" width="90" x="70" y="258"/>
+<rect fill="#ffffff" height="50" stroke="#ffffff" stroke-width="1" width="90" x="70" y="258"/>
+<rect fill="none" height="50" stroke="#000000" stroke-width="1" width="90" x="70" y="258"/>
+<line fill="#000000" stroke="#000000" stroke-width="1" x1="96" x2="134" y1="286" y2="286"/>
+<text font-family="Dialog" font-size="12" x="96" y="285">
+/:Client</text>
+<rect fill="#00ff" height="50" stroke="#00ff" stroke-width="1" width="90" x="422" y="258"/>
+<rect fill="#ffffff" height="50" stroke="#ffffff" stroke-width="1" width="90" x="422" y="258"/>
+<rect fill="none" height="50" stroke="#000000" stroke-width="1" width="90" x="422" y="258"/>
+<line fill="#000000" stroke="#000000" stroke-width="1" x1="426" x2="507" y1="286" y2="286"/>
+<text font-family="Dialog" font-size="12" x="426" y="285">
+/: OrderManger</text>
+<polyline fill="none" points="160,274 422,274" stroke="#000000" stroke-width="1"/>
+<text font-family="Dialog" font-size="12" x="246" y="200">
+1.1 : addProduct()</text>
+<polygon fill="#000000" points="364,198 373,198 373,200 382,198 373,196 373,198" stroke="#000000" stroke-width="1"/>
+<polyline fill="none" points="364,198 373,198 373,200 382,198 373,196 373,198" stroke="#000000" stroke-width="1"/>
+<text font-family="Dialog" font-size="12" x="246" y="224">
+1.2 : getDecorator()</text>
+<polygon fill="#000000" points="354,222 363,222 363,224 372,222 363,220 363,222" stroke="#000000" stroke-width="1"/>
+<polyline fill="none" points="354,222 363,222 363,224 372,222 363,220 363,222" stroke="#000000" stroke-width="1"/>
+<text font-family="Dialog" font-size="12" x="248" y="248">
+1.4 : getTotalPrice()</text>
+<polygon fill="#000000" points="360,246 369,246 369,248 378,246 369,244 369,246" stroke="#000000" stroke-width="1"/>
+<polyline fill="none" points="360,246 369,246 369,248 378,246 369,244 369,246" stroke="#000000" stroke-width="1"/>
+<polyline fill="none" points="126,258 126,226 86,226 86,258" stroke="#000000" stroke-width="1"/>
+<text font-family="Dialog" font-size="12" x="18" y="216">
+1 : assignCurrentProduct()</text>
+<polygon fill="#000000" points="169,223 169,214 171,214 169,205 167,214 169,214" stroke="#000000" stroke-width="1"/>
+<polyline fill="none" points="169,223 169,214 171,214 169,205 167,214 169,214" stroke="#000000" stroke-width="1"/>
+<text font-family="Dialog" font-size="12" x="18" y="216">
+1 : assignCurrentProduct()</text>
+<polygon fill="#000000" points="169,223 169,214 171,214 169,205 167,214 169,214" stroke="#000000" stroke-width="1"/>
+<polyline fill="none" points="169,223 169,214 171,214 169,205 167,214 169,214" stroke="#000000" stroke-width="1"/>
+<text font-family="Dialog" font-size="12" x="246" y="200">
+1.1 : addProduct()</text>
+<polygon fill="#000000" points="364,198 373,198 373,200 382,198 373,196 373,198" stroke="#000000" stroke-width="1"/>
+<polyline fill="none" points="364,198 373,198 373,200 382,198 373,196 373,198" stroke="#000000" stroke-width="1"/>
+<rect fill="#00ff" height="50" stroke="#00ff" stroke-width="1" width="189" x="742" y="250"/>
+<rect fill="#ffffff" height="50" stroke="#ffffff" stroke-width="1" width="189" x="742" y="250"/>
+<rect fill="none" height="50" stroke="#000000" stroke-width="1" width="189" x="742" y="250"/>
+<line fill="#000000" stroke="#000000" stroke-width="1" x1="747" x2="925" y1="278" y2="278"/>
+<text font-family="Dialog" font-size="12" x="747" y="277">
+/: AbstractFactory:AbstractFactory</text>
+<polyline fill="none" points="512,274 742,274" stroke="#000000" stroke-width="1"/>
+<text font-family="Dialog" font-size="12" x="562" y="264">
+1.1.1 : createProduct()</text>
+<polygon fill="#000000" points="686,262 695,262 695,264 704,262 695,260 695,262" stroke="#000000" stroke-width="1"/>
+<polyline fill="none" points="686,262 695,262 695,264 704,262 695,260 695,262" stroke="#000000" stroke-width="1"/>
+<text font-family="Dialog" font-size="12" x="562" y="264">
+1.1.1 : createProduct()</text>
+<polygon fill="#000000" points="686,262 695,262 695,264 704,262 695,260 695,262" stroke="#000000" stroke-width="1"/>
+<polyline fill="none" points="686,262 695,262 695,264 704,262 695,260 695,262" stroke="#000000" stroke-width="1"/>
+<polygon fill="#ffffff" points="706,154 807,154 817,164 817,185 706,185 706,154" stroke="#ffffff" stroke-width="1"/>
+<polyline fill="none" points="706,154 807,154 817,164 817,185 706,185 706,154" stroke="#000000" stroke-width="1"/>
+<polygon fill="#b2b2b2" points="807,154 817,164 807,164 807,154" stroke="#b2b2b2" stroke-width="1"/>
+<polyline fill="none" points="807,154 817,164 807,164 807,154" stroke="#000000" stroke-width="1"/>
+<text font-family="Dialog" font-size="12" x="709" y="170">
+ComputerFactory</text>
+<line fill="#000000" stroke="#000000" stroke-width="1" x1="818" x2="818" y1="186" y2="191"/>
+<line fill="#000000" stroke="#000000" stroke-width="1" x1="818" x2="818" y1="196" y2="201"/>
+<line fill="#000000" stroke="#000000" stroke-width="1" x1="818" x2="818" y1="206" y2="211"/>
+<line fill="#000000" stroke="#000000" stroke-width="1" x1="818" x2="818" y1="216" y2="221"/>
+<line fill="#000000" stroke="#000000" stroke-width="1" x1="818" x2="818" y1="226" y2="231"/>
+<line fill="#000000" stroke="#000000" stroke-width="1" x1="818" x2="818" y1="236" y2="241"/>
+<line fill="#000000" stroke="#000000" stroke-width="1" x1="818" x2="818" y1="246" y2="250"/>
+<rect fill="#00ff" height="50" stroke="#00ff" stroke-width="1" width="132" x="742" y="370"/>
+<rect fill="#ffffff" height="50" stroke="#ffffff" stroke-width="1" width="132" x="742" y="370"/>
+<rect fill="none" height="50" stroke="#000000" stroke-width="1" width="132" x="742" y="370"/>
+<line fill="#000000" stroke="#000000" stroke-width="1" x1="746" x2="870" y1="398" y2="398"/>
+<text font-family="Dialog" font-size="12" x="746" y="397">
+/: ComputerAssembler</text>
+<polyline fill="none" points="794,300 794,370" stroke="#000000" stroke-width="1"/>
+<text font-family="Dialog" font-size="12" x="809" y="328">
+1.1.1.1.1 : construct()</text>
+<polygon fill="#000000" points="936,317 936,326 938,326 936,335 934,326 936,326" stroke="#000000" stroke-width="1"/>
+<polyline fill="none" points="936,317 936,326 938,326 936,335 934,326 936,326" stroke="#000000" stroke-width="1"/>
+<polyline fill="none" points="870,250 870,218 910,218 910,250" stroke="#000000" stroke-width="1"/>
+<text font-family="Dialog" font-size="12" x="842" y="200">
+1.1.1.1 : createComputer()</text>
+<polygon fill="#000000" points="991,207 991,198 993,198 991,189 989,198 991,198" stroke="#000000" stroke-width="1"/>
+<polyline fill="none" points="991,207 991,198 993,198 991,189 989,198 991,198" stroke="#000000" stroke-width="1"/>
+<text font-family="Dialog" font-size="12" x="842" y="200">
+1.1.1.1 : createComputer()</text>
+<polygon fill="#000000" points="991,207 991,198 993,198 991,189 989,198 991,198" stroke="#000000" stroke-width="1"/>
+<polyline fill="none" points="991,207 991,198 993,198 991,189 989,198 991,198" stroke="#000000" stroke-width="1"/>
+<polygon fill="#ffffff" points="1090,114 1279,114 1289,124 1289,217 1090,217 1090,114" stroke="#ffffff" stroke-width="1"/>
+<polyline fill="none" points="1090,114 1279,114 1289,124 1289,217 1090,217 1090,114" stroke="#000000" stroke-width="1"/>
+<polygon fill="#b2b2b2" points="1279,114 1289,124 1279,124 1279,114" stroke="#b2b2b2" stroke-width="1"/>
+<polyline fill="none" points="1279,114 1289,124 1279,124 1279,114" stroke="#000000" stroke-width="1"/>
+<text font-family="Dialog" font-size="12" x="1093" y="130">
+createGamingDesktopComputer()</text>
+<text font-family="Dialog" font-size="12" x="1093" y="146">
+createOfficeDesktopComputer()</text>
+<text font-family="Dialog" font-size="12" x="1093" y="162">
+createGamingLaptopComputer()</text>
+<text font-family="Dialog" font-size="12" x="1093" y="178">
+createHomeDesktopComputer()</text>
+<text font-family="Dialog" font-size="12" x="1093" y="194">
+createOfficeLaptop()</text>
+<text font-family="Dialog" font-size="12" x="1093" y="210">
+createUltramobileLaptop()</text>
+<line fill="#000000" stroke="#000000" stroke-width="1" x1="1090" x2="1085" y1="210" y2="210"/>
+<line fill="#000000" stroke="#000000" stroke-width="1" x1="1080" x2="1075" y1="210" y2="210"/>
+<line fill="#000000" stroke="#000000" stroke-width="1" x1="1070" x2="1065" y1="210" y2="210"/>
+<line fill="#000000" stroke="#000000" stroke-width="1" x1="1060" x2="1055" y1="210" y2="210"/>
+<line fill="#000000" stroke="#000000" stroke-width="1" x1="1050" x2="1045" y1="210" y2="210"/>
+<line fill="#000000" stroke="#000000" stroke-width="1" x1="1040" x2="1035" y1="210" y2="210"/>
+<line fill="#000000" stroke="#000000" stroke-width="1" x1="1030" x2="1025" y1="210" y2="210"/>
+<line fill="#000000" stroke="#000000" stroke-width="1" x1="1020" x2="1015" y1="210" y2="210"/>
+<line fill="#000000" stroke="#000000" stroke-width="1" x1="1010" x2="1005" y1="210" y2="210"/>
+<line fill="#000000" stroke="#000000" stroke-width="1" x1="1000" x2="995" y1="210" y2="210"/>
+<text font-family="Dialog" font-size="12" x="809" y="328">
+1.1.1.1.1 : construct()</text>
+<polygon fill="#000000" points="936,317 936,326 938,326 936,335 934,326 936,326" stroke="#000000" stroke-width="1"/>
+<polyline fill="none" points="936,317 936,326 938,326 936,335 934,326 936,326" stroke="#000000" stroke-width="1"/>
+<rect fill="#00ff" height="48" stroke="#00ff" stroke-width="1" width="144" x="1174" y="362"/>
+<rect fill="#ffffff" height="48" stroke="#ffffff" stroke-width="1" width="144" x="1174" y="362"/>
+<rect fill="none" height="48" stroke="#000000" stroke-width="1" width="144" x="1174" y="362"/>
+<line fill="#000000" stroke="#000000" stroke-width="1" x1="1194" x2="1297" y1="389" y2="389"/>
+<text font-family="Dialog" font-size="12" x="1194" y="388">
+/: ComputerBuilder</text>
+<polyline fill="none" points="874,386 1174,386" stroke="#000000" stroke-width="1"/>
+<text font-family="Dialog" font-size="12" x="994" y="285">
+1.1.1.1.1.1 : buildMotherboard()</text>
+<polygon fill="#000000" points="1168,283 1177,283 1177,285 1186,283 1177,281 1177,283" stroke="#000000" stroke-width="1"/>
+<polyline fill="none" points="1168,283 1177,283 1177,285 1186,283 1177,281 1177,283" stroke="#000000" stroke-width="1"/>
+<text font-family="Dialog" font-size="12" x="994" y="314">
+1.1.1.1.1.2 : buildChassis()</text>
+<polygon fill="#000000" points="1146,312 1155,312 1155,314 1164,312 1155,310 1155,312" stroke="#000000" stroke-width="1"/>
+<polyline fill="none" points="1146,312 1155,312 1155,314 1164,312 1155,310 1155,312" stroke="#000000" stroke-width="1"/>
+<text font-family="Dialog" font-size="12" x="994" y="343">
+1.1.1.1.1.3 : buildComputer()</text>
+<polygon fill="#000000" points="1154,341 1163,341 1163,343 1172,341 1163,339 1163,341" stroke="#000000" stroke-width="1"/>
+<polyline fill="none" points="1154,341 1163,341 1163,343 1172,341 1163,339 1163,341" stroke="#000000" stroke-width="1"/>
+<text font-family="Dialog" font-size="12" x="1002" y="368">
+1.1.1.1.1.4 : getComputer()</text>
+<polygon fill="#000000" points="1152,366 1161,366 1161,368 1170,366 1161,364 1161,366" stroke="#000000" stroke-width="1"/>
+<polyline fill="none" points="1152,366 1161,366 1161,368 1170,366 1161,364 1161,366" stroke="#000000" stroke-width="1"/>
+<text font-family="Dialog" font-size="12" x="994" y="285">
+1.1.1.1.1.1 : buildMotherboard()</text>
+<polygon fill="#000000" points="1168,283 1177,283 1177,285 1186,283 1177,281 1177,283" stroke="#000000" stroke-width="1"/>
+<polyline fill="none" points="1168,283 1177,283 1177,285 1186,283 1177,281 1177,283" stroke="#000000" stroke-width="1"/>
+<rect fill="#00ff" height="50" stroke="#00ff" stroke-width="1" width="133" x="790" y="602"/>
+<rect fill="#ffffff" height="50" stroke="#ffffff" stroke-width="1" width="133" x="790" y="602"/>
+<rect fill="none" height="50" stroke="#000000" stroke-width="1" width="133" x="790" y="602"/>
+<line fill="#000000" stroke="#000000" stroke-width="1" x1="794" x2="919" y1="630" y2="630"/>
+<text font-family="Dialog" font-size="12" x="794" y="629">
+/: ComputerComposite</text>
+<polyline fill="none" points="1174,410 846,466 846,602" stroke="#000000" stroke-width="1"/>
+<text font-family="Dialog" font-size="12" x="938" y="464">
+1.1.1.1.1.1.1 : addObserver()</text>
+<polygon fill="#000000" points="1115,462 1106,462 1106,464 1097,462 1106,460 1106,462" stroke="#000000" stroke-width="1"/>
+<polyline fill="none" points="1115,462 1106,462 1106,464 1097,462 1106,460 1106,462" stroke="#000000" stroke-width="1"/>
+<text font-family="Dialog" font-size="12" x="938" y="488">
+1.1.1.1.1.1.2 : addComponent()</text>
+<polygon fill="#000000" points="1130,486 1121,486 1121,488 1112,486 1121,484 1121,486" stroke="#000000" stroke-width="1"/>
+<polyline fill="none" points="1130,486 1121,486 1121,488 1112,486 1121,484 1121,486" stroke="#000000" stroke-width="1"/>
+<text font-family="Dialog" font-size="12" x="938" y="512">
+1.1.1.1.1.1.3 : addComponent()</text>
+<polygon fill="#000000" points="1130,510 1121,510 1121,512 1112,510 1121,508 1121,510" stroke="#000000" stroke-width="1"/>
+<polyline fill="none" points="1130,510 1121,510 1121,512 1112,510 1121,508 1121,510" stroke="#000000" stroke-width="1"/>
+<text font-family="Dialog" font-size="12" x="938" y="536">
+1.1.1.1.1.2.1 : addObserver()</text>
+<polygon fill="#000000" points="1115,534 1106,534 1106,536 1097,534 1106,532 1106,534" stroke="#000000" stroke-width="1"/>
+<polyline fill="none" points="1115,534 1106,534 1106,536 1097,534 1106,532 1106,534" stroke="#000000" stroke-width="1"/>
+<text font-family="Dialog" font-size="12" x="938" y="560">
+1.1.1.1.1.2.2 : addComposite()</text>
+<polygon fill="#000000" points="1126,558 1117,558 1117,560 1108,558 1117,556 1117,558" stroke="#000000" stroke-width="1"/>
+<polyline fill="none" points="1126,558 1117,558 1117,560 1108,558 1117,556 1117,558" stroke="#000000" stroke-width="1"/>
+<text font-family="Dialog" font-size="12" x="938" y="584">
+1.1.1.1.1.3.1 : addObserver()</text>
+<polygon fill="#000000" points="1115,582 1106,582 1106,584 1097,582 1106,580 1106,582" stroke="#000000" stroke-width="1"/>
+<polyline fill="none" points="1115,582 1106,582 1106,584 1097,582 1106,580 1106,582" stroke="#000000" stroke-width="1"/>
+<text font-family="Dialog" font-size="12" x="938" y="608">
+1.1.1.1.1.3.2 : addComposite()</text>
+<polygon fill="#000000" points="1126,606 1117,606 1117,608 1108,606 1117,604 1117,606" stroke="#000000" stroke-width="1"/>
+<polyline fill="none" points="1126,606 1117,606 1117,608 1108,606 1117,604 1117,606" stroke="#000000" stroke-width="1"/>
+<text font-family="Dialog" font-size="12" x="938" y="632">
+1.1.1.1.1.3.3 : addComponent()</text>
+<polygon fill="#000000" points="1130,630 1121,630 1121,632 1112,630 1121,628 1121,630" stroke="#000000" stroke-width="1"/>
+<polyline fill="none" points="1130,630 1121,630 1121,632 1112,630 1121,628 1121,630" stroke="#000000" stroke-width="1"/>
+<text font-family="Dialog" font-size="12" x="938" y="464">
+1.1.1.1.1.1.1 : addObserver()</text>
+<polygon fill="#000000" points="1115,462 1106,462 1106,464 1097,462 1106,460 1106,462" stroke="#000000" stroke-width="1"/>
+<polyline fill="none" points="1115,462 1106,462 1106,464 1097,462 1106,460 1106,462" stroke="#000000" stroke-width="1"/>
+<polygon fill="#ffffff" points="1174,250 1297,250 1307,260 1307,287 1174,287 1174,250" stroke="#ffffff" stroke-width="1"/>
+<polyline fill="none" points="1174,250 1297,250 1307,260 1307,287 1174,287 1174,250" stroke="#000000" stroke-width="1"/>
+<polygon fill="#b2b2b2" points="1297,250 1307,260 1297,260 1297,250" stroke="#b2b2b2" stroke-width="1"/>
+<polyline fill="none" points="1297,250 1307,260 1297,260 1297,250" stroke="#000000" stroke-width="1"/>
+<text font-family="Dialog" font-size="12" x="1177" y="266">
+GamingCompuBuilder</text>
+<line fill="#000000" stroke="#000000" stroke-width="1" x1="1286" x2="1286" y1="288" y2="293"/>
+<line fill="#000000" stroke="#000000" stroke-width="1" x1="1286" x2="1286" y1="298" y2="303"/>
+<line fill="#000000" stroke="#000000" stroke-width="1" x1="1286" x2="1286" y1="308" y2="313"/>
+<line fill="#000000" stroke="#000000" stroke-width="1" x1="1286" x2="1286" y1="318" y2="323"/>
+<line fill="#000000" stroke="#000000" stroke-width="1" x1="1286" x2="1286" y1="328" y2="333"/>
+<line fill="#000000" stroke="#000000" stroke-width="1" x1="1286" x2="1286" y1="338" y2="343"/>
+<line fill="#000000" stroke="#000000" stroke-width="1" x1="1286" x2="1286" y1="348" y2="353"/>
+<line fill="#000000" stroke="#000000" stroke-width="1" x1="1286" x2="1286" y1="358" y2="362"/>
+<polygon fill="#ffffff" points="1166,458 1307,458 1317,468 1317,479 1166,479 1166,458" stroke="#ffffff" stroke-width="1"/>
+<polyline fill="none" points="1166,458 1307,458 1317,468 1317,479 1166,479 1166,458" stroke="#000000" stroke-width="1"/>
+<polygon fill="#b2b2b2" points="1307,458 1317,468 1307,468 1307,458" stroke="#b2b2b2" stroke-width="1"/>
+<polyline fill="none" points="1307,458 1317,468 1307,468 1307,458" stroke="#000000" stroke-width="1"/>
+<text font-family="Dialog" font-size="12" x="1169" y="474">
+adds Ram component</text>
+<text font-family="Dialog" font-size="12" x="938" y="488">
+1.1.1.1.1.1.2 : addComponent()</text>
+<polygon fill="#000000" points="1130,486 1121,486 1121,488 1112,486 1121,484 1121,486" stroke="#000000" stroke-width="1"/>
+<polyline fill="none" points="1130,486 1121,486 1121,488 1112,486 1121,484 1121,486" stroke="#000000" stroke-width="1"/>
+<line fill="#000000" stroke="#000000" stroke-width="1" x1="1166" x2="1161" y1="474" y2="474"/>
+<line fill="#000000" stroke="#000000" stroke-width="1" x1="1156" x2="1151" y1="474" y2="474"/>
+<line fill="#000000" stroke="#000000" stroke-width="1" x1="1146" x2="1141" y1="474" y2="474"/>
+<line fill="#000000" stroke="#000000" stroke-width="1" x1="1136" x2="1131" y1="474" y2="474"/>
+<line fill="#000000" stroke="#000000" stroke-width="1" x1="1126" x2="1121" y1="474" y2="474"/>
+<line fill="#000000" stroke="#000000" stroke-width="1" x1="1116" x2="1112" y1="474" y2="474"/>
+<text font-family="Dialog" font-size="12" x="938" y="512">
+1.1.1.1.1.1.3 : addComponent()</text>
+<polygon fill="#000000" points="1130,510 1121,510 1121,512 1112,510 1121,508 1121,510" stroke="#000000" stroke-width="1"/>
+<polyline fill="none" points="1130,510 1121,510 1121,512 1112,510 1121,508 1121,510" stroke="#000000" stroke-width="1"/>
+<polygon fill="#ffffff" points="1166,490 1307,490 1317,500 1317,511 1166,511 1166,490" stroke="#ffffff" stroke-width="1"/>
+<polyline fill="none" points="1166,490 1307,490 1317,500 1317,511 1166,511 1166,490" stroke="#000000" stroke-width="1"/>
+<polygon fill="#b2b2b2" points="1307,490 1317,500 1307,500 1307,490" stroke="#b2b2b2" stroke-width="1"/>
+<polyline fill="none" points="1307,490 1317,500 1307,500 1307,490" stroke="#000000" stroke-width="1"/>
+<text font-family="Dialog" font-size="12" x="1169" y="506">
+adds Cpu component</text>
+<line fill="#000000" stroke="#000000" stroke-width="1" x1="1166" x2="1161" y1="506" y2="506"/>
+<line fill="#000000" stroke="#000000" stroke-width="1" x1="1156" x2="1151" y1="506" y2="506"/>
+<line fill="#000000" stroke="#000000" stroke-width="1" x1="1146" x2="1141" y1="506" y2="506"/>
+<line fill="#000000" stroke="#000000" stroke-width="1" x1="1136" x2="1131" y1="506" y2="506"/>
+<text font-family="Dialog" font-size="12" x="994" y="314">
+1.1.1.1.1.2 : buildChassis()</text>
+<polygon fill="#000000" points="1146,312 1155,312 1155,314 1164,312 1155,310 1155,312" stroke="#000000" stroke-width="1"/>
+<polyline fill="none" points="1146,312 1155,312 1155,314 1164,312 1155,310 1155,312" stroke="#000000" stroke-width="1"/>
+<text font-family="Dialog" font-size="12" x="938" y="536">
+1.1.1.1.1.2.1 : addObserver()</text>
+<polygon fill="#000000" points="1115,534 1106,534 1106,536 1097,534 1106,532 1106,534" stroke="#000000" stroke-width="1"/>
+<polyline fill="none" points="1115,534 1106,534 1106,536 1097,534 1106,532 1106,534" stroke="#000000" stroke-width="1"/>
+<text font-family="Dialog" font-size="12" x="938" y="560">
+1.1.1.1.1.2.2 : addComposite()</text>
+<polygon fill="#000000" points="1126,558 1117,558 1117,560 1108,558 1117,556 1117,558" stroke="#000000" stroke-width="1"/>
+<polyline fill="none" points="1126,558 1117,558 1117,560 1108,558 1117,556 1117,558" stroke="#000000" stroke-width="1"/>
+<text font-family="Dialog" font-size="12" x="994" y="343">
+1.1.1.1.1.3 : buildComputer()</text>
+<polygon fill="#000000" points="1154,341 1163,341 1163,343 1172,341 1163,339 1163,341" stroke="#000000" stroke-width="1"/>
+<polyline fill="none" points="1154,341 1163,341 1163,343 1172,341 1163,339 1163,341" stroke="#000000" stroke-width="1"/>
+<text font-family="Dialog" font-size="12" x="938" y="584">
+1.1.1.1.1.3.1 : addObserver()</text>
+<polygon fill="#000000" points="1115,582 1106,582 1106,584 1097,582 1106,580 1106,582" stroke="#000000" stroke-width="1"/>
+<polyline fill="none" points="1115,582 1106,582 1106,584 1097,582 1106,580 1106,582" stroke="#000000" stroke-width="1"/>
+<text font-family="Dialog" font-size="12" x="938" y="608">
+1.1.1.1.1.3.2 : addComposite()</text>
+<polygon fill="#000000" points="1126,606 1117,606 1117,608 1108,606 1117,604 1117,606" stroke="#000000" stroke-width="1"/>
+<polyline fill="none" points="1126,606 1117,606 1117,608 1108,606 1117,604 1117,606" stroke="#000000" stroke-width="1"/>
+<text font-family="Dialog" font-size="12" x="938" y="632">
+1.1.1.1.1.3.3 : addComponent()</text>
+<polygon fill="#000000" points="1130,630 1121,630 1121,632 1112,630 1121,628 1121,630" stroke="#000000" stroke-width="1"/>
+<polyline fill="none" points="1130,630 1121,630 1121,632 1112,630 1121,628 1121,630" stroke="#000000" stroke-width="1"/>
+<polygon fill="#ffffff" points="1166,522 1307,522 1317,532 1317,543 1166,543 1166,522" stroke="#ffffff" stroke-width="1"/>
+<polyline fill="none" points="1166,522 1307,522 1317,532 1317,543 1166,543 1166,522" stroke="#000000" stroke-width="1"/>
+<polygon fill="#b2b2b2" points="1307,522 1317,532 1307,532 1307,522" stroke="#b2b2b2" stroke-width="1"/>
+<polyline fill="none" points="1307,522 1317,532 1307,532 1307,522" stroke="#000000" stroke-width="1"/>
+<text font-family="Dialog" font-size="12" x="1169" y="538">
+adds Motherboard</text>
+<line fill="#000000" stroke="#000000" stroke-width="1" x1="1166" x2="1161" y1="544" y2="544"/>
+<line fill="#000000" stroke="#000000" stroke-width="1" x1="1156" x2="1151" y1="544" y2="544"/>
+<line fill="#000000" stroke="#000000" stroke-width="1" x1="1146" x2="1141" y1="545" y2="545"/>
+<line fill="#000000" stroke="#000000" stroke-width="1" x1="1136" x2="1131" y1="545" y2="545"/>
+<polygon fill="#ffffff" points="1166,570 1307,570 1317,580 1317,593 1166,593 1166,570" stroke="#ffffff" stroke-width="1"/>
+<polyline fill="none" points="1166,570 1307,570 1317,580 1317,593 1166,593 1166,570" stroke="#000000" stroke-width="1"/>
+<polygon fill="#b2b2b2" points="1307,570 1317,580 1307,580 1307,570" stroke="#b2b2b2" stroke-width="1"/>
+<polyline fill="none" points="1307,570 1317,580 1307,580 1307,570" stroke="#000000" stroke-width="1"/>
+<text font-family="Dialog" font-size="12" x="1169" y="586">
+adds Chassis</text>
+<line fill="#000000" stroke="#000000" stroke-width="1" x1="1166" x2="1161" y1="594" y2="594"/>
+<line fill="#000000" stroke="#000000" stroke-width="1" x1="1156" x2="1151" y1="594" y2="594"/>
+<line fill="#000000" stroke="#000000" stroke-width="1" x1="1146" x2="1141" y1="594" y2="594"/>
+<line fill="#000000" stroke="#000000" stroke-width="1" x1="1136" x2="1131" y1="594" y2="594"/>
+<polygon fill="#ffffff" points="1166,602 1307,602 1317,612 1317,623 1166,623 1166,602" stroke="#ffffff" stroke-width="1"/>
+<polyline fill="none" points="1166,602 1307,602 1317,612 1317,623 1166,623 1166,602" stroke="#000000" stroke-width="1"/>
+<polygon fill="#b2b2b2" points="1307,602 1317,612 1307,612 1307,602" stroke="#b2b2b2" stroke-width="1"/>
+<polyline fill="none" points="1307,602 1317,612 1307,612 1307,602" stroke="#000000" stroke-width="1"/>
+<text font-family="Dialog" font-size="12" x="1169" y="618">
+adds Monitor</text>
+<line fill="#000000" stroke="#000000" stroke-width="1" x1="1166" x2="1161" y1="618" y2="618"/>
+<line fill="#000000" stroke="#000000" stroke-width="1" x1="1156" x2="1151" y1="618" y2="618"/>
+<line fill="#000000" stroke="#000000" stroke-width="1" x1="1146" x2="1141" y1="618" y2="618"/>
+<line fill="#000000" stroke="#000000" stroke-width="1" x1="1136" x2="1131" y1="618" y2="618"/>
+<text font-family="Dialog" font-size="12" x="1002" y="368">
+1.1.1.1.1.4 : getComputer()</text>
+<polygon fill="#000000" points="1152,366 1161,366 1161,368 1170,366 1161,364 1161,366" stroke="#000000" stroke-width="1"/>
+<polyline fill="none" points="1152,366 1161,366 1161,368 1170,366 1161,364 1161,366" stroke="#000000" stroke-width="1"/>
+<rect fill="#00ff" height="50" stroke="#00ff" stroke-width="1" width="97" x="422" y="410"/>
+<rect fill="#ffffff" height="50" stroke="#ffffff" stroke-width="1" width="97" x="422" y="410"/>
+<rect fill="none" height="50" stroke="#000000" stroke-width="1" width="97" x="422" y="410"/>
+<line fill="#000000" stroke="#000000" stroke-width="1" x1="426" x2="514" y1="438" y2="438"/>
+<text font-family="Dialog" font-size="12" x="426" y="437">
+/order : ArrayList</text>
+<polyline fill="none" points="512,308 512,410" stroke="#000000" stroke-width="1"/>
+<text font-family="Dialog" font-size="12" x="345" y="360">
+1.1.2 : add( newProduct)</text>
+<polygon fill="#000000" points="491,349 491,358 493,358 491,367 489,358 491,358" stroke="#000000" stroke-width="1"/>
+<polyline fill="none" points="491,349 491,358 493,358 491,367 489,358 491,358" stroke="#000000" stroke-width="1"/>
+<text font-family="Dialog" font-size="12" x="345" y="360">
+1.1.2 : add( newProduct)</text>
+<polygon fill="#000000" points="491,349 491,358 493,358 491,367 489,358 491,358" stroke="#000000" stroke-width="1"/>
+<polyline fill="none" points="491,349 491,358 493,358 491,367 489,358 491,358" stroke="#000000" stroke-width="1"/>
+<polyline fill="none" points="446,258 446,226 478,226 478,258" stroke="#000000" stroke-width="1"/>
+<text font-family="Dialog" font-size="12" x="418" y="176">
+1.1.3 : upadate()</text>
+<polygon fill="#000000" points="512,183 512,174 514,174 512,165 510,174 512,174" stroke="#000000" stroke-width="1"/>
+<polyline fill="none" points="512,183 512,174 514,174 512,165 510,174 512,174" stroke="#000000" stroke-width="1"/>
+<text font-family="Dialog" font-size="12" x="418" y="200">
+1.4.2 : getSubTotalPrice()</text>
+<polygon fill="#000000" points="562,207 562,198 564,198 562,189 560,198 562,198" stroke="#000000" stroke-width="1"/>
+<polyline fill="none" points="562,207 562,198 564,198 562,189 560,198 562,198" stroke="#000000" stroke-width="1"/>
+<text font-family="Dialog" font-size="12" x="418" y="176">
+1.1.3 : upadate()</text>
+<polygon fill="#000000" points="512,183 512,174 514,174 512,165 510,174 512,174" stroke="#000000" stroke-width="1"/>
+<polyline fill="none" points="512,183 512,174 514,174 512,165 510,174 512,174" stroke="#000000" stroke-width="1"/>
+<text font-family="Dialog" font-size="12" x="246" y="224">
+1.2 : getDecorator()</text>
+<polygon fill="#000000" points="354,222 363,222 363,224 372,222 363,220 363,222" stroke="#000000" stroke-width="1"/>
+<polyline fill="none" points="354,222 363,222 363,224 372,222 363,220 363,222" stroke="#000000" stroke-width="1"/>
+<rect fill="#00ff" height="50" stroke="#00ff" stroke-width="1" width="125" x="70" y="602"/>
+<rect fill="#ffffff" height="50" stroke="#ffffff" stroke-width="1" width="125" x="70" y="602"/>
+<rect fill="none" height="50" stroke="#000000" stroke-width="1" width="125" x="70" y="602"/>
+<line fill="#000000" stroke="#000000" stroke-width="1" x1="74" x2="191" y1="630" y2="630"/>
+<text font-family="Dialog" font-size="12" x="74" y="629">
+:ComputerModificator</text>
+<polyline fill="none" points="123,308 123,602" stroke="#000000" stroke-width="1"/>
+<text font-family="Dialog" font-size="12" x="124" y="448">
+1.3 : getParentOfDecoratableComponent()</text>
+<polygon fill="#000000" points="364,437 364,446 366,446 364,455 362,446 364,446" stroke="#000000" stroke-width="1"/>
+<polyline fill="none" points="364,437 364,446 366,446 364,455 362,446 364,446" stroke="#000000" stroke-width="1"/>
+<text font-family="Dialog" font-size="12" x="124" y="448">
+1.3 : getParentOfDecoratableComponent()</text>
+<polygon fill="#000000" points="364,437 364,446 366,446 364,455 362,446 364,446" stroke="#000000" stroke-width="1"/>
+<polyline fill="none" points="364,437 364,446 366,446 364,455 362,446 364,446" stroke="#000000" stroke-width="1"/>
+<rect fill="#00ff" height="50" stroke="#00ff" stroke-width="1" width="145" x="470" y="602"/>
+<rect fill="#ffffff" height="50" stroke="#ffffff" stroke-width="1" width="145" x="470" y="602"/>
+<rect fill="none" height="50" stroke="#000000" stroke-width="1" width="145" x="470" y="602"/>
+<line fill="#000000" stroke="#000000" stroke-width="1" x1="475" x2="610" y1="630" y2="630"/>
+<text font-family="Dialog" font-size="12" x="475" y="629">
+/: ComponentComposite</text>
+<polyline fill="none" points="195,628 470,628" stroke="#000000" stroke-width="1"/>
+<text font-family="Dialog" font-size="12" x="253" y="504">
+1.3.1 : getComponentByString()</text>
+<polygon fill="#000000" points="431,502 440,502 440,504 449,502 440,500 440,502" stroke="#000000" stroke-width="1"/>
+<polyline fill="none" points="431,502 440,502 440,504 449,502 440,500 440,502" stroke="#000000" stroke-width="1"/>
+<text font-family="Dialog" font-size="12" x="254" y="528">
+1.3.2 : getCompositeChildern()</text>
+<polygon fill="#000000" points="431,526 440,526 440,528 449,526 440,524 440,526" stroke="#000000" stroke-width="1"/>
+<polyline fill="none" points="431,526 440,526 440,528 449,526 440,524 440,526" stroke="#000000" stroke-width="1"/>
+<text font-family="Dialog" font-size="12" x="251" y="556">
+1.3.4.1 : getComponentByString()</text>
+<polygon fill="#000000" points="436,554 445,554 445,556 454,554 445,552 445,554" stroke="#000000" stroke-width="1"/>
+<polyline fill="none" points="436,554 445,554 445,556 454,554 445,552 445,554" stroke="#000000" stroke-width="1"/>
+<text font-family="Dialog" font-size="12" x="251" y="585">
+1.3.4.2 : removeComponent</text>
+<polygon fill="#000000" points="407,583 416,583 416,585 425,583 416,581 416,583" stroke="#000000" stroke-width="1"/>
+<polyline fill="none" points="407,583 416,583 416,585 425,583 416,581 416,583" stroke="#000000" stroke-width="1"/>
+<text font-family="Dialog" font-size="12" x="251" y="614">
+1.3.4.3 : addComponent</text>
+<polygon fill="#000000" points="387,612 396,612 396,614 405,612 396,610 396,612" stroke="#000000" stroke-width="1"/>
+<polyline fill="none" points="387,612 396,612 396,614 405,612 396,610 396,612" stroke="#000000" stroke-width="1"/>
+<text font-family="Dialog" font-size="12" x="253" y="504">
+1.3.1 : getComponentByString()</text>
+<polygon fill="#000000" points="431,502 440,502 440,504 449,502 440,500 440,502" stroke="#000000" stroke-width="1"/>
+<polyline fill="none" points="431,502 440,502 440,504 449,502 440,500 440,502" stroke="#000000" stroke-width="1"/>
+<text font-family="Dialog" font-size="12" x="254" y="528">
+1.3.2 : getCompositeChildern()</text>
+<polygon fill="#000000" points="431,526 440,526 440,528 449,526 440,524 440,526" stroke="#000000" stroke-width="1"/>
+<polyline fill="none" points="431,526 440,526 440,528 449,526 440,524 440,526" stroke="#000000" stroke-width="1"/>
+<polyline fill="none" points="134,652 134,690 182,690 182,652" stroke="#000000" stroke-width="1"/>
+<text font-family="Dialog" font-size="12" x="26" y="704">
+1.3.4 : * getParentOfDecoratableComponent()</text>
+<polygon fill="#000000" points="281,711 281,702 283,702 281,693 279,702 281,702" stroke="#000000" stroke-width="1"/>
+<polyline fill="none" points="281,711 281,702 283,702 281,693 279,702 281,702" stroke="#000000" stroke-width="1"/>
+<text font-family="Dialog" font-size="12" x="26" y="704">
+1.3.4 : * getParentOfDecoratableComponent()</text>
+<polygon fill="#000000" points="281,711 281,702 283,702 281,693 279,702 281,702" stroke="#000000" stroke-width="1"/>
+<polyline fill="none" points="281,711 281,702 283,702 281,693 279,702 281,702" stroke="#000000" stroke-width="1"/>
+<text font-family="Dialog" font-size="12" x="251" y="556">
+1.3.4.1 : getComponentByString()</text>
+<polygon fill="#000000" points="436,554 445,554 445,556 454,554 445,552 445,554" stroke="#000000" stroke-width="1"/>
+<polyline fill="none" points="436,554 445,554 445,556 454,554 445,552 445,554" stroke="#000000" stroke-width="1"/>
+<text font-family="Dialog" font-size="12" x="251" y="585">
+1.3.4.2 : removeComponent</text>
+<polygon fill="#000000" points="407,583 416,583 416,585 425,583 416,581 416,583" stroke="#000000" stroke-width="1"/>
+<polyline fill="none" points="407,583 416,583 416,585 425,583 416,581 416,583" stroke="#000000" stroke-width="1"/>
+<text font-family="Dialog" font-size="12" x="251" y="614">
+1.3.4.3 : addComponent</text>
+<polygon fill="#000000" points="387,612 396,612 396,614 405,612 396,610 396,612" stroke="#000000" stroke-width="1"/>
+<polyline fill="none" points="387,612 396,612 396,614 405,612 396,610 396,612" stroke="#000000" stroke-width="1"/>
+<polygon fill="#ffffff" points="470,554 651,554 661,564 661,593 470,593 470,554" stroke="#ffffff" stroke-width="1"/>
+<polyline fill="none" points="470,554 651,554 661,564 661,593 470,593 470,554" stroke="#000000" stroke-width="1"/>
+<polygon fill="#b2b2b2" points="651,554 661,564 651,564 651,554" stroke="#b2b2b2" stroke-width="1"/>
+<polyline fill="none" points="651,554 661,564 651,564 651,554" stroke="#000000" stroke-width="1"/>
+<text font-family="Dialog" font-size="12" x="473" y="570">
+removing old component and</text>
+<text font-family="Dialog" font-size="12" x="473" y="586">
+adding decorated one in its place</text>
+<line fill="#000000" stroke="#000000" stroke-width="1" x1="470" x2="465" y1="571" y2="571"/>
+<line fill="#000000" stroke="#000000" stroke-width="1" x1="460" x2="455" y1="571" y2="571"/>
+<line fill="#000000" stroke="#000000" stroke-width="1" x1="450" x2="445" y1="571" y2="571"/>
+<line fill="#000000" stroke="#000000" stroke-width="1" x1="440" x2="435" y1="571" y2="571"/>
+<line fill="#000000" stroke="#000000" stroke-width="1" x1="430" x2="425" y1="571" y2="571"/>
+<line fill="#000000" stroke="#000000" stroke-width="1" x1="470" x2="465" y1="594" y2="594"/>
+<line fill="#000000" stroke="#000000" stroke-width="1" x1="460" x2="455" y1="594" y2="595"/>
+<line fill="#000000" stroke="#000000" stroke-width="1" x1="450" x2="445" y1="595" y2="596"/>
+<line fill="#000000" stroke="#000000" stroke-width="1" x1="440" x2="435" y1="596" y2="597"/>
+<line fill="#000000" stroke="#000000" stroke-width="1" x1="430" x2="425" y1="597" y2="598"/>
+<line fill="#000000" stroke="#000000" stroke-width="1" x1="420" x2="415" y1="598" y2="599"/>
+<line fill="#000000" stroke="#000000" stroke-width="1" x1="410" x2="405" y1="599" y2="600"/>
+<text font-family="Dialog" font-size="12" x="248" y="248">
+1.4 : getTotalPrice()</text>
+<polygon fill="#000000" points="360,246 369,246 369,248 378,246 369,244 369,246" stroke="#000000" stroke-width="1"/>
+<polyline fill="none" points="360,246 369,246 369,248 378,246 369,244 369,246" stroke="#000000" stroke-width="1"/>
+<rect fill="#00ff" height="50" stroke="#00ff" stroke-width="1" width="110" x="558" y="458"/>
+<rect fill="#ffffff" height="50" stroke="#ffffff" stroke-width="1" width="110" x="558" y="458"/>
+<rect fill="none" height="50" stroke="#000000" stroke-width="1" width="110" x="558" y="458"/>
+<line fill="#000000" stroke="#000000" stroke-width="1" x1="563" x2="663" y1="486" y2="486"/>
+<text font-family="Dialog" font-size="12" x="563" y="485">
+/: AbstractTaxState</text>
+<polyline fill="none" points="512,308 558,458" stroke="#000000" stroke-width="1"/>
+<text font-family="Dialog" font-size="12" x="569" y="408">
+1.4.1 : calculateTax()</text>
+<polygon fill="#000000" points="694,397 694,406 696,406 694,415 692,406 694,406" stroke="#000000" stroke-width="1"/>
+<polyline fill="none" points="694,397 694,406 696,406 694,415 692,406 694,406" stroke="#000000" stroke-width="1"/>
+<text font-family="Dialog" font-size="12" x="569" y="408">
+1.4.1 : calculateTax()</text>
+<polygon fill="#000000" points="694,397 694,406 696,406 694,415 692,406 694,406" stroke="#000000" stroke-width="1"/>
+<polyline fill="none" points="694,397 694,406 696,406 694,415 692,406 694,406" stroke="#000000" stroke-width="1"/>
+<text font-family="Dialog" font-size="12" x="418" y="200">
+1.4.2 : getSubTotalPrice()</text>
+<polygon fill="#000000" points="562,207 562,198 564,198 562,189 560,198 562,198" stroke="#000000" stroke-width="1"/>
+<polyline fill="none" points="562,207 562,198 564,198 562,189 560,198 562,198" stroke="#000000" stroke-width="1"/>
+</svg>
