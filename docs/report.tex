@@ -4,6 +4,37 @@
 \usepackage[pdftex]{graphicx}
 \usepackage{wrapfig}
 \usepackage{url}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{textcomp}
+
+\lstset{
+	backgroundcolor=\color{lbcolor},
+	tabsize=2,
+	language=java,
+	numbers=left,
+	numbersep=5pt,
+        basicstyle=\scriptsize,
+        upquote=true,
+        aboveskip={1.5\baselineskip},
+        columns=fixed,
+        showstringspaces=false,
+        extendedchars=true,
+        breaklines=true,
+        prebreak = \raisebox{0ex}[0ex][0ex]{\ensuremath{\hookleftarrow}},
+        showtabs=false,
+        showspaces=false,
+        showstringspaces=false,
+        identifierstyle=\ttfamily,
+        keywordstyle=\color[rgb]{0,0,1},
+        commentstyle=\color[rgb]{0.133,0.545,0.133},
+        stringstyle=\color[rgb]{0.627,0.126,0.941},
+}
+
+
+
+\definecolor{listinggray}{gray}{0.9}
+\definecolor{lbcolor}{rgb}{0.9,0.9,0.9}
 \linespread{1.2}
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{1ex plus 0.8ex minus 0.2ex}
@@ -26,6 +57,8 @@
 
 \begin{document}
 
+\input{./title.tex}
+
 \begin{center}
 	Blank marking scheme
 \end{center}
@@ -47,15 +80,36 @@ While these requirements above may seem initially quite demanding, they are quit
 \pagebreak
 
 \section{Creational Design Pattern Discussion}
-In the scope of the framework we have two separate areas where creational design patterns were utilised, the creation of states for managing tax and regions and in the creation of products. Of these the creation of products is the most interesting so we will concentrate on this primarily.
+In the scope of the framework we have two separate areas where creational design patterns are utilised, the creation of states for managing store locale and the creation of products. Of these the creation of products is the most interesting so we will concentrate on this primarily.
 
-Our design goals for the generation of products was to keep the system as generic as possible, enabling developers to easily swap the ‘computer’ package with that of one which creates cars. With this requirement much consideration was given to its design and hierarchy. After research and discussion we decided to use the abstract factory pattern in conjunction with the builder pattern. This enabled us to build many different types of factories and for each factory control the assembly of each type of product.
+Our design for the generation of products aimed to keep the system as generic as possible, enabling developers to easily swap the ‘computer’ package with that of one which creates cars for example. With this requirement much consideration was given to its design and hierarchy. After much research and discussion we decided to use the abstract factory pattern in conjunction with the builder pattern. This enabled us to build factories for different products and for each factory control the assembly of each type of product.
 
-Below is an overview of our creational structure, in the factory package only the most generic structures were defined the ‘AbstractFactory’ and the ‘Product’ interface. Under these a package is created for each broad category of product, in this example these are the computer and printer packages.
+Below is an simplification of our creational structure, in the outermost factory package only the most generic structures were defined, the ‘AbstractFactory’ and the ‘Product’ interface. Within the factory package a further package is created for category of product in this example these are the computer and printer packages.
 
 \begin{center}
 	\includegraphics[scale=0.75]{images/creational_diagram.pdf}
 \end{center}
+
+This structure offered us the great flexibility in the creation of different product types, while maintaining ‘rules’ for the generation of each product type thanks to the inclusion of the builder pattern.
+
+\subsection{Abstract Factory}
+
+To construct an implementation of the AbstractProductFactory you must pass the super type a reference to an observer, this enables us to register the \emph{OrderManager} as a observer of all products created. Which we in-turn use to notify the \emph{OrderManager} when a product is modified.
+
+We designed the abstract factory to only have only one public interface \emph{createProduct(ProductsEnum)} which takes a \emph{ProductsEnum}. As ilustrated in the code fragment \emph{createProduct(ProductsEnum)} uses a switch statement to redirect the program flow to the relevant private method \emph{createGamingDesktopComputer()}. From these private methods we then instantiate a \emph{ComputerBuilder} which is really a director from the builder pattern and populate it with a \emph{ConcreteBuilder}.
+
+This scheme enables us to in time add products of many types to the framework, while maintaining a level or rigidity among the product family's.
+
+\lstinputlisting{code/abstractfactory.java}
+
+\subsection{Builder pattern}
+
+!!!!!how the builder works
+
+\subsection{Observer in creation}
+As previously mentioned when instantiating a factory we must pass a ‘OrderManager’ reference, we store this reference and on creation of a new product we register the ‘OrderManager’ as being an observer. This enables the order manager to perform a price recalculation every time a leaf is modified in the composite.
+
+Although this implementation is not designed with performance in mind, as any time a composite is updated with a leaf we must rescan all products for a price change. This solution does offer a clean and structured way for ensuring we keep the cached price up-to-date in the \emph{OrderManager}.
 
 \pagebreak
 
@@ -75,8 +129,12 @@ asdf
 asdf
 \pagebreak
 
-\section{Evidence of Testing}
-asdfasdf
+\section{Testing}
+To create a reliable framework it is important to have good test coverage of the code, to ensure correctness firstly and secondly to help stop regressions being introduced to the framework. We chose to follow the Test-Driven Development paradigm, as it was a good indicator or development progress and also helped ensure a level of quality. This was largely a successful endeavour although on occasion it was easy to just continue working on the class without any test coverage and absolutely helped to drive the progress of development.
+
+Our unit tests were created using the \emph{JUnit} testing framework, the most common for the \emph{Java} platform. We found this to be quite easy to get up and running and the writing of tests was quite trivial.
+
+\lstinputlisting{code/unittest.java}
 \pagebreak
 
 \section{new}
@@ -90,7 +148,8 @@ There are several cases in the UML diagram produced by the team of interfaces th
 \subsection{Code Selection}
 Team found out that usage of strings as parameter for selecting products would be problematic and could create hard to read and hard to maintain code. Adding or removing product would be time consuming. The solution that team came up with was found to solve all problems - the usage of enumerations. Enumerations were used instead of strings for any method that was taking an parameter that was used as a way of selecting specific code, for example calculateTax (Enum region) would execute only code responsible for calculating tax in particular region. This proved to be a very effective and robust way to deal with selection of code; furthermore switch case could be utilised with great readability improvement:
 
-\begin{verbatim}
+
+\begin{lstlisting}
 switch(computerType){
 case COMPUTER_GAMING: code_block_1; break;	
 case COMPUTER_OFFICE: code_block_2; break;
@@ -108,7 +167,8 @@ if (computerType == "gamingComputer") {
 }else{
 	else_code_block;
 }
-\end{verbatim}
+\end{lstlisting}
+
 \pagebreak
 
 \section{Criticism and Improvements}
@@ -137,6 +197,8 @@ Team discovered that implementation of the decorator patter could be achieved vi
 \subsection{Java Swing UI}
 
 \pagebreak
+
+
 
 \def\refname{}
 \bibliography{references}
