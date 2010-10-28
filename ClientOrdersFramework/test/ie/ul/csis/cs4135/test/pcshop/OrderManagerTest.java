@@ -142,4 +142,37 @@ public class OrderManagerTest {
 		assertTrue(orderManager.getTotalPrice() > orderManager.getPriceInOtherCurrency(TaxRegionEnum.UNITED_KINGDOM));
 	
 	}
+	
+	@Test
+	public void testAddExternalProduct(){
+		
+		try {
+			OrderManager localOrderManager = new OrderManager(TaxRegionEnum.IRELAND);
+		
+			localOrderManager.addProduct(ProductsEnum.COMPUTER_DESKTOP_GAMING);
+			List<ComponentInterface> localProduct = localOrderManager.getOrder();
+			
+			orderManager.addExternalProduct(localProduct.get(0));
+			
+			Float price = orderManager.getSubTotalPrice();
+			
+			List<ComponentInterface> realOrder = orderManager.getOrder();
+			
+			ComputerModificator mod = orderManager.modifyComputerProduct(realOrder.get(0));
+			
+			mod.addCpu("Intel", "Core2Duo", 25.00f, "MyType", 2.66f, 12);
+			
+			Float newPrice = orderManager.getSubTotalPrice();
+			
+			assertTrue(newPrice > price);
+			
+			
+			
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
 }

@@ -39,6 +39,7 @@ public abstract class ComponentComposite extends Observable implements Component
 	public void addComponent(String componentName, ComponentInterface component) {
 		
 		  components.put(componentName, component);
+		  setChanged();
 		  notifyObservers();
 		  
 	}
@@ -54,6 +55,7 @@ public abstract class ComponentComposite extends Observable implements Component
 	public boolean removeComponent(String componentName) {
 		  
 		components.remove(componentName);
+		setChanged();
 		notifyObservers();
 		return false;
 	}
@@ -81,6 +83,7 @@ public abstract class ComponentComposite extends Observable implements Component
 	public void addComposite(String compositeName, ComponentComposite composite) {
 		
 		composites.put(compositeName, composite);
+		setChanged();
 		notifyObservers();
 
 	}
@@ -96,6 +99,7 @@ public abstract class ComponentComposite extends Observable implements Component
 	public boolean removeComposite(String compositeName) {
 	  
 		composites.remove(compositeName);
+		setChanged();
 		notifyObservers();
 		return false;
 	}
@@ -151,6 +155,10 @@ public abstract class ComponentComposite extends Observable implements Component
 		
 	}
 	
+	public Float getCompositePrice(){
+		return price;
+	}
+	
 	public String getBrandName() {
 		return brandName;
 	}
@@ -195,5 +203,51 @@ public abstract class ComponentComposite extends Observable implements Component
 		List<ComponentInterface> list = new ArrayList<ComponentInterface>();
 		list.addAll(components.values());
 		return list;
-}
+	}
+	
+	public ComponentInterface getCompositeByStringRecursively(String compositeType){
+		
+		ComponentComposite parent = this;
+		ComponentInterface child = null;
+		List<ComponentComposite> compositesChildren;
+		//check current level in tree for childType, if null go down a level
+		child = parent.getCompositeByString(compositeType);
+		//if child was found assign and return parent
+		if(child != null)
+			return child;
+		//recursively go through all composite of this level
+		else{
+			//get list of composite children
+			compositesChildren = parent.getCompositeChildren();
+			Iterator<ComponentComposite> childerenItr = compositesChildren.iterator();
+			//for every composite in a list search for the componentType until u find it
+			while(childerenItr.hasNext() ){
+				child = childerenItr.next().getCompositeByStringRecursively(compositeType);
+			}
+		}
+		return child;
+	}
+	
+public ComponentInterface getComponentByStringRecursively(String componentType){
+		
+		ComponentComposite parent = this;
+		ComponentInterface child = null;
+		List<ComponentComposite> compositesChildren;
+		//check current level in tree for childType, if null go down a level
+		child = parent.getComponentByString(componentType);
+		//if child was found assign and return parent
+		if(child != null)
+			return child;
+		//recursively go through all composite of this level
+		else{
+			//get list of composite children
+			compositesChildren = parent.getCompositeChildren();
+			Iterator<ComponentComposite> childerenItr = compositesChildren.iterator();
+			//for every composite in a list search for the componentType until u find it
+			while(childerenItr.hasNext() ){
+				child = childerenItr.next().getComponentByStringRecursively(componentType);
+			}
+		}
+		return child;
+	}
 }

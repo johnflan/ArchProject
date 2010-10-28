@@ -23,5 +23,9 @@ public class ComputerComposite extends ComponentComposite {
 		return this;
 	}
 
+	@Override
+	public Float getCompositePrice(){
+		return super.price;
+	}
 
 }

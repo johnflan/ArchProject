@@ -28,11 +28,20 @@ public class SimpleGUI1 extends javax.swing.JPanel {
 
 	private DefaultTableModel model; 
 	private OrderManager orderManager;
+	private ProductsEnum[] allProducts;
+	private TaxRegionEnum[] allRegions;
 	public SimpleGUI1 referenceToSelf;
+	public boolean useOnlineAPIcalls;
 	
 
     public SimpleGUI1() throws Exception {
+    	//used as means of callbacks for child window
     	referenceToSelf = this;
+    	useOnlineAPIcalls = false;
+    	
+    	//populate Enum lists
+    	allProducts = ProductsEnum.values();
+    	allRegions  = TaxRegionEnum.values();
     	
     	orderManager = new OrderManager(TaxRegionEnum.IRELAND);
 //    	orderManager.addProduct(ProductsEnum.COMPUTER_DESKTOP_GAMING);
@@ -63,21 +72,34 @@ public class SimpleGUI1 extends javax.swing.JPanel {
     	try{
 	    	TaxStateFactory factory = new TaxStateFactory();
 	    	AbstractTaxState taxState;
-	    	String finalText, curCode, amount;
+	    	String finalText = "", curCode, amount;
 	    	
 	    	TaxRegionEnum region = (TaxRegionEnum) vatRegionCombobox.getSelectedItem();
 	    	taxState = factory.getCalculator(region);
 	    	curCode = taxState.getCurrencyCode();
-	    	amount = orderManager.getPriceInOtherCurrency(region).toString();
 	    	
-	    	finalText = curCode + " " + amount;
-	    	
-	    	currencyPriceValueLable.setText(finalText);
+	    	if(useOnlineAPIcalls){
+			    	amount = orderManager.getPriceInOtherCurrency(region).toString();
+			    	finalText = curCode + " " + amount;  	
+		    //offline substitute for currency converting
+	    	}else{
+	    		Float ukRate= 1.2F, usaRate = 0.5F;
+	    		Float price = orderManager.getTotalPrice();
+	    		
+	    		switch (region) {
+				case UNITED_KINGDOM:	price = price * ukRate;		break;
+				case USA:				price = price * usaRate;	break;
+				default:				price = price;				break;
+				}
+
+				finalText = curCode + " " + (price.toString());
+	    	}	    	
+	    	currencyPriceValueLable.setText(finalText);	    	
     	}catch (Exception e) {
-			// TODO: handle exception
-		}
-    	
+    		e.printStackTrace();
+		}	
     }
+        
     public void updateTotals(){
     	setSubtotalLabel(orderManager.getSubTotalPrice());
     	setVatLabel(orderManager.getTaxes());
@@ -98,6 +120,8 @@ public class SimpleGUI1 extends javax.swing.JPanel {
     public void updateProductTabel(){
     	 List<ComponentInterface> listOfProducts = orderManager.getOrder();
     	 
+    	 clearProductTable();
+    	 
     	 for(ComponentInterface singleProduct : listOfProducts){
     		 addRowToProductTable(
     				 new Object[]{singleProduct.getBrandName(), singleProduct.getPrice()});
@@ -106,9 +130,27 @@ public class SimpleGUI1 extends javax.swing.JPanel {
     	 updateTotals();
     }
     
+    public void addProductToOrderList(ComponentInterface product, JFrame panelRef){
+    	orderManager.addExternalProduct(product);
+    	closeAddProductWindow( panelRef);
+    	updateProductTabel();
+    }
     
-    public void addRowToProductTable(Object[] array){
+    private void closeAddProductWindow(JFrame panelRef) {
+    	panelRef.setVisible(false);
+        // If the frame is no longer needed, call dispose
+    	panelRef.dispose(); 
+		
+	}
+
+	public void addRowToProductTable(Object[] array){
     	model.addRow(array);
+    }
+    
+    public void clearProductTable(){
+    	model.setRowCount(0);
+    	//for(int i=0; i < model.getRowCount(); i++)
+    	//	model.removeRow(i);
     }
     
     public static void createAndShowGUI() {
@@ -151,10 +193,7 @@ public class SimpleGUI1 extends javax.swing.JPanel {
 					e.printStackTrace();
 				}
 			}
-        });
-
- 
-     
+        });     
     }
 
     //@SuppressWarnings("unchecked")
@@ -218,6 +257,7 @@ public class SimpleGUI1 extends javax.swing.JPanel {
         setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         setForeground(new java.awt.Color(0, 204, 204));
 
+        computerCorpLabel.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         computerCorpLabel.setText("Computer Corp");
 
         customerDetailLabel.setText("CustomerDetails");
@@ -226,7 +266,7 @@ public class SimpleGUI1 extends javax.swing.JPanel {
         customerDetailsTextbox.setRows(5);
         jScrollPane1.setViewportView(customerDetailsTextbox);
 
-        orderMgrLabel.setText("Order Manager:");
+        orderMgrLabel.setText("Order Manager");
 
         
         
@@ -264,9 +304,7 @@ public class SimpleGUI1 extends javax.swing.JPanel {
             }
         });
 
-        vatRegionCombobox.setModel(new javax.swing.DefaultComboBoxModel(
-        		new TaxRegionEnum[]{TaxRegionEnum.IRELAND, TaxRegionEnum.UNITED_KINGDOM, TaxRegionEnum.FRANCE, TaxRegionEnum.GERMANY,
-        							TaxRegionEnum.SPAIN}));
+        vatRegionCombobox.setModel(new javax.swing.DefaultComboBoxModel(allRegions));
         
         vatRegionCombobox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -375,7 +413,7 @@ public class SimpleGUI1 extends javax.swing.JPanel {
     }
 
     private void submitOrderButtonActionPerformed(java.awt.event.ActionEvent evt) {
-         orderMgrLabel.setText("bbb");
+
     }
 
     private void vatRegionComboboxActionPerformed(java.awt.event.ActionEvent evt) {
