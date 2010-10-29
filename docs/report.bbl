@@ -4,6 +4,10 @@
 compojure-rest.
 \newblock \url{http://github.com/ordnungswidrig/compojure-rest}.
 
+\bibitem{website:dojo}
+Dojo toolkit.
+\newblock \url{http://www.dojotoolkit.org/}.
+
 \bibitem{website:junit}
 Junit testing framework.
 \newblock \url{http://www.junit.org/}.
@@ -33,5 +37,10 @@ Java~Community Process.
 Redhat.
 \newblock Jboss.
 \newblock \url{http://www.jboss.com/}.
+
+\bibitem{website:restClient}
+Chao ZHOU.
+\newblock Restclient.
+\newblock \url{https://addons.mozilla.org/en-US/firefox/addon/9780/}.
 
 \end{thebibliography}
