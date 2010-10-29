@@ -1,4 +1,4 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{10}
 
 \bibitem{website:compojure-rest}
 compojure-rest.
@@ -20,6 +20,11 @@ Persecere.
 Apache.
 \newblock Tomcat.
 \newblock \url{http://tomcat.apache.org/}.
+
+\bibitem{website:GOF_wika}
+Ralph~Johnson Erich~Gamma, Richard~Helm and John Vlissides.
+\newblock Gang of four wika.
+\newblock \url{http://c2.com/cgi/wiki?GangOfFour}.
 
 \bibitem{REST}
 Roy Fielding.

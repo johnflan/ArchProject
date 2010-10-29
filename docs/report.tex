@@ -69,7 +69,7 @@
 \pagebreak
 
 \section{Business scenario}
-Our team have been tasked by a large computer manufacturer with the design and implementation of a software framework. They are attempting to automate their processes as well as hoping to sell products to customers online. The driver for their decision to automate  its processes has been predominately the current economic crisis, with them aiming to minimise administration staff with the introduction of this software. 
+Our team have been tasked by a large computer manufacturer with the design and implementation of a software framework. They are attempting to automate their processes as well as hoping to sell products to customers online. The driver for their decision to automate its processes has been predominately the current economic crisis, with them aiming to minimise administration staff with the introduction of this software. 
 
 Like many of the large computer manufacturing corporations they have base products which the home or business user may customise to meet their requirements. The components that these products comprise of must be easily interchangeable. 
 
@@ -81,57 +81,59 @@ While these requirements above may seem initially quite demanding, they are quit
 \section{Incorporated design patterns}
 
 \subsection{Abstract factory}
-\emph{Abstract Factory} pattern is an advancement of \emph{Factory} pattern. It is used when a project contains a number of factories that return objects implementing the same interface. Since both factories in a team's framework return objects that are implementing the same interface - \emph{ComputerComposite} - \emph{Abstract Factory} was used to combine \emph{ComputerFactory} and \emph{LaptopFactory} in order to simplify and abstract the creation of different computer products by the \emph{OrderManager}. Furthermore adding another type of computer and integrating \emph{OrderManager} to use it would be significantly easier as \emph{OrderManager} is working on \emph{ComputerComposite} objects rather than on more specific \emph{DesktopComputer}, \emph{LaptopComputer}. 
-Using \emph{Abstract Factor} would also be an incentive (or way of enforcing) to keep all future computer products in sych with the interfaces of current products offered by vendor.
+\emph{Abstract Factory} pattern is an additional layer of functionality sitting on top of \emph{Factory} pattern. It is incorporated in project that contains a number of factories can be refactored to implement one interface in this case \emph{Abstract Factory's} interface. By doing this client can chose which factory to use to obtain particular instance of an object. By adding an extra layer of abstraction on top of existing factories, client is no longer concern  how to instantiate instances of required objects but it only needs to create new factory that implements form \emph{Abstract Factory} interface.
+Since framework contains only one factory the \emph{OrderManager} cannot take the advantage of \emph{Abstract Factory}. However the reason for using this pattern is the support of scalability. Whenever company decides to add new type of computer a new factory implementing abstract factory can be added and few changes would have to be made to \emph{OrderManager}. Those changes would come at low cost as everything is loosely coupled by abstract class. Using \emph{Abstract Factor} would also be an incentive to keep all future computer products conforming with the interfaces of current products offered by vendor.
 
 \subsection{Factory method}
 The most simplistic phrase that sums up the whole idea of \emph{Factory} pattern comes from creators of it - Gang of Four book.
-"Define an interface for creating an object, but let the subclasses decide which class to instantiate. The Factory method lets a class defer instantiation to subclasses."\cite{GOF_wika}
-The framework is uisng several computer products. The only difference between them are parameters of each composite leaf i.e. gaming coputer has faster CPU and more RAM. However both products are implementing same interface. Thus client using those (\emph{OrderManager}) whould not be concerned how to use each one (since they have the same methods), but what behaviour or parameters are required. 
-Client that is using factories can change the behaviour of received object by using different factory but handling of new object stays the same.
+"Define an interface for creating an object, but let the subclasses decide which class to instantiate. The Factory method lets a class defer instantiation to subclasses."\cite{website:GOF_wika}
+Client using factory is not concerned how object, that factory returns, was instantiated. Client just receives and uses it. So if change to product is required it would need to be done only in factory. This lets client be kept separate from initialisation process thus keeping client code more clear and reusable.
 
 \subsection{Composite pattern}
-\emph{Composite} patter is used to encapsulate common behaving primitive objects into tree like structures that allow for easier contol over them. Base objects (leaves) have common behaviour implemented from same interface. That means that they could be grouped by another object. And if that object (composite) implements the same interface then it too could be grouped with other instances of that class. The only difference between leaf and composite is that composite contains a reference to its child leaves.
-Leaves and composites can be then arranged into tree structures (since composite can be treated as leaf too). Howvever all composite objects have a recursive implementation of the interface - they execute the method for example \emph{getPrice()} on all its childeren and self. So if composite has a child of composite type it (child) will execute that method on its children too and so on until there is no more composite in tree. 
-Composite is very useful for grouping objects and making easier access to combined information of tree or its subset, or performing the same method call on all objects (\emph{move(x,y)}). 
-However grouping objectis in tree makes them "anonymous" and it could become problematic to find a specisic composite or leaf in a tree. That is why composite class must employ some cashing strategy to keep a track of its children and provide some kind of description of all children. For example a \emph{HashMap} can be used to store pairs of emnu or sting with a reference to object.
-The framework maind data structure (computer object) is a composite class consisting of other components that together create more elaborate object. All computer objects are trees that have primitives in it: \emph{RAM}, \emph{CPU}, \emph{Monitor}. This allows to effortlessly calulate the price of computer by simply invoking \emph{getPrice} on root of tree and recursive calls will propagate through the tree resulting in a price of all elements.
+\emph{Composite} patter is used to encapsulate common behaving primitive objects into tree structures that allow for improved and simplified control over them. Base objects (leaves) have common behaviour implemented from one interface. That means that they could be grouped/stored by another object (composite). And if that composite implements the same interface as leaves implement, then it too could be grouped with other instances of composite class. The only difference between leaf and composite is that composite contains a reference to its child leaves.
+Leaves and composites can be then arranged into tree structures (since composite can be treated as leaf too). However all composite objects have a recursive implementation of the interface - they execute the method for example \emph{getPrice()} on all its children and self. So if composite has a child of composite type it will execute that method on its children too and so on until there is no more composite in tree. 
+Composite pattern is very useful for grouping objects and making an easier access to combined information of tree or its subset, or performing the same method call on all objects (e.g. \emph{move(x,y)}). 
+However grouping object in tree makes them anonymous and it could become problematic to find a specific composite or leaf in a tree. That is why composite class must employ some caching strategy to keep a track of its children and provide some kind of description of all children. For example a \emph{HashMap} can be used to store pairs of enum or sting with a reference to object.
+The framework main data structure (computer object) is a composite class consisting of other components that together create more elaborate object. All computer objects are trees that have primitives in it: \emph{RAM}, \emph{CPU}, \emph{Monitor}. This allows to effortlessly calculating the price of computer by simply invoking \emph{getPrice} on root of tree and recursive calls will propagate through the tree resulting in a price of all elements.
 
 \subsection{Observer pattern}
-\emph{Observer} is a type of behavioral pattern. It is used to synchronise and keep the data up to date for any component that requires or observes that data. \emph{Observer} requires two types of objects:
+\emph{Observer} is a type of behavioural pattern. It is used to synchronise and keep the data up to date for any component that requires or observes that data. \emph{Observer} requires two types of objects:
 \begin{itemize}
-	\item the observers - these are objects that are 
+	\item Observers - these are objects that are looking at the application data. There can be several observers looking at the same data.
+	\item Subject - It's an object responsible for updating with new state all of its registered observers - when subject's data changes it will invoke an \emph{update()} method on its all observers. In contrary to observers there can be only one subject providing one particular update service.
 \end{itemize}
-\subsection{State pattern}
-One of the simplest of the original 23 GOF design patterns, this behavioral pattern removes big \emph{if} statements from methods and creates a series of state objects. In the \emph{OrderManager} we must carefully manage the region the shop is selling from and selling to and also enable the easy addition of additional states with minimal change to existing code. 
+The team implemented observer pattern to notify \emph{OrderManager} class, once one of its product from \emph{order} changed. So every time a component of computer (subject) changes - gets added, removed, altered - it will execute an \emph{update} method on \emph{OrderManager}. By this mechanism \emph{OrderManager} can keep its data (total price, total tax etc.) up-to-date.
+Observer pattern allows keeping the coupling between the subject and its observers to minimum as all observers are bounded by small and simple Observer interface. One thing that must be taken into account is that relations between observers and subjects should be well documented, as in a large project a small change to subject could result in a cascade of updates that are hard to track and/or debug. Also the fact that simple update method caries no information about the nature of change.
 
+\subsection{State pattern}
+One of the simplest of the original 23 GOF design patterns, this behavioral pattern removes big \emph{if} statements from methods and creates a series of state objects. In the \emph{OrderManager} we must carefully manage the region the shop is selling from and selling to and also enable the easy addition of additional states with minimal change to existing code.
 \pagebreak
 
 \section{Creational design patterns}
 In the scope of the framework we have two separate areas where creational design patterns are utilised, the creation of states for managing store locale and the creation of products. Of these the creation of products is the most interesting so we will concentrate on this primarily.
 
-Our design for the generation of products aimed to keep the system as generic as possible, enabling developers to easily swap the ‘computer’ package with that of one which creates cars for example. With this requirement much consideration was given to its design and hierarchy. After much research and discussion we decided to use the abstract factory pattern in conjunction with the builder pattern. This enabled us to build factories for different products and for each factory control the assembly of each type of product.
+Our design for the generation of products aimed to keep the system as generic as possible, enabling developers to easily swap the computer package with that of one which creates cars for example. With this requirement much consideration was given to its design and hierarchy. After much research and discussion we decided to use the abstract factory pattern in conjunction with the builder pattern. This enabled us to build factories for different products and for each factory control the assembly of each type of product.
 
-Below is an simplification of our creational structure, in the outermost factory package only the most generic structures were defined, the ‘AbstractFactory’ and the ‘Product’ interface. Within the factory package a further package is created for category of product in this example these are the computer and printer packages.
+Below is a simplification of our creational structure, in the outermost factory package only the most generic structures were defined, the AbstractFactory and the Product interface. Within the factory package a further package is created for category of product in this example these are the computer and printer packages.
 
 \begin{center}
 	\includegraphics[scale=0.75]{images/creational_diagram.pdf}
 \end{center}
 
-This structure offered us the great flexibility in the creation of different product types, while maintaining ‘rules’ for the generation of each product type thanks to the inclusion of the builder pattern.
+This structure offered us the great flexibility in the creation of different product types, while maintaining â€?rulesâ€™ for the generation of each product type thanks to the inclusion of the builder pattern.
 
 \subsection{Abstract factory}
 
 To construct an implementation of the AbstractProductFactory you must pass the super type a reference to an observer, this enables us to register the \emph{OrderManager} as a observer of all products created. Which we in-turn use to notify the \emph{OrderManager} when a product is modified.
 
-We designed the abstract factory to only have only one public interface \emph{createProduct(ProductsEnum)} which takes a \emph{ProductsEnum}. As ilustrated in the code fragment \emph{createProduct(ProductsEnum)} uses a switch statement to redirect the program flow to the relevant private method \emph{createGamingDesktopComputer()}. From these private methods we then instantiate a \emph{ComputerBuilder} which is really a director from the builder pattern and populate it with a \emph{ConcreteBuilder}.
+We designed the abstract factory to only have only one public interface \emph{createProduct(ProductsEnum)} which takes a \emph{ProductsEnum}. As illustrated in the code fragment \emph{createProduct(ProductsEnum)} uses a switch statement to redirect the program flow to the relevant private method \emph{createGamingDesktopComputer()}. From these private methods we then instantiate a \emph{ComputerBuilder} which is really a director from the builder pattern and populate it with a \emph{ConcreteBuilder}.
 
-This scheme enables us to in time add products of many types to the framework, while maintaining a level or rigidity among the product family's.
+This scheme enables us to in time add products of many types to the framework, while maintaining a level or rigidity among the product families.
 
 \lstinputlisting{code/abstractfactory.java}
 
 \subsection{Observer in creation}
-As previously mentioned when instantiating a factory we must pass a ‘OrderManager’ reference, we store this reference and on creation of a new product we register the ‘OrderManager’ as being an observer. This enables the order manager to perform a price recalculation every time a leaf is modified in the composite.
+As previously mentioned when instantiating a factory we must pass an OrderManager reference, we store this reference and on creation of a new product we register the OrderManager as being an observer. This enables the order manager to perform a price recalculation every time a leaf is modified in the composite.
 
 Although this implementation is not designed with performance in mind, as any time a composite is updated with a leaf we must rescan all products for a price change. This solution does offer a clean and structured way for ensuring we keep the cached price up-to-date in the \emph{OrderManager}.
 
@@ -147,23 +149,23 @@ Our unit tests were created using the \emph{JUnit} testing framework\cite{websit
 
 In the above code sample, we have included an example of the type of test we are running against the framework. This particular test, performs a series of basic actions including adding a product and decorating a number of components. At the end we test that the price has increased, this test could be enhanced by calculating the extra price and ensuring the new price is equal to the old price plus the added components price.
 
-Each of our tests contain a number of assertions, with any of which failing the overall test will fail. Outside of these individual tests we also use the \emph{setup()} method (not ilustrated here) to create a new instance of the \emph{OrderManager} for each test to ensure the preconditions are met.
+Each of our tests contains a number of assertions, with any of which failing the overall test will fail. Outside of these individual tests we also use the \emph{setup()} method (not illustrated here) to create a new instance of the \emph{OrderManager} for each test to ensure the preconditions are met.
 \pagebreak
 
 
 \section{Critique}
 \subsection{Observer}
-\emph{ComputerComposite}  is using observer whenever a change in composite occur i.e. new object is added,  removed or decorated. Every time this happens \emph{notifyObserver()} is invoked. Team's implementation of the observer pattern does not describe the nature of change that occured but only points to object that just changed.An improvement could be employed here -the method \emph{notifyObserver()} could return a reference to a leaf back to the observer. By using this improvement an observer could update its data via methods call on a leaf object. For example when user issues removal of a RAM, the RAM leaf instance would be dereferenced from its composite parent. Then the reference would be used by \emph{orderManager( RAM.getPrice() )} to update the \emph{totalPrice} value.
+\emph{ComputerComposite} is using observer whenever a change in composite occur i.e. new object is added, removed or decorated. Every time this happens \emph{notifyObserver()} is invoked. Team's implementation of the observer pattern does not describe the nature of change that occured but only points to object that just changed. An improvement could be employed here -the method \emph{notifyObserver()} could return a reference to a leaf back to the observer. By using this improvement an observer could update its data via methods call on a leaf object. For example when user issues removal of a RAM, the RAM leaf instance would be dereferenced from its composite parent. Then the reference would be used by \emph{orderManager( RAM.getPrice() )} to update the \emph{totalPrice} value.
 Currently \emph{orderManager} is notified that the state of \emph{computerProduct} has been altered, so it request \emph{getPrice()} on root element of \emph{computerProduct} and then it will execute this method on every node in tree to get \emph{totalPrice}.
-If there are a lot of changes to \emph{computerProduct} then system would have to issue the \emph{getPrice()} method on it. This leads to costly and frequent reqursive calculation of total price. With improved implementation of the observer the \emph{orderManager} object needs to add/subtrack price value of received leaf from the total price.
+If there are a lot of changes to \emph{computerProduct} then system would have to issue the \emph{getPrice()} method on it. This leads to costly and frequent recursive calculation of total price. With improved implementation of the observer the \emph{orderManager} object needs to add/subtract price value of received leaf from the total price.
 
 \subsection{Composite Pattern: safe vs transparent}
 Composite contains two lists, one for storing references to all composite children and second list for storing all leaves (components). If parent of composite class executes \emph{getChildern()}, composite class have to create a new list that contains "composites" and "leaves".
-If \emph{getChildern()} call was to be executed repetevly then it might be a better idea to create a third list that contains other two lists. The overhead would be minimal as third list contais of references to already existing objects.
-This is safe approach to design of the composite pattern as leves do not have access to the same methods as parent. It was found that it would be much easier to use transparent approach while designing composite. Transparent approach treats composite and leaf as the same object but leaf does not perform composite methods instead it contais stubs for those methods. So instead of two or three lists there would be only one needed as both composite and leaf are inheriting from the same interface/abstract class.
+If \emph{getChildern()} call was to be executed repeatedly then it might be a better idea to create a third list that contains other two lists. The overhead would be minimal as third list contains of references to already existing objects.
+This is safe approach to design of the composite pattern as leaves do not have access to the same methods as parent. It was found that it would be much easier to use transparent approach while designing composite. Transparent approach treats composite and leaf as the same object but leaf does not perform composite methods instead it contains stubs for those methods. So instead of two or three lists there would be only one needed as both composite and leaf is inheriting from the same interface/abstract class.
 
 \subsection{UML workbench}
-In this project team decided to use open source product to design all arcitectural diagrams - The Argo UML. However this tool was found to be at early stage of development and it lacks some esentila features, like undo functionality. Because of the UML workbench used by team that does not support the perfect and hundred  generation of class diagrams from the code the synchronisation of the UML model with the code would be too time consuming for the purpose of this project. Therfore at the stage in the project we were happy that we met the design pattern requirements. We used workbench to automaticaly generate the clasess and we chose not to keep model and the code in synch.
+In this project team decided to use open source product to design all architectural diagrams - The Argo UML. However this tool was found to be at early stage of development and it lacks some essential features, like undo functionality. Because of the UML workbench used by team that does not support the perfect and hundred generation of class diagrams from the code the synchronisation of the UML model with the code would be too time consuming for the purpose of this project. Therefore at the stage in the project we were happy that we met the design pattern requirements. We used workbench to automatically generate the classes and we chose not to keep model and the code in synch.
 
 \subsection{Decorator}
 
@@ -173,7 +175,7 @@ Team discovered that implementation of the decorator patter could be achieved vi
 
 \section{Runtime Infrastructure/Technology Pipeline}
 \subsection{Runtime/Colaboration Diagram}
-This section contais a partial colaboration diagram of designed framework plus an abstrac client that uses framework. Due to system complexity and inferior colaboration diagram feature quality of UML workbench, the diagram was generalised and does not represent the whole system. But only flow of program related to adding and decorating a product.
+This section contais a partial colaboration diagram of designed framework plus an abstrac client that uses framework. Due to system complexity and inferior collaboration diagram feature quality of UML workbench, the diagram was generalised and does not represent the whole system. But only flow of program related to adding and decorating a product.
 
 \begin{center}
 	\includegraphics[scale=1, angle=90]{images/CollaborationDiagram.pdf}
@@ -182,17 +184,17 @@ This section contais a partial colaboration diagram of designed framework plus a
 \subsection{Architectural Use Cases}
 
 \subsubsection{Computer Factory}
-During the design phase team decided that \emph{ComputerFactory} class is going to contain following classes: \emph{createLowComputer()}, \emph{createMidComputer()}, \emph{createHighComputer()} and similar for creating all laptop products. However every time new produc would be added or old product would be changed it would require many major code rewrites in client's implementation. That is why it was decided to implement class \emph{createComputer(Enum type)} that would be responsible for creating a new instance of any computer (it contains : \emph{createLowComputer(}), \emph{createMidComputer()} and so on methods). Now client doesn't have to call each method separately instead it calls the same function with different parameter. This solution created a level of abstraction between client and factories and made code more reusable.
+During the design phase team decided that \emph{ComputerFactory} class is going to contain following classes: \emph{createLowComputer()}, \emph{createMidComputer()}, \emph{createHighComputer()} and similar for creating all laptop products. However every time new product would be added or old product would be changed it would require many major code rewrites in client's implementation. That is why it was decided to implement class \emph{createComputer(Enum type)} that would be responsible for creating a new instance of any computer (it contains : \emph{createLowComputer(}), \emph{createMidComputer()} and so on methods). Now client doesn't have to call each method separately instead it calls the same function with different parameter. This solution created a level of abstraction between client and factories and made code more reusable.
 
 \subsubsection{Scalability and Reusability}
-There are several cases in the UML diagram produced by the team of interfaces that look redundant (\emph{ComponentInterface}, \emph{DecoratorInterface}). They are either empty or are realised only by another interface which make them look redundant and unneccessary. However this was done on purpose to employ idea of reusability and scalability. Decorator interface might serve as interface to any product type, so it is not only tied to computer products. If in future a company decides to increase range of products that they want to distribute it would be easier for team to realise \emph{DecoratorInterface}, rather then refractor the code to support new range of products. 
+There are several cases in the UML diagram produced by the team of interfaces that look redundant (\emph{ComponentInterface}, \emph{DecoratorInterface}). They are either empty or are realised only by another interface which make them look redundant and unnecessary. However this was done on purpose to employ idea of reusability and scalability. Decorator interface might serve as interface to any product type, so it is not only tied to computer products. If in future a company decides to increase range of products that they want to distribute it would be easier for team to realise \emph{DecoratorInterface}, rather than refractor the code to support new range of products. 
 
 \subsection{Code Selection}
 Team found out that usage of strings as parameter for selecting products would be problematic and could create hard to read and hard to maintain code. Adding or removing product would be time consuming. The solution that team came up with was found to solve all problems - the usage of enumerations. Enumerations were used instead of strings for any method that was taking an parameter that was used as a way of selecting specific code, for example \emph{calculateTax(Enum region)} would execute only code responsible for calculating tax in particular region. This proved to be a very effective and robust way to deal with selection of code; furthermore switch case could be utilised with great readability improvement:
 
 \lstinputlisting{code/ifAndOnlyIf.java}
 
-Above inplementation of selection of one of three blocks of code using string. In terms of readability this code is average, but can be refacored into clean looking code as follows:
+Above inplementation of selection of one of three blocks of code using string. In terms of readability this code is average, but can be refactored into clean looking code as follows:
 
 \lstinputlisting{code/switchCaseExample.java}
 
@@ -203,22 +205,21 @@ Due to the inherently generic nature of the framework it is possible to be deplo
 
 \subsection{Desktop application}
 
-Graphical User Interface (GUI) was developed by the team as POC. GUI client was tied to framework's exposed (pulbic) methods. This was an alternative to web-services as GUI has direct access to framework and does not need any layers between client and framework. Even thought GUI is static application running on top of framework, it could be used to create a Desktop Application that would connect to framework's web services in future, if company requests it.
+Graphical User Interface was developed by the team as prove of concept. GUI client was tied to framework's public methods. This was an alternative to web-services as GUI has direct access to framework and does not need any layers between client and framework. Even thought GUI is static application running on top of framework, it could be used to create a Desktop Application that would connect to framework's web services in future, if company requests it.
 
 \subsubsection{Vendor offerings}
-Java's swing library was first and most obvious candidate as tool for building GUI. It is very well documented and powerful library. Second option was to use  Python GTK library. PyGTK applications like Java are multiplatform and they're able to run, unmodified, on Linux, Windows, MacOS X and other platforms.
-Besides its ease of use and rapid prototyping, its first class accesibility support or the capability to deal with complex multilingual or bidirectional text for fully localized applications. However team discovered that it can be quite time consuming to design GUI and then tie it to Java framework.
-NetBeans GUI builder was found to suit team needs, as it has powerful features combined with intuative interface. Then the dummy user Interface was connected to the underlaying framework
+Java's swing library was first and most obvious candidate as tool for building GUI. It is very well documented and powerful library. Second option was to use Python GTK library. PyGTK applications like Java are multiplatform and they're able to run, unmodified, on Linux, Windows, MacOS X and other platforms.Besides its ease of use and rapid prototyping, its first class accessibility support or the capability to deal with complex multilingual or bidirectional text for fully localized applications. However team discovered that it can be quite time consuming to design GUI and then tie it to Java framework.
+NetBeans GUI builder was found to suit team needs, as it has powerful features combined with intuitive interface. Then the dummy user Interface was connected to the underlying framework
 
 \subsubsection{Development issues}
-Initialy team was looking for Eclipse GUI builder plugin, but due to difficulties with instalation of Visual Editor, team turned to NetBeans GUI builder. This posed some difficulties. User interface was designed in NetBeans and then code was copied into Eclipse enviroment. Whenever team decided to change or adjust the GUI it involved manual code changes. This turned out to be quite time consumming. All team members agreed that in future only tools within team's IDE of choice would be use, as they save time in long time by solving problems of `translating' code between different IDEs.
-Because Java swing builds threaded applications team run into a problem of accessing resources of one window from another (one thread of another). As design of GUI involved 'Control Window and 'Add Product Window', when user presses Add product from 'Control Window' it will pop-up 'Add Product Window' where user can select a product that can be added to list of products. This is why 'Add Product Window' needs to have a reference to its parent so that can add a product to parent's orderManager list.
+Initially team was looking for Eclipse GUI builder plug-in, but due to difficulties with installation of Visual Editor (Eclipse GUI builder), team turned to NetBeans built-in alternative. This posed some difficulties. User interface was designed in NetBeans and then code was copied into Eclipse environment. Whenever team decided to change or adjust the GUI it involved manual code changes in Eclipse. This turned out to be quite time consuming and all team members agreed that in future only tools compatible with team's IDE of choice would be use, as they save time in long time by solving problems of `translating' code between different IDEs.
+Because Java swing builds threaded applications team run into a problem of accessing resources of one window from another. As design of GUI involved 'Control Window and 'Add Product Window', when user presses Add product from 'Control Window' it will pop-up 'Add Product Window' where user can select a product that can be added to list of products. This is why 'Add Product Window' needs to have a reference to its parent so that can add a product to parent's orderManager list.
 
 \subsection{Webservice}
 
-Web-services are a popular mechanism for exposing a software's functionally over HTTP with a high degree of system and language interoperability. These services can be broadly categorised into RPC and Resource based.
+Web-services are a popular mechanism for exposing software’s functionally over HTTP with a high degree of system and language interoperability. These services can be broadly categorised into RPC and Resource based.
 
-RPC (remote procedure call) is a tried and tested mechanism, and is conceptually an extension to a regular or local procedure call. But due to this constraint of exposing a specific function, these mechanisms tended to be quite system and language dependant. In 2000 Roy Fielding presented his doctoral dissertation where he described "Representational State Transfer"\cite{REST} which described a mechanism modeled around the standard HTTP (GET, POST, UPDATE, DELETE) operations and were resource orientated (giving each entity a unique URI) as opposed to the RPC stored state paradigm. RESTful services have be steadily gaining momentum, and due to this popularity and language/system abstraction, we chose to create a RESTful web-service as a proof of concept for the framework.
+RPC (remote procedure call) is a tried and tested mechanism, and is conceptually an extension to a regular or local procedure call. But due to this constraint of exposing a specific function, these mechanisms tended to be quite system and language dependant. In 2000 Roy Fielding presented his doctoral dissertation where he described "Representational State Transfer"\cite{REST} which described a mechanism modelled around the standard HTTP (GET, POST, UPDATE, DELETE) operations and were resource orientated (giving each entity a unique URI) as opposed to the RPC stored state paradigm. RESTful services have be steadily gaining momentum, and due to this popularity and language/system abstraction, we chose to create a RESTful web-service as a proof of concept for the framework.
 
 \subsubsection{Vendor offerings}
 Because of the simplicity of the REST concept, which is based on HTTP which has only four operations as mentioned earlier. There are frameworks for creating RESTful applications for almost every conceivable language, from Clojure\cite{website:compojure-rest} to Javascript\cite{website:persevere}. It is common for developers to use a REST framework that runs within a Application Server such as Tomcat\cite{website:tomcat} or JBoss\cite{website:jboss}. But due to the lightweight nature of the paradigm we were keen on not running the service on a heavy weight application server.
@@ -242,11 +243,11 @@ The popularity of this framework is evident in the number of maintained ports fo
 	\includegraphics[scale=0.5]{images/restlet_structure.pdf}
 \end{center}
 
-The Restlet structure is quite simple the hierarchy consists of Server, Application and a  Resource. The HTTP server is contained in the library, enabling the developer to build and deploy the project without any extra software.  The value in this feature is with slight modification the developer can re-package the service for a Application Server.
+The Restlet structure is quite simple the hierarchy consists of Server, Application and a Resource. The HTTP server is contained in the library, enabling the developer to build and deploy the project without any extra software.  The value in this feature is with slight modification the developer can re-package the service for a Application Server.
 
 \lstinputlisting{code/OrderResource.java}
 
-Each of the resources ilustrated in the diagram above have a unique URL \\ e.g. \emph{http://server/application/resource1}.
+Each of the resources illustrated in the diagram above have a unique URL \\ e.g. \emph{http://server/application/resource1}.
 
 \subsubsection{Development issues}
 
@@ -258,7 +259,7 @@ A RESTful service can be developed to communicate any form of data, but the two 
 \paragraph{Object serialization}
 Difficulties arose when attempting to convert the \emph{OrderManager} object in to its JSON representation, due to a number of reasons. Firstly the existences of circular references in the object model, these make it very difficult for a serialize to walk the dependency tree. Secondly the use of decorated components in the composite can become quite unwieldy when converted to their JSON representation.
 
-As a quick ’n dirty hack we created a separate JSON representation for the \emph{OrderManager}, containing all the data required by a client. Because of this we needed to maintain state on the server side (something which runs against REST architectural pattern), so the server held a reference to that \emph{OrderManager} for a specific client.
+As a quick â€™n dirty hack we created a separate JSON representation for the \emph{OrderManager}, containing all the data required by a client. Because of this we needed to maintain state on the server side (something which runs against REST architectural pattern), so the server held a reference to that \emph{OrderManager} for a specific client.
 With a little refactoring of the \emph{OrderManager}, we believe it is possible to use it in a correctly RESTful implementation.
 
 \paragraph{Web browser security model}
@@ -266,7 +267,7 @@ During implementation of the web-service we used the Mozilla FireFox plug-in RES
 
 All modern web browsers have security restrictions on the execution of GET, POST, UPDATE and DELETE HTTP methods, when the executing code was not served from that domain. This is a really important security mechanism which prevents a script on domainx.com from downloading your emails from freemail.com.
 
-It is possible to enable these HTTP methods for scripts from other domains, and its is necessary for a number of reasions, including serving your site content from js.myservice.com and having the REST endpoints on rest.myservice.com. This is enabled by setting a HTTP content header parameter in the responses from the REST endpoint.  Two specific headers define the rules for these transactions \emph{Access-Control-Allow-Origin} and \emph{Access-Control-Allow-Methods}, below is an example of headers with the access enabled.
+It is possible to enable these HTTP methods for scripts from other domains, and it is necessary for a number of reasons, including serving your site content from js.myservice.com and having the REST endpoints on rest.myservice.com. This is enabled by setting a HTTP content header parameter in the responses from the REST endpoint.  Two specific headers define the rules for these transactions \emph{Access-Control-Allow-Origin} and \emph{Access-Control-Allow-Methods}, below is an example of headers with the access enabled.
 
 \begin{center}
 	\includegraphics[scale=.7]{images/content_headers.png}
@@ -282,10 +283,67 @@ We are not sure how to proceed with the Javascript client application without mo
 
 \pagebreak
 
-\section{UML Diagrams}
+\section{UML Diagram}
 
 
 \pagebreak
+
+\section{Framework code}
+
+\lstinputlisting{code/pcshop/OrderManager.java}
+\lstinputlisting{code/pcshop/ProductsEnum.java}
+
+\lstinputlisting{code/pcshop/taxRegion/GermanyTax.java}
+\lstinputlisting{code/pcshop/taxRegion/UsaTax.java}
+\lstinputlisting{code/pcshop/taxRegion/CurrencyConverterService.java}
+\lstinputlisting{code/pcshop/taxRegion/UkTax.java}
+\lstinputlisting{code/pcshop/taxRegion/AbstractTaxState.java}
+\lstinputlisting{code/pcshop/taxRegion/TaxRegionEnum.java}
+\lstinputlisting{code/pcshop/taxRegion/TaxStateFactory.java}
+\lstinputlisting{code/pcshop/taxRegion/SpainTax.java}
+\lstinputlisting{code/pcshop/taxRegion/FranceTax.java}
+\lstinputlisting{code/pcshop/taxRegion/IrelandTax.java}
+
+
+\lstinputlisting{code/pcshop/factory/AbstractProductFactory.java}
+\lstinputlisting{code/pcshop/factory/Computer/Laptop/Ram.java}
+\lstinputlisting{code/pcshop/factory/Computer/Laptop/OfficeLaptopBuilder.java}
+\lstinputlisting{code/pcshop/factory/Computer/Laptop/Keyboard.java}
+\lstinputlisting{code/pcshop/factory/Computer/Laptop/Cpu.java}
+\lstinputlisting{code/pcshop/factory/Computer/Laptop/UltraMobileLaptopBuilder.java}
+\lstinputlisting{code/pcshop/factory/Computer/Laptop/GamingLaptopBuilder.java}
+\lstinputlisting{code/pcshop/factory/Computer/Laptop/Monitor.java}
+\lstinputlisting{code/pcshop/factory/Computer/ComputerFactory.java}
+\lstinputlisting{code/pcshop/factory/Computer/ComputerBuilder.java}
+\lstinputlisting{code/pcshop/factory/Computer/ComputerComposite.java}
+\lstinputlisting{code/pcshop/factory/Computer/ComputerAssembler.java}
+
+\lstinputlisting{code/pcshop/factory/Computer/Desktop/Ram.java}
+\lstinputlisting{code/pcshop/factory/Computer/Desktop/GamingCompBuilder.java}
+\lstinputlisting{code/pcshop/factory/Computer/Desktop/Keyboard.java}
+\lstinputlisting{code/pcshop/factory/Computer/Desktop/OfficeCompBuilder.java}
+\lstinputlisting{code/pcshop/factory/Computer/Desktop/Cpu.java}
+\lstinputlisting{code/pcshop/factory/Computer/Desktop/HomeCompBuilder.java}
+\lstinputlisting{code/pcshop/factory/Computer/Desktop/Monitor.java}
+\lstinputlisting{code/pcshop/factory/ComponentComposite.java}
+\lstinputlisting{code/pcshop/factory/ComponentInterface.java}
+
+
+\lstinputlisting{code/pcshop/computerComponentInterfaces/CpuInterface.java}
+\lstinputlisting{code/pcshop/computerComponentInterfaces/ComputerComponentInterface.java}
+\lstinputlisting{code/pcshop/computerComponentInterfaces/KeyboardInterface.java}
+\lstinputlisting{code/pcshop/computerComponentInterfaces/MonitorInterface.java}
+\lstinputlisting{code/pcshop/computerComponentInterfaces/RamInterface.java}
+
+\lstinputlisting{code/pcshop/componentDecorator/ComputerModificator.java}
+\lstinputlisting{code/pcshop/componentDecorator/DecoratorInterface.java}
+
+\lstinputlisting{code/pcshop/componentDecorator/computerDecorators/CpuDecorator.java}
+\lstinputlisting{code/pcshop/componentDecorator/computerDecorators/RamDecorator.java}
+\lstinputlisting{code/pcshop/componentDecorator/computerDecorators/KeyboardDecorator.java}
+\lstinputlisting{code/pcshop/componentDecorator/computerDecorators/MonitorDecorator.java}
+\lstinputlisting{code/pcshop/componentDecorator/ComputerDecorator.java}
+
 
 
 \def\refname{}
