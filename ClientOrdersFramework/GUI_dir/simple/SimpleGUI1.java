@@ -189,7 +189,7 @@ public class SimpleGUI1 extends javax.swing.JPanel {
 
         javax.swing.SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
-				JFrame frame2 = new JFrame("ListDemo 2");
+				JFrame frame2 = new JFrame("Add Product");
 				frame2.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 				//Create and set up the content pane.
 				JComponent newContentPane;

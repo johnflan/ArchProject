@@ -9,7 +9,7 @@ public class Main {
 
         javax.swing.SwingUtilities.invokeLater(new Runnable() {
             public void run() {
-            	JFrame frame = new JFrame("ListDemo");
+            	JFrame frame = new JFrame("Control Window");
                 frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
                 //Create and set up the content pane.

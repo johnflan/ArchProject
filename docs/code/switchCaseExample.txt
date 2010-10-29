@@ -1,0 +1,7 @@
+switch(computerType){
+
+case COMPUTER_GAMING:     code_block_1;     break;	
+case COMPUTER_OFFICE:     code_block_2;     break;
+case COMPUTER_LAPTOP:     code_block_3;     break;
+
+}
