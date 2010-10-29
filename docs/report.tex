@@ -128,10 +128,6 @@ This scheme enables us to in time add products of many types to the framework, w
 
 \lstinputlisting{code/abstractfactory.java}
 
-\subsection{Builder pattern}
-
-!!!!!how the builder works
-
 \subsection{Observer in creation}
 As previously mentioned when instantiating a factory we must pass a ‘OrderManager’ reference, we store this reference and on creation of a new product we register the ‘OrderManager’ as being an observer. This enables the order manager to perform a price recalculation every time a leaf is modified in the composite.
 
