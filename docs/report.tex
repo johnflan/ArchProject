@@ -79,33 +79,13 @@ While these requirements above may seem initially quite demanding, they are quit
 
 \pagebreak
 \section{Incorporated design patterns}
-For each of the 5 requisite patterns
-• Context and forces
-• Consequences
-with respect to concept presented in
-narrative 
 \subsection{Abstract factory}
-
-\emph{Abstract Factory} pattern is an advancement of \emph{Factory} pattern. It is used when project contains a number of factories that returns object implementing the same interface. By adding an extra layer of abstraction client is no longer concern with type of object returned by factory as any of them implement \emph{Abstract Factory} interface.
-Since both factories in team's framework produce objects that are implementing the same interface - \emph{ComputerComposite} - \emph{Abstract Factory} was used to combine \emph{ComputerFactory} and \emph{LaptopFactory} in order to simplify and abstract the cration of different computer products by \emph{OrderManager}. Furthermore adding another type of computer and integrating \emph{OrderManager} to use it would be significantly easier as \emph{OrderManager} is working on \emph{ComputerComposite} objects rather than on more specific \emph{DesktopComputer}, \emph{LaptopComputer}. 
-Using \emph{Abstract Factor} would also be an incentive (or way of enforcing) to keep all future computer products in sych with the interfaces of current products offered by vendor.
 \subsection{Factory method}
-The most simplistic phrase that sums up the whole idea of \emph{Factory} pattern comes from creators of it - Gang of Four book.
-"Define an interface for creating an object, but let the subclasses decide which class to instantiate. The Factory method lets a class defer instantiation to subclasses."\cite{GOF_wika}
-The framework is uisng several computer products. The only difference between them are parameters of each composite leaf i.e. gaming coputer has faster CPU and more RAM. However both products are implementing same interface. Thus client using those (\emph{OrderManager}) whould not be concerned how to use each one (since they have the same methods), but what behaviour or parameters are required. 
-Client that is using factories can change the behaviour of received object by using different factory but handling of new object stays the same.
-\subsection{Composite pattern}
-\emph{Composite} patter is used to encapsulate common behaving primitive objects into tree like structures that allow for easier contol over them. Base objects (leaves) have common behaviour implemented from same interface. That means that they could be grouped by another object. And if that object (composite) implements the same interface then it too could be grouped with other instances of that class. The only difference between leaf and composite is that composite contains a reference to its child leaves.
-Leaves and composites can be then arranged into tree structures (since composite can be treated as leaf too). Howvever all composite objects have a recursive implementation of the interface - they execute the method for example \emph{getPrice()} on all its childeren and self. So if composite has a child of composite type it (child) will execute that method on its children too and so on until there is no more composite in tree. 
-Composite is very useful for grouping objects and making easier access to combined information of tree or its subset, or performing the same method call on all objects (\emph{move(x,y)}). 
-However grouping objectis in tree makes them "anonymous" and it could become problematic to find a specisic composite or leaf in a tree. That is why composite class must employ some cashing strategy to keep a track of its children and provide some kind of description of all children. For example a \emph{HashMap} can be used to store pairs of emnu or sting with a reference to object.
-The framework maind data structure (computer object) is a composite class consisting of other components that together create more elaborate object. All computer objects are trees that have primitives in it: \emph{RAM}, \emph{CPU}, \emph{Monitor}. This allows to effortlessly calulate the price of computer by simply invoking \emph{getPrice} on root of tree and recursive calls will propagate through the tree resulting in a price of all elements.
-\subsection{Observer pattern}
-\emph{Observer} is a type of behavioral pattern. It is used to synchronise and keep the data up to date for any component that requires or observes that data. \emph{Observer} requires two types of objects:
-\begin{itemize}
-	\item the observers - these are objects that are 
-\end{itemize}
 \subsection{State pattern}
+\subsection{Builder pattern}
+\subsection{Composite pattern}
+\subsection{Observer pattern}
+
 \pagebreak
 \section{Creational design patterns}
 In the scope of the framework we have two separate areas where creational design patterns are utilised, the creation of states for managing store locale and the creation of products. Of these the creation of products is the most interesting so we will concentrate on this primarily.
@@ -153,10 +133,11 @@ In the above code sample, we have included an example of the type of test we are
 
 Each of our tests contain a number of assertions, with any of which failing the overall test will fail. Outside of these individual tests we also use the \emph{setup()} method (not ilustrated here) to create a new instance of the \emph{OrderManager} for each test to ensure the preconditions are met.
 \pagebreak
-\section{Critique}
 
+
+\section{Critique}
 \subsection{Observer}
-ComputerComposite is using observer whenever a change in composite occur i.e. new object is added,  removed or decorated. Every time this happens \emph{notifyObserver()} is invoked. Team's implementation of the observer pattern does not describe the nature of change that occured but only points to object that just changed.An improvement could be employed here -the method \emph{notifyObserver()} could return a reference to a leaf back to the observer. By using this improvement an observer could update its data via methods call on a leaf object. For example when user issues removal of a RAM, the RAM leaf instance would be dereferenced from its composite parent. Then the reference would be used by \emph{orderManager( RAM.getPrice() )} to update the \emph{totalPrice} value.
+\emph{ComputerComposite}  is using observer whenever a change in composite occur i.e. new object is added,  removed or decorated. Every time this happens \emph{notifyObserver()} is invoked. Team's implementation of the observer pattern does not describe the nature of change that occured but only points to object that just changed.An improvement could be employed here -the method \emph{notifyObserver()} could return a reference to a leaf back to the observer. By using this improvement an observer could update its data via methods call on a leaf object. For example when user issues removal of a RAM, the RAM leaf instance would be dereferenced from its composite parent. Then the reference would be used by \emph{orderManager( RAM.getPrice() )} to update the \emph{totalPrice} value.
 Currently \emph{orderManager} is notified that the state of \emph{computerProduct} has been altered, so it request \emph{getPrice()} on root element of \emph{computerProduct} and then it will execute this method on every node in tree to get \emph{totalPrice}.
 If there are a lot of changes to \emph{computerProduct} then system would have to issue the \emph{getPrice()} method on it. This leads to costly and frequent reqursive calculation of total price. With improved implementation of the observer the \emph{orderManager} object needs to add/subtrack price value of received leaf from the total price.
 
@@ -179,7 +160,7 @@ Team discovered that implementation of the decorator patter could be achieved vi
 This section contais a partial colaboration diagram of designed framework plus an abstrac client that uses framework. Due to system complexity and inferior colaboration diagram feature quality of UML workbench, the diagram was generalised and does not represent the whole system. But only flow of program related to adding and decorating a product.
 
 \begin{center}
-	\includegraphics[scale=0.75]{images/CollaborationDiagram.svg}
+	\includegraphics[scale=1, angle=90]{images/CollaborationDiagram.pdf}
 \end{center}
 
 \subsection{Architectural Use Cases}
@@ -198,14 +179,6 @@ Team found out that usage of strings as parameter for selecting products would b
 Above inplementation of selection of one of three blocks of code using string. In terms of readability this code is average, but can be refacored into clean looking code as follows:
 
 \lstinputlisting{code/switchCaseExample.java}
-
-\subsection{Choice of Vendor Offerings}
-
-+ discussion
-
-\pagebreak
-
-\section{UML Diagrams}
 
 \pagebreak
 
@@ -236,11 +209,11 @@ Because of the simplicity of the REST concept, which is based on HTTP which has 
 
 A number of light weight REST frameworks for Java exist, below are a list of the more popular offerings.
 
-\begin{enumerate}
-	\item[JAX-RS] A Java JCP spec for RESTful webservices utilising Java Annotations. A number of implementations of the specification exist Apache CXF, Jersey, RESTEasy and Restlet.
-	\item[Zipwire-REST] A framework based on the ActiveResource pattern which enables Java object to be manipulated through REST, is a lightweight manner.
-	\item[SerfJ]
-\end{enumerate}
+\begin{itemize}
+	\item \textbf{JAX-RS} A Java JCP spec for RESTful webservices utilising Java Annotations. A number of implementations of the specification exist Apache CXF, Jersey, RESTEasy and Restlet.
+	\item \textbf{Zipwire-REST} A framework based on the ActiveResource pattern which enables Java object to be manipulated through REST, is a lightweight manner.
+	\item \textbf{SerfJ}
+\end{itemize}
 
 \subsubsection{Restlet}
 Restlet was chosen for this development as it seemed to be the most modern of the feature complete and lightweight frameworks. Restlet also conforms to the JAX-RS JCP specification\cite{website:jax-rs_jcp} making the knowledge gained from this endeavour more valuable.
@@ -249,15 +222,51 @@ This library is available under a number of different licences including CDDL ve
 
 The popularity of this framework is evident in the number of maintained ports for platforms such as Google Web Toolkit, Google App Engine and Android as well as versions for both Java EE and Java SE.
 
+\begin{center}
+	\includegraphics[scale=0.5]{images/restlet_structure.pdf}
+\end{center}
+
+The Restlet structure is quite simple the hierarchy consists of Server, Application and a  Resource. The HTTP server is contained in the library, enabling the developer to build and deploy the project without any extra software.  The value in this feature is with slight modification the developer can re-package the service for a Application Server.
+
+\lstinputlisting{code/OrderResource.java}
+
+Each of the resources ilustrated in the diagram above have a unique URL \\ e.g. \emph{http://server/application/resource1}.
+
 \subsubsection{Development issues}
 
-\subsubsubsection{JSON or XML}
+\paragraph{JSON or XML}
+A RESTful service can be developed to communicate any form of data, but the two most commonly used today are XML and JSON. JSON (Javascript object notation) is a lightweight data representation which Javascript uses to store its data. Using JSON not only enables better usage of bandwidth but also enables the front-end developer to easily consume data from your web-service. Below is an example of a JSON object.
 
-\subsubsubsection{Object serialization}
+\lstinputlisting{code/json.js}
 
-\subsubsubsection{Web browser security model}
+\paragraph{Object serialization}
+Difficulties arose when attempting to convert the \emph{OrderManager} object in to its JSON representation, due to a number of reasons. Firstly the existences of circular references in the object model, these make it very difficult for a serialize to walk the dependency tree. Secondly the use of decorated components in the composite can become quite unwieldy when converted to their JSON representation.
 
-\subsubsection{Deployment diagram}
+As a quick â€™n dirty hack we created a separate JSON representation for the \emph{OrderManager}, containing all the data required by a client. Because of this we needed to maintain state on the server side (something which runs against REST architectural pattern), so the server held a reference to that \emph{OrderManager} for a specific client.
+With a little refactoring of the \emph{OrderManager}, we believe it is possible to use it in a correctly RESTful implementation.
+
+\paragraph{Web browser security model}
+During implementation of the web-service we used the Mozilla FireFox plug-in REST Client\cite{website:restClient} to ensure correctness of the service. Later when beginning to implement a Javascript based front-end we began to run into troubles with the browser security model.
+
+All modern web browsers have security restrictions on the execution of GET, POST, UPDATE and DELETE HTTP methods, when the executing code was not served from that domain. This is a really important security mechanism which prevents a script on domainx.com from downloading your emails from freemail.com.
+
+It is possible to enable these HTTP methods for scripts from other domains, and its is necessary for a number of reasions, including serving your site content from js.myservice.com and having the REST endpoints on rest.myservice.com. This is enabled by setting a HTTP content header parameter in the responses from the REST endpoint.  Two specific headers define the rules for these transactions \emph{Access-Control-Allow-Origin} and \emph{Access-Control-Allow-Methods}, below is an example of headers with the access enabled.
+
+\begin{center}
+	\includegraphics[scale=.7]{images/content_headers.png}
+\end{center}
+
+This only became an issue as we were running Restlet with its inbuilt web server, which did not enable us to host files on the same domain (domain and port). Java based rest services are typically hosted in a Application Server environment and this does not become an issue, because all the files are packaged in the WAR (web application achieve) enabling the content to be hosted with the resources.
+
+\paragraph{Browser issues}
+Due to this slightly unusual configuration we got bogged down with an issue in both Mozila Firefox and Google Chrome. In developing the front end, I began by using the Dojo toolkit (Javascript framework)\cite{website:dojo}, watching the server output noticed it was calling the service with the HTTP OPTIONS instead of HTTP GET. After some time researching the problem (believed to be related to requesting data from another domain), it was suggested using a Javascript raw \emph{XMLHTTPRequest} call which worked for a GET request, but unfortunately I was unable to get it working for a POST request again sending a OPTIONS request. 
+
+We are not sure how to proceed with the Javascript client application without moving to an Application Server.
+
+
+\pagebreak
+
+\section{UML Diagrams}
 
 
 \pagebreak
