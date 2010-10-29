@@ -79,14 +79,33 @@ While these requirements above may seem initially quite demanding, they are quit
 
 \pagebreak
 \section{Incorporated design patterns}
-\subsection{Abstract factory}
-\subsection{Factory method}
-\subsection{State pattern}
-\subsection{Builder pattern}
-\subsection{Composite pattern}
-\subsection{Observer pattern}
 
+\subsection{Abstract factory}
+\emph{Abstract Factory} pattern is an advancement of \emph{Factory} pattern. It is used when project contains a number of factories that returns object implementing the same interface. By adding an extra layer of abstraction client is no longer concern with type of object returned by factory as any of them implement \emph{Abstract Factory} interface.
+Since both factories in team's framework produce objects that are implementing the same interface - \emph{ComputerComposite} - \emph{Abstract Factory} was used to combine \emph{ComputerFactory} and \emph{LaptopFactory} in order to simplify and abstract the cration of different computer products by \emph{OrderManager}. Furthermore adding another type of computer and integrating \emph{OrderManager} to use it would be significantly easier as \emph{OrderManager} is working on \emph{ComputerComposite} objects rather than on more specific \emph{DesktopComputer}, \emph{LaptopComputer}. 
+Using \emph{Abstract Factor} would also be an incentive (or way of enforcing) to keep all future computer products in sych with the interfaces of current products offered by vendor.
+
+\subsection{Factory method}
+The most simplistic phrase that sums up the whole idea of \emph{Factory} pattern comes from creators of it - Gang of Four book.
+"Define an interface for creating an object, but let the subclasses decide which class to instantiate. The Factory method lets a class defer instantiation to subclasses."\cite{GOF_wika}
+The framework is uisng several computer products. The only difference between them are parameters of each composite leaf i.e. gaming coputer has faster CPU and more RAM. However both products are implementing same interface. Thus client using those (\emph{OrderManager}) whould not be concerned how to use each one (since they have the same methods), but what behaviour or parameters are required. 
+Client that is using factories can change the behaviour of received object by using different factory but handling of new object stays the same.
+
+\subsection{Composite pattern}
+\emph{Composite} patter is used to encapsulate common behaving primitive objects into tree like structures that allow for easier contol over them. Base objects (leaves) have common behaviour implemented from same interface. That means that they could be grouped by another object. And if that object (composite) implements the same interface then it too could be grouped with other instances of that class. The only difference between leaf and composite is that composite contains a reference to its child leaves.
+Leaves and composites can be then arranged into tree structures (since composite can be treated as leaf too). Howvever all composite objects have a recursive implementation of the interface - they execute the method for example \emph{getPrice()} on all its childeren and self. So if composite has a child of composite type it (child) will execute that method on its children too and so on until there is no more composite in tree. 
+Composite is very useful for grouping objects and making easier access to combined information of tree or its subset, or performing the same method call on all objects (\emph{move(x,y)}). 
+However grouping objectis in tree makes them "anonymous" and it could become problematic to find a specisic composite or leaf in a tree. That is why composite class must employ some cashing strategy to keep a track of its children and provide some kind of description of all children. For example a \emph{HashMap} can be used to store pairs of emnu or sting with a reference to object.
+The framework maind data structure (computer object) is a composite class consisting of other components that together create more elaborate object. All computer objects are trees that have primitives in it: \emph{RAM}, \emph{CPU}, \emph{Monitor}. This allows to effortlessly calulate the price of computer by simply invoking \emph{getPrice} on root of tree and recursive calls will propagate through the tree resulting in a price of all elements.
+
+\subsection{Observer pattern}
+\emph{Observer} is a type of behavioral pattern. It is used to synchronise and keep the data up to date for any component that requires or observes that data. \emph{Observer} requires two types of objects:
+\begin{itemize}
+	\item the observers - these are objects that are 
+\end{itemize}
+\subsection{State pattern}
 \pagebreak
+
 \section{Creational design patterns}
 In the scope of the framework we have two separate areas where creational design patterns are utilised, the creation of states for managing store locale and the creation of products. Of these the creation of products is the most interesting so we will concentrate on this primarily.
 
