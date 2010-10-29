@@ -73,7 +73,7 @@ Our team have been tasked by a large computer manufacturer with the design and i
 
 Like many of the large computer manufacturing corporations they have base products which the home or business user may customise to meet their requirements. The components that these products comprise of must be easily interchangeable. 
 
-In the organisations drive to increase online sales, it is expected that this framework not only support integration with web services but also a number of unique business requirements. For example the framework should support support multiple regions taxes and currencies, composition rules for components and the simple addition of new base configurations and products.
+In the organisations drive to increase online sales, it is expected that this framework not only support integration with web services but also a number of unique business requirements. For example the framework should support multiple regions taxes and currencies, composition rules for components and the simple addition of new base configurations and products.
 
 While these requirements above may seem initially quite demanding, they are quite typical of the real world business demands for these types of framework.
 
@@ -81,8 +81,7 @@ While these requirements above may seem initially quite demanding, they are quit
 \section{Incorporated design patterns}
 
 \subsection{Abstract factory}
-\emph{Abstract Factory} pattern is an advancement of \emph{Factory} pattern. It is used when project contains a number of factories that returns object implementing the same interface. By adding an extra layer of abstraction client is no longer concern with type of object returned by factory as any of them implement \emph{Abstract Factory} interface.
-Since both factories in team's framework produce objects that are implementing the same interface - \emph{ComputerComposite} - \emph{Abstract Factory} was used to combine \emph{ComputerFactory} and \emph{LaptopFactory} in order to simplify and abstract the cration of different computer products by \emph{OrderManager}. Furthermore adding another type of computer and integrating \emph{OrderManager} to use it would be significantly easier as \emph{OrderManager} is working on \emph{ComputerComposite} objects rather than on more specific \emph{DesktopComputer}, \emph{LaptopComputer}. 
+\emph{Abstract Factory} pattern is an advancement of \emph{Factory} pattern. It is used when a project contains a number of factories that return objects implementing the same interface. Since both factories in a team's framework return objects that are implementing the same interface - \emph{ComputerComposite} - \emph{Abstract Factory} was used to combine \emph{ComputerFactory} and \emph{LaptopFactory} in order to simplify and abstract the creation of different computer products by the \emph{OrderManager}. Furthermore adding another type of computer and integrating \emph{OrderManager} to use it would be significantly easier as \emph{OrderManager} is working on \emph{ComputerComposite} objects rather than on more specific \emph{DesktopComputer}, \emph{LaptopComputer}. 
 Using \emph{Abstract Factor} would also be an incentive (or way of enforcing) to keep all future computer products in sych with the interfaces of current products offered by vendor.
 
 \subsection{Factory method}
