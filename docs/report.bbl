@@ -1,8 +1,25 @@
 \begin{thebibliography}{1}
 
+\bibitem{website:compojure-rest}
+compojure-rest.
+\newblock \url{http://github.com/ordnungswidrig/compojure-rest}.
+
+\bibitem{website:dojo}
+Dojo toolkit.
+\newblock \url{http://www.dojotoolkit.org/}.
+
 \bibitem{website:junit}
 Junit testing framework.
 \newblock \url{http://www.junit.org/}.
+
+\bibitem{website:persevere}
+Persecere.
+\newblock \url{http://www.persvr.org/Page/Persevere}.
+
+\bibitem{website:tomcat}
+Apache.
+\newblock Tomcat.
+\newblock \url{http://tomcat.apache.org/}.
 
 \bibitem{REST}
 Roy Fielding.
@@ -10,5 +27,20 @@ Roy Fielding.
   architectures.
 \newblock \url{http://www.ics.uci.edu/~fielding/pubs/dissertation/top.htm},
   2000.
+
+\bibitem{website:jax-rs_jcp}
+Java~Community Process.
+\newblock Jsr 311: Jax-rs: The javatm api for restful web services.
+\newblock \url{http://jcp.org/en/jsr/detail?id=311}.
+
+\bibitem{website:jboss}
+Redhat.
+\newblock Jboss.
+\newblock \url{http://www.jboss.com/}.
+
+\bibitem{website:restClient}
+Chao ZHOU.
+\newblock Restclient.
+\newblock \url{https://addons.mozilla.org/en-US/firefox/addon/9780/}.
 
 \end{thebibliography}
