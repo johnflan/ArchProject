@@ -134,19 +134,20 @@ In the above code sample, we have included an example of the type of test we are
 Each of our tests contain a number of assertions, with any of which failing the overall test will fail. Outside of these individual tests we also use the \emph{setup()} method (not ilustrated here) to create a new instance of the \emph{OrderManager} for each test to ensure the preconditions are met.
 \pagebreak
 
+
 \section{Critique}
 \subsection{Observer}
-\emph{ComputerComposite} is using observer whenever a change in composite occur i.e. new object is added,  removed or decorated. Every time this happens notifyObserver() is invoked. Team's implementation of the observer does not describe the nature of change that occured but only points to object that just changed.An improvement could be employed here, method notifyObserver() could return a reference to leaf back to observer. By using this improvement an observer could update its data via methods call on leaf object. For example when user issues removal of RAM, the RAM leaf object would be dereferenced from its composite parent. Then the reference would be used by orderManager ( RAM.getPrice() ) to update the totalPrice value.
-Currently orderManager is notified that the state of "computerProduct" has been altered, so it request getPrice() on root element of "computerProduct" and then it will execute this method on every node in tree to get totalPrice.
-If there is a lot of changes to "computerProduct" then system would have to issue the getPrice() on it. This leads to costly and frequent reqursive calculation of total price. With improved implementation of the observer the orderManager object needs to add/subtrack price value of received leaf from the total price.
+\emph{ComputerComposite}  is using observer whenever a change in composite occur i.e. new object is added,  removed or decorated. Every time this happens \emph{notifyObserver()} is invoked. Team's implementation of the observer pattern does not describe the nature of change that occured but only points to object that just changed.An improvement could be employed here -the method \emph{notifyObserver()} could return a reference to a leaf back to the observer. By using this improvement an observer could update its data via methods call on a leaf object. For example when user issues removal of a RAM, the RAM leaf instance would be dereferenced from its composite parent. Then the reference would be used by \emph{orderManager( RAM.getPrice() )} to update the \emph{totalPrice} value.
+Currently \emph{orderManager} is notified that the state of \emph{computerProduct} has been altered, so it request \emph{getPrice()} on root element of \emph{computerProduct} and then it will execute this method on every node in tree to get \emph{totalPrice}.
+If there are a lot of changes to \emph{computerProduct} then system would have to issue the \emph{getPrice()} method on it. This leads to costly and frequent reqursive calculation of total price. With improved implementation of the observer the \emph{orderManager} object needs to add/subtrack price value of received leaf from the total price.
 
 \subsection{Composite Pattern: safe vs transparent}
-Composite contains two lists, one for storing references to all composite children and second list for storing all leaves. If parent of composite class executes getChildern(), composite class have to create a new list that contains "composites" and "leaves".
-If getChildern() call was to be executed repetevly then it might be a better idea to create a third list that contains other two lists. The overhead would be minimal as third list contais of references to already existing objects.
-This is safe approach to design of the composite pattern as leves do not have access to the same methods as parent. It was found that it would be easier to use transparent approach while designing composite. Transparent approach treats composite and leaf as the same object but leaf does not perform composite methods instead it contais stubs for those methods.
+Composite contains two lists, one for storing references to all composite children and second list for storing all leaves (components). If parent of composite class executes \emph{getChildern()}, composite class have to create a new list that contains "composites" and "leaves".
+If \emph{getChildern()} call was to be executed repetevly then it might be a better idea to create a third list that contains other two lists. The overhead would be minimal as third list contais of references to already existing objects.
+This is safe approach to design of the composite pattern as leves do not have access to the same methods as parent. It was found that it would be much easier to use transparent approach while designing composite. Transparent approach treats composite and leaf as the same object but leaf does not perform composite methods instead it contais stubs for those methods. So instead of two or three lists there would be only one needed as both composite and leaf are inheriting from the same interface/abstract class.
 
 \subsection{UML workbench}
-Because of the UML workbench used by team that does not support the generation of class diagrams from the code the synchronisation og the UML model with the code would be too time consuming for the purpose of this project. Therfore at the stage in the project we were happy that we met the design pattern requirements. We used workbench to automaticaly generate the clasess and we chose not to keep model and the code in synch.
+In this project team decided to use open source product to design all arcitectural diagrams - The Argo UML. However this tool was found to be at early stage of development and it lacks some esentila features, like undo functionality. Because of the UML workbench used by team that does not support the perfect and hundred  generation of class diagrams from the code the synchronisation of the UML model with the code would be too time consuming for the purpose of this project. Therfore at the stage in the project we were happy that we met the design pattern requirements. We used workbench to automaticaly generate the clasess and we chose not to keep model and the code in synch.
 
 \subsection{Decorator}
 
@@ -156,41 +157,28 @@ Team discovered that implementation of the decorator patter could be achieved vi
 
 \section{Runtime Infrastructure/Technology Pipeline}
 \subsection{Runtime/Colaboration Diagram}
-This section contais a partial colaboration diagram of designed framework plus an abstrac client that uses framework. Due to system complexity and 
+This section contais a partial colaboration diagram of designed framework plus an abstrac client that uses framework. Due to system complexity and inferior colaboration diagram feature quality of UML workbench, the diagram was generalised and does not represent the whole system. But only flow of program related to adding and decorating a product.
 
-ZE DIAGRAM GOES ERE! 
+\begin{center}
+	\includegraphics[scale=0.75]{images/CollaborationDiagram.svg}
+\end{center}
 
 \subsection{Architectural Use Cases}
 
 \subsubsection{Computer Factory}
-During the design phase team decided that ComputerFactory class is going to contain following classes: createLowComputer(), createMidComputer(), createHighComputer() and similar for creating laptop products. However every time new produc would be added or old product would be changed it would require so major code rewrites in client implementation. That is why it was decided to implement class createComputer(Enum type) that would be responsible for creating a new instance of any computer (it contains : createLowComputer(), createMidComputer() and so on methods). Now client doesn't have to call each method separately instead it calls the same function with different parameter. This solution created a level of abstraction between client and factories and made code more reusable.
+During the design phase team decided that \emph{ComputerFactory} class is going to contain following classes: \emph{createLowComputer()}, \emph{createMidComputer()}, \emph{createHighComputer()} and similar for creating all laptop products. However every time new produc would be added or old product would be changed it would require many major code rewrites in client's implementation. That is why it was decided to implement class \emph{createComputer(Enum type)} that would be responsible for creating a new instance of any computer (it contains : \emph{createLowComputer(}), \emph{createMidComputer()} and so on methods). Now client doesn't have to call each method separately instead it calls the same function with different parameter. This solution created a level of abstraction between client and factories and made code more reusable.
 
 \subsubsection{Scalability and Reusability}
-There are several cases in the UML diagram produced by the team of interfaces that look redundant (ComponentInterface, DecoratorInterface). They are either empty or are realised only by another interface. However this was done on purpose to employ idea of reusability and scalability. Decorator interface might serve as interface to any produc it is not tied to computer products only. So if in future a company decides to increase range of products that they distribute it would be easier for team to realise DecoratorInterface, rather then refractor the code to support new range of products. 
+There are several cases in the UML diagram produced by the team of interfaces that look redundant (\emph{ComponentInterface}, \emph{DecoratorInterface}). They are either empty or are realised only by another interface which make them look redundant and unneccessary. However this was done on purpose to employ idea of reusability and scalability. Decorator interface might serve as interface to any product type, so it is not only tied to computer products. If in future a company decides to increase range of products that they want to distribute it would be easier for team to realise \emph{DecoratorInterface}, rather then refractor the code to support new range of products. 
 
 \subsection{Code Selection}
-Team found out that usage of strings as parameter for selecting products would be problematic and could create hard to read and hard to maintain code. Adding or removing product would be time consuming. The solution that team came up with was found to solve all problems - the usage of enumerations. Enumerations were used instead of strings for any method that was taking an parameter that was used as a way of selecting specific code, for example calculateTax (Enum region) would execute only code responsible for calculating tax in particular region. This proved to be a very effective and robust way to deal with selection of code; furthermore switch case could be utilised with great readability improvement:
+Team found out that usage of strings as parameter for selecting products would be problematic and could create hard to read and hard to maintain code. Adding or removing product would be time consuming. The solution that team came up with was found to solve all problems - the usage of enumerations. Enumerations were used instead of strings for any method that was taking an parameter that was used as a way of selecting specific code, for example \emph{calculateTax(Enum region)} would execute only code responsible for calculating tax in particular region. This proved to be a very effective and robust way to deal with selection of code; furthermore switch case could be utilised with great readability improvement:
 
+\lstinputlisting{code/ifAndOnlyIf.java}
 
-\begin{lstlisting}
-switch(computerType){
-case COMPUTER_GAMING: code_block_1; break;	
-case COMPUTER_OFFICE: code_block_2; break;
-case COMPUTER_LAPTOP: code_block_3; break;
-}
+Above inplementation of selection of one of three blocks of code using string. In terms of readability this code is average, but can be refacored into clean looking code as follows:
 
-Instead of:
-	
-if (computerType == "gamingComputer") {
-		code_block_1;
-}else if(computerType == "homeComputer") {
-		code_block_2;
-}else if(computerType == "laptop") {
-		code_block_3;
-}else{
-	else_code_block;
-}
-\end{lstlisting}
+\lstinputlisting{code/switchCaseExample.java}
 
 \subsection{Choice of Vendor Offerings}
 
