@@ -133,11 +133,10 @@ In the above code sample, we have included an example of the type of test we are
 
 Each of our tests contain a number of assertions, with any of which failing the overall test will fail. Outside of these individual tests we also use the \emph{setup()} method (not ilustrated here) to create a new instance of the \emph{OrderManager} for each test to ensure the preconditions are met.
 \pagebreak
-\section{Critique}
 
-\section{Criticism and Improvements}
+\section{Critique}
 \subsection{Observer}
-ComputerComposite is using observer whenever a change in composite occur i.e. new object is added,  removed or decorated. Every time this happens notifyObserver() is invoked. Team's implementation of the observer does not describe the nature of change that occured but only points to object that just changed.An improvement could be employed here, method notifyObserver() could return a reference to leaf back to observer. By using this improvement an observer could update its data via methods call on leaf object. For example when user issues removal of RAM, the RAM leaf object would be dereferenced from its composite parent. Then the reference would be used by orderManager ( RAM.getPrice() ) to update the totalPrice value.
+\emph{ComputerComposite} is using observer whenever a change in composite occur i.e. new object is added,  removed or decorated. Every time this happens notifyObserver() is invoked. Team's implementation of the observer does not describe the nature of change that occured but only points to object that just changed.An improvement could be employed here, method notifyObserver() could return a reference to leaf back to observer. By using this improvement an observer could update its data via methods call on leaf object. For example when user issues removal of RAM, the RAM leaf object would be dereferenced from its composite parent. Then the reference would be used by orderManager ( RAM.getPrice() ) to update the totalPrice value.
 Currently orderManager is notified that the state of "computerProduct" has been altered, so it request getPrice() on root element of "computerProduct" and then it will execute this method on every node in tree to get totalPrice.
 If there is a lot of changes to "computerProduct" then system would have to issue the getPrice() on it. This leads to costly and frequent reqursive calculation of total price. With improved implementation of the observer the orderManager object needs to add/subtrack price value of received leaf from the total price.
 
@@ -230,11 +229,11 @@ Because of the simplicity of the REST concept, which is based on HTTP which has 
 
 A number of light weight REST frameworks for Java exist, below are a list of the more popular offerings.
 
-\begin{enumerate}
-	\item[JAX-RS] A Java JCP spec for RESTful webservices utilising Java Annotations. A number of implementations of the specification exist Apache CXF, Jersey, RESTEasy and Restlet.
-	\item[Zipwire-REST] A framework based on the ActiveResource pattern which enables Java object to be manipulated through REST, is a lightweight manner.
-	\item[SerfJ]
-\end{enumerate}
+\begin{itemize}
+	\item \textbf{JAX-RS} A Java JCP spec for RESTful webservices utilising Java Annotations. A number of implementations of the specification exist Apache CXF, Jersey, RESTEasy and Restlet.
+	\item \textbf{Zipwire-REST} A framework based on the ActiveResource pattern which enables Java object to be manipulated through REST, is a lightweight manner.
+	\item \textbf{SerfJ}
+\end{itemize}
 
 \subsubsection{Restlet}
 Restlet was chosen for this development as it seemed to be the most modern of the feature complete and lightweight frameworks. Restlet also conforms to the JAX-RS JCP specification\cite{website:jax-rs_jcp} making the knowledge gained from this endeavour more valuable.
@@ -245,11 +244,11 @@ The popularity of this framework is evident in the number of maintained ports fo
 
 \subsubsection{Development issues}
 
-\bf{JSON or XML}
+ \paragraph{JSON or XML}
 
-\bf{Object serialization}
+ \paragraph{Object serialization}
 
-\bf{Web browser security model}
+ \paragraph{Web browser security model}
 
 \subsubsection{Deployment diagram}
 
