@@ -41,6 +41,16 @@ public class OrderManager implements Observer{
 
 	}
 	
+	public OrderManager(TaxRegionEnum region, boolean isThreaded) throws Exception {
+		//allows to init orderMgr with usage of threads or not
+		setTaxRegion(region);
+		subTotalPrice = 0.0F;
+		if(isThreaded)
+			productFactory = new ComputerFactory(this, true);
+		else
+			productFactory = new ComputerFactory(this);
+	}
+	
     /** 
 	 *	Add a new product to the shopping cart, the available products are available
 	 *	under the ProductsEnum.
