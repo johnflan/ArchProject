@@ -14,46 +14,56 @@ import ie.ul.csis.cs4135.pcshop.factory.Computer.Laptop.UltraMobileLaptopBuilder
 
 public class ComputerFactory extends AbstractProductFactory{
 	
+	private ComputerAssembler computerAssembler;
+	private ComputerAssemblerThreaded computerAssemblerThreaded;
+	private boolean isThreaded;
+	
 	public ComputerFactory(Observer observer) {
 		super(observer);
-
+		isThreaded = false;
 	}
 
-	private ComputerAssembler computerAssembler;
-
+	public ComputerFactory(Observer observer, boolean isThread) {
+		super(observer);
+		isThreaded = isThread;
+	}
+	
 	@Override
 	public ComponentInterface createProduct(ProductsEnum productType) throws Exception {
-		
-		switch(productType){
-			case COMPUTER_DESKTOP_GAMING:
-				return createGamingDesktopComputer();
-				
-			case COMPUTER_DESKTOP_OFFICE:
-				return createOfficeDesktopComputer();
-				
-			case COMPUTER_DESKTOP_HOME:
-				return createHomeDesktopComputer();
-				
-			case COMPUTER_LAPTOP_OFFICE:
-				return createOfficeLaptop();
-				
-			case COMPUTER_LAPTOP_ULTRAMOBILE:
-				return createUltramobileLaptop();
-				
-			case COMPUTER_LAPTOP_GAMING:
-				return createGamingLaptopComputer();
-				
-			default:
-				throw new Exception("Unknown Enum type");
+		if(isThreaded){
+		//use threads for product creation
+			return createComputerThreaded(productType);
+		}else{
+		//use non-threaded approach
+			switch(productType){
+				case COMPUTER_DESKTOP_GAMING:
+					return createGamingDesktopComputer();
+					
+				case COMPUTER_DESKTOP_OFFICE:
+					return createOfficeDesktopComputer();
+					
+				case COMPUTER_DESKTOP_HOME:
+					return createHomeDesktopComputer();
+					
+				case COMPUTER_LAPTOP_OFFICE:
+					return createOfficeLaptop();
+					
+				case COMPUTER_LAPTOP_ULTRAMOBILE:
+					return createUltramobileLaptop();
+					
+				case COMPUTER_LAPTOP_GAMING:
+					return createGamingLaptopComputer();
+					
+				default:
+					throw new Exception("Unknown Enum type");
+			}
 		}
-		
 	}
 	
 	private ComponentInterface createGamingDesktopComputer() {
 
 		computerAssembler = new ComputerAssembler( new GamingCompBuilder( super.orderManagerObserver ) );
-		return computerAssembler.construct();
-		
+		return computerAssembler.construct();	
 	}
 	
 	private ComponentInterface createOfficeDesktopComputer() {
@@ -80,6 +90,23 @@ public class ComputerFactory extends AbstractProductFactory{
 	private ComponentInterface createUltramobileLaptop() {
 		computerAssembler = new ComputerAssembler( new UltraMobileLaptopBuilder( super.orderManagerObserver ) );
 		return computerAssembler.construct();
+	}
+
+	/*
+	 * Threaded approach
+	 */
+	
+	
+	private ComponentInterface createComputerThreaded(ProductsEnum productType) {
+
+		computerAssemblerThreaded = new ComputerAssemblerThreaded(productType);
+		try {
+			computerAssemblerThreaded.createProductsInThreads();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return computerAssemblerThreaded.getComputer();
 	}
 
 }
